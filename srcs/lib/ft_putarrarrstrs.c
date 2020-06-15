@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strarrnuller.c                                  :+:      :+:    :+:   */
+/*   ft_putarrarrstrs.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/02 08:50:31 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/15 13:57:09 by jecaudal         ###   ########.fr       */
+/*   Created: 2020/06/15 14:47:13 by jecaudal          #+#    #+#             */
+/*   Updated: 2020/06/15 15:27:29 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	**ft_strarrnuller(char **tab, unsigned int size)
+void	ft_putarrarrstrs(char ***ptr, int size)
 {
-	char			**new;
-	unsigned int	i;
+	int i;
 
 	i = 0;
-	if (!tab)
-		return (NULL);
-	if (!(new = (char**)malloc(sizeof(char*) * (size + 1))))
-		return (NULL);
-	while (i < size)
+	if (ptr)
 	{
-		new[i] = ft_strdup(tab[i]);
-		i++;
+		while (i < size)
+		{
+			ft_putarrstr(ptr[i], ", ");
+			write(1, "\n", 1);
+			i++;
+		}
 	}
-	new[i] = NULL;
-	return (new);
 }

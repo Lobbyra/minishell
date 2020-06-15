@@ -6,11 +6,11 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/01 16:44:40 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/04/01 16:47:47 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/06/15 13:57:09 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "execution.h"
+#include "minishell.h"
 
 void	ft_strarrfree(char **strs)
 {

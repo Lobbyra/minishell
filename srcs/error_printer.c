@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strarrnuller.c                                  :+:      :+:    :+:   */
+/*   error_printer.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/02 08:50:31 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/15 13:57:09 by jecaudal         ###   ########.fr       */
+/*   Created: 2020/06/15 16:15:44 by jecaudal          #+#    #+#             */
+/*   Updated: 2020/06/15 16:28:49 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	**ft_strarrnuller(char **tab, unsigned int size)
+/*
+** Look ./headers/minishell.h to see err code values.
+** Look ./headers/error_messages.h to see err messages.
+*/
+void	error_printer(int err)
 {
-	char			**new;
-	unsigned int	i;
-
-	i = 0;
-	if (!tab)
-		return (NULL);
-	if (!(new = (char**)malloc(sizeof(char*) * (size + 1))))
-		return (NULL);
-	while (i < size)
-	{
-		new[i] = ft_strdup(tab[i]);
-		i++;
-	}
-	new[i] = NULL;
-	return (new);
+	if (err == ERR_MALLOC)
+		l_printf(ERR_MALLOC_MSG);
 }

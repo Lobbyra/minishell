@@ -1,32 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strarrnuller.c                                  :+:      :+:    :+:   */
+/*   error_messages.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/02 08:50:31 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/15 13:57:09 by jecaudal         ###   ########.fr       */
+/*   Created: 2020/06/15 16:22:22 by jecaudal          #+#    #+#             */
+/*   Updated: 2020/06/15 16:28:31 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#ifndef ERROR_MESSAGES_H
+# define ERROR_MESSAGES_H
 
-char	**ft_strarrnuller(char **tab, unsigned int size)
-{
-	char			**new;
-	unsigned int	i;
+# define ERR_MALLOC_MSG \
+"Minishell occurs a memory allocation error, check if you memory isn't full."
 
-	i = 0;
-	if (!tab)
-		return (NULL);
-	if (!(new = (char**)malloc(sizeof(char*) * (size + 1))))
-		return (NULL);
-	while (i < size)
-	{
-		new[i] = ft_strdup(tab[i]);
-		i++;
-	}
-	new[i] = NULL;
-	return (new);
-}
+#endif

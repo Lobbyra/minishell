@@ -6,11 +6,11 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/01 16:36:53 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/04/02 09:00:05 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/06/15 13:57:09 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "execution.h"
+#include "minishell.h"
 
 char	*ft_strdup(char *str)
 {

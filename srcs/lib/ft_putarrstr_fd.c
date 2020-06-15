@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstrarr_fd.c                                  :+:      :+:    :+:   */
+/*   ft_putarrstr_fd.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/01 17:12:30 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/04/21 07:13:10 by Lobbyra          ###   ########.fr       */
+/*   Updated: 2020/06/15 13:56:34 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "execution.h"
+#include "minishell.h"
 
 void	ft_putarrstr_fd(char **argv, char *sep, int fd)
 {

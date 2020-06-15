@@ -6,11 +6,11 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/01 15:49:06 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/04/02 09:19:17 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/06/15 13:42:52 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "execution.h"
+#include "minishell.h"
 
 char	**ft_strarrdup(char **arr)
 {
