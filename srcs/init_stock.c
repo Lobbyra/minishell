@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strarrnuller.c                                  :+:      :+:    :+:   */
+/*   init_stock.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/02 08:50:31 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/15 13:57:09 by jecaudal         ###   ########.fr       */
+/*   Created: 2020/06/15 13:26:06 by jecaudal          #+#    #+#             */
+/*   Updated: 2020/06/15 13:57:39 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	**ft_strarrnuller(char **tab, unsigned int size)
+static t_stock	*panic_init_stock(t_stock *stock)
 {
-	char			**new;
-	unsigned int	i;
+	if (stock->envp)
+		ft_freestrs(stock->envp);
+	if (stock)
+		free(stock);
+	return (NULL);
+}
 
-	i = 0;
-	if (!tab)
+t_stock			*init_stock(char **envp)
+{
+	t_stock	*new;
+
+	if (!(new = (t_stock*)malloc(sizeof(t_stock))))
 		return (NULL);
-	if (!(new = (char**)malloc(sizeof(char*) * (size + 1))))
-		return (NULL);
-	while (i < size)
-	{
-		new[i] = ft_strdup(tab[i]);
-		i++;
-	}
-	new[i] = NULL;
+	if (!(new->envp = ft_strarrdup(envp)))
+		return (panic_init_stock(new));
+	new->jobs = NULL;
+	new->pipes = NULL;
+	new->error_strings = NULL;
 	return (new);
 }
