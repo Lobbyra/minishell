@@ -3,34 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-<<<<<<< HEAD
-#    By: jecaudal <marvin@42.fr>                    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/06/11 15:56:37 by jecaudal          #+#    #+#              #
-#    Updated: 2020/06/11 16:18:07 by jecaudal         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-NAME		=	minishell
-
-HEADER		=	headers/
-
-CFLAGS		+=	-Wall -Wextra -Werror
-
-CFLAGS_DEV	=	-Wall -Wextra
-
-CC			=	gcc
-
-dev			:
-				$(CC) $(CFLAGS_DEV) -o $(NAME) -I $(HEADER) $(shell find srcs -name "*.c")
-
-dev-clean	:
-				rm $(NAME)
-=======
 #    By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/15 13:51:51 by jecaudal          #+#    #+#              #
-#    Updated: 2020/06/15 16:29:15 by jecaudal         ###   ########.fr        #
+#    Updated: 2020/06/15 16:40:00 by jecaudal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -104,4 +80,3 @@ dev-clean		:
 dev-fclean		:	dev-clean
 					rm -f $(NAME)
 					@make fclean -C $(PATH_L_PRINTF)
->>>>>>> dev-jecaudal
