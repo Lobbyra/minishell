@@ -6,7 +6,7 @@
 #    By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/15 13:51:51 by jecaudal          #+#    #+#              #
-#    Updated: 2020/06/15 15:27:46 by jecaudal         ###   ########.fr        #
+#    Updated: 2020/06/15 16:29:15 by jecaudal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,8 @@ OBJS_LIB		=	$(SRCS_LIB:.c=.o)
 
 SRCS			=	./srcs/main.c			\
 					./srcs/init_stock.c		\
-					./srcs/free_t_stock.c
+					./srcs/free_t_stock.c	\
+					./srcs/error_printer.c
 
 OBJS			=	$(SRCS:.c=.o)
 
@@ -74,8 +75,8 @@ dev				:	make_l_printf $(OBJS_LIB) $(OBJS)
 					$(CC) -o $(NAME) $(L_PRINTF) $(OBJS_LIB) $(OBJS)
 
 dev-clean		:
-					rm -f $(NAME)
+					rm -f $(OBJS_LIB) $(OBJS)
 
 dev-fclean		:	dev-clean
-					rm -f $(OBJS_LIB) $(OBJS)
+					rm -f $(NAME)
 					@make fclean -C $(PATH_L_PRINTF)

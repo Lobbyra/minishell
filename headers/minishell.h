@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/15 13:22:38 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/15 15:25:37 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/06/15 16:28:56 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,11 @@ typedef struct	s_stock
 
 t_stock	*init_stock(char **envp);
 void	free_t_stock(t_stock *stock);
+void	error_printer(int err);
 
 # include "lib.h"
 # include "parsing.h"
 # include "execution.h"
+# include "error_messages.h"
 
 #endif
