@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/15 13:22:38 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/15 16:28:56 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/06/16 14:42:06 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # define STDIN 0
 # define STDOUT 1
 # define STDERR 2
+
+# define SIG_CTRLD 1
 
 # define ERR_MALLOC 1
 # define ERR_ERRNO 2
@@ -49,6 +51,9 @@ typedef struct	s_stock
 t_stock	*init_stock(char **envp);
 void	free_t_stock(t_stock *stock);
 void	error_printer(int err);
+int		parsing(t_stock *stock);
+int		execution(t_stock *stock);
+int		command_to_jobs(t_stock *stock, char *cmd);
 
 # include "lib.h"
 # include "parsing.h"

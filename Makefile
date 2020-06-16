@@ -6,7 +6,7 @@
 #    By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/15 13:51:51 by jecaudal          #+#    #+#              #
-#    Updated: 2020/06/16 13:19:00 by jecaudal         ###   ########.fr        #
+#    Updated: 2020/06/16 14:48:31 by jecaudal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ SRCS_LIB		=	./srcs/lib/ft_split.c				\
 					./srcs/lib/ft_strarrlen.c			\
 					./srcs/lib/ft_strdupdel.c			\
 					./srcs/lib/ft_putarrstr.c			\
+					./srcs/lib/ft_putstr_fd.c			\
 					./srcs/lib/ft_putchar_fd.c			\
 					./srcs/lib/ft_strarrfree.c			\
 					./srcs/lib/ft_strcleaner.c			\
@@ -54,9 +55,12 @@ SRCS_LIB		=	./srcs/lib/ft_split.c				\
 
 OBJS_LIB		=	$(SRCS_LIB:.c=.o)
 
-SRCS			=	./srcs/main.c			\
-					./srcs/init_stock.c		\
-					./srcs/free_t_stock.c	\
+SRCS			=	./srcs/main.c					\
+					./srcs/parsing/parsing.c		\
+					./srcs/execution/execution.c	\
+					./srcs/init_stock.c				\
+					./srcs/free_t_stock.c			\
+					./srcs/command_to_jobs.c		\
 					./srcs/error_printer.c
 
 OBJS			=	$(SRCS:.c=.o)
@@ -73,6 +77,9 @@ make_l_printf	:
 
 dev				:	make_l_printf $(OBJS_LIB) $(OBJS)
 					$(CC) -o $(NAME) $(L_PRINTF) $(OBJS_LIB) $(OBJS)
+
+fdev			:	make_l_printf $(OBJS_LIB) $(OBJS)
+					$(CC) -o $(NAME) $(L_PRINTF) -fsanitize=address $(OBJS_LIB) $(OBJS)
 
 dev-clean		:
 					rm -f $(OBJS_LIB) $(OBJS)

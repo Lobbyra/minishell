@@ -6,14 +6,27 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 09:04:57 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/04/20 10:11:30 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/06/16 14:39:21 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdio.h>
 
-int		ft_strlen_c(char *str, char c)
+static int	ft_strcmp(char *s1, char *s2)
+{
+	if (s1 && s2)
+		while (*s1 == *s2 && *s1 && *s2)
+		{
+			s1++;
+			s2++;
+		}
+	else
+		return (0);
+	return (*s1 - *s2);
+}
+
+int			ft_strlen_c(char *str, char c)
 {
 	int i;
 
@@ -23,7 +36,7 @@ int		ft_strlen_c(char *str, char c)
 	return (i);
 }
 
-int		is_a_c(char *str, char c)
+int			is_a_c(char *str, char c)
 {
 	int i;
 
@@ -37,10 +50,12 @@ int		is_a_c(char *str, char c)
 	return (0);
 }
 
-int		push_to_line(char **post_buffer, char **line, char sep)
+int			push_to_line(char **post_buffer, char **line, char sep)
 {
 	void *temp;
 
+	if (sep == '\0' && ft_strcmp(*post_buffer, "") == 0)
+		return (GNL_CTRLD);
 	temp = *post_buffer;
 	*line = ft_strdup_c(*post_buffer, sep);
 	*post_buffer = ft_strcut_c(*post_buffer, sep);
@@ -52,7 +67,7 @@ int		push_to_line(char **post_buffer, char **line, char sep)
 	return (0);
 }
 
-int		get_next_line_reading(int fd, char **post_buffer, char **line)
+int			get_next_line_reading(int fd, char **post_buffer, char **line)
 {
 	int			ret_read;
 	char		buf[GNL_BUFFER_SIZE + 1];
@@ -73,7 +88,7 @@ int		get_next_line_reading(int fd, char **post_buffer, char **line)
 	return (GNL_ERROR);
 }
 
-int		get_next_line(int fd, char **line)
+int			get_next_line(int fd, char **line)
 {
 	static char	*post_buffer[200000];
 

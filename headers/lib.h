@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 16:20:45 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/15 14:56:00 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/06/16 14:00:27 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	ft_strarrfree(char **strs);
 void	ft_putnbr_fd(int nb, int fd);
 void	ft_close_fds(int *fds, int n);
 void	ft_putchar_fd(char c, int fd);
+void	ft_putstr_fd(char *s, int fd);
 void	ft_putarrstr(char **argv, char *sep);
 void	ft_putarrarrstrs(char ***ptr, int size);
 void	ft_putnbrarr_fd(int *tab, int size, int fd);

@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 08:37:05 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/04/20 15:03:22 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/06/16 14:41:37 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 # define GET_NEXT_LINE_H
 # define GNL_LINE_READED 1
 # define GNL_EOF 0
+# define GNL_CTRLD 2
 # define GNL_ERROR -1
 # ifndef GNL_BUFFER_SIZE
-#   define GNL_BUFFER_SIZE 256
+#  define GNL_BUFFER_SIZE 256
 # endif
 
 # include <fcntl.h>

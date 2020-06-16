@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/15 15:19:36 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/15 15:28:05 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/06/16 14:55:54 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,16 @@ static void	free_jobs(char ***jobs, int n_jobs)
 
 void	free_t_stock(t_stock *stock)
 {
-	if (stock->envp)
-		ft_freestrs(stock->envp);
-	if (stock->jobs)
-		free_jobs(stock->jobs, stock->n_jobs);
-	if (stock->pipes)
-		free(stock->pipes);
-	if (stock->error_strings)
-		free(stock->error_strings);
+	if (stock)
+	{
+		if (stock->envp)
+			ft_freestrs(stock->envp);
+		if (stock->jobs)
+			free_jobs(stock->jobs, stock->n_jobs);
+		if (stock->pipes)
+			free(stock->pipes);
+		if (stock->error_strings)
+			free(stock->error_strings);
+		free(stock);
+	}
 }

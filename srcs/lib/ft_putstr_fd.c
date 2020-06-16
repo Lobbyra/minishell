@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_printer.c                                    :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/15 16:15:44 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/16 14:01:25 by jecaudal         ###   ########.fr       */
+/*   Created: 2020/06/16 13:59:34 by jecaudal          #+#    #+#             */
+/*   Updated: 2020/06/16 14:00:01 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include <unistd.h>
 
-/*
-** Look ./headers/minishell.h to see err code values.
-** Look ./headers/error_messages.h to see err messages.
-*/
-void	error_printer(int err)
+void		ft_putstr_fd(char *s, int fd)
 {
-	if (err == ERR_MALLOC)
-		ft_putstr_fd(ERR_MALLOC_MSG, STDERR);
+	if (s && fd > 0)
+	{
+		while (*s)
+		{
+			write(fd, &(*s), 1);
+			s++;
+		}
+	}
 }
