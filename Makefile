@@ -6,7 +6,7 @@
 #    By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/15 13:51:51 by jecaudal          #+#    #+#              #
-#    Updated: 2020/06/15 16:40:00 by jecaudal         ###   ########.fr        #
+#    Updated: 2020/06/16 13:19:00 by jecaudal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,3 +80,5 @@ dev-clean		:
 dev-fclean		:	dev-clean
 					rm -f $(NAME)
 					@make fclean -C $(PATH_L_PRINTF)
+
+dev-re			:	dev-clean dev

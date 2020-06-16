@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 16:47:17 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/15 16:30:48 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/06/16 13:26:00 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	reset_t_stock(t_stock *stock)
 	{
 		while (i_jobs < stock->n_jobs)
 			ft_freestrs(stock->jobs[i_jobs++]);
-		free(i_jobs);
+		free(stock->jobs);
 	}
 	if (stock->pipes)
 		free(stock->pipes);
@@ -52,7 +52,7 @@ int			main(int argc, char **argv, char **envp)
 	while (1)
 	{
 		if (!(command = wait_instruction()) && (error = ERR_MALLOC))
-			error_printer(ERR_MALLOC_MSG);
+			error_printer(ERR_MALLOC);
 		if (ft_strcmp(command, "") == 0)
 			break ;
 	}
