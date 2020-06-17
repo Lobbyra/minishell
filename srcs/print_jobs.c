@@ -1,41 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_t_stock.c                                     :+:      :+:    :+:   */
+/*   print_jobs.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/15 15:19:36 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/16 16:49:33 by jecaudal         ###   ########.fr       */
+/*   Created: 2020/06/16 16:54:44 by jecaudal          #+#    #+#             */
+/*   Updated: 2020/06/17 16:18:10 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void	free_jobs(char ***jobs, int n_jobs)
+void print_jobs(char ***jobs, int n_jobs)
 {
 	int i;
 
 	i = 0;
 	while (i < n_jobs)
 	{
-		ft_freestrs(jobs[i]);
+		l_printf("[%d] = {", i);
+		if (!jobs[i])
+			l_printf("NULL");
+		else
+			ft_putarrstr(jobs[i], ", ");
+		write(1, "}\n", 2);
 		i++;
-	}
-}
-
-void	free_t_stock(t_stock *stock)
-{
-	if (stock)
-	{
-		if (stock->envp)
-			ft_freestrs(stock->envp);
-		if (stock->jobs)
-			free_jobs(stock->jobs, stock->n_jobs);
-		if (stock->pipes)
-			free(stock->pipes);
-		if (stock->error_strings)
-			free(stock->error_strings);
-		free(stock);
 	}
 }

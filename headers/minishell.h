@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/15 13:22:38 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/16 14:42:06 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/06/17 14:31:53 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 
 # define ERR_MALLOC 1
 # define ERR_ERRNO 2
+# define ERR_SYNTAX 3
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -54,6 +55,11 @@ void	error_printer(int err);
 int		parsing(t_stock *stock);
 int		execution(t_stock *stock);
 int		command_to_jobs(t_stock *stock, char *cmd);
+
+/*
+**	Debug functions.
+*/
+void	print_jobs(char ***jobs, int n_jobs);
 
 # include "lib.h"
 # include "parsing.h"

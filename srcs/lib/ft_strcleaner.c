@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcleaner.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Lobbyra <Lobbyra@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/21 14:01:32 by Lobbyra           #+#    #+#             */
-/*   Updated: 2020/04/21 15:46:08 by Lobbyra          ###   ########.fr       */
+/*   Updated: 2020/06/17 14:03:53 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ char			*ft_strcleaner(char *str)
 	{
 		pass_spaces(&i_str);
 		copy_word(&i_str, &i_new);
+		pass_spaces(&i_str);
 		if (*i_str && n_word > 0)
 		{
 			*i_new = ' ';
@@ -90,7 +91,6 @@ char			*ft_strcleaner(char *str)
 			n_word--;
 		}
 	}
-	free(str);
 	*i_new = '\0';
 	return (new);
 }

@@ -6,7 +6,7 @@
 #    By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/15 13:51:51 by jecaudal          #+#    #+#              #
-#    Updated: 2020/06/16 14:48:31 by jecaudal         ###   ########.fr        #
+#    Updated: 2020/06/17 13:19:29 by jecaudal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ CFLAGS			+=	-Wall -Wextra -I ./headers/
 
 CC				=	gcc
 
-SRCS_LIB		=	./srcs/lib/ft_split.c				\
+SRCS_LIB		=	./srcs/print_jobs.c					\
+					./srcs/lib/ft_split.c				\
 					./srcs/lib/ft_putnbr.c				\
 					./srcs/lib/ft_putstr.c				\
 					./srcs/lib/ft_strcmp.c				\
