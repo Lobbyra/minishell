@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lib.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 16:20:45 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/16 14:00:27 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/06/18 16:40:23 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ char	*ft_get_this_word(char *str);
 char    *ft_strdup_n(char *str, int n);
 char    *ft_word_cutter(char *str, char *sep);
 char    *ft_strjoindel(char *s1, char *s2, int param);
+char	*ft_strjoin(char *s1, char *s2);
 
 unsigned int	ft_strlen_n(char *str, int n);
 

@@ -6,7 +6,7 @@
 #    By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/15 13:51:51 by jecaudal          #+#    #+#              #
-#    Updated: 2020/06/17 13:19:29 by jecaudal         ###   ########.fr        #
+#    Updated: 2020/06/18 16:38:52 by jereligi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ SRCS_LIB		=	./srcs/print_jobs.c					\
 					./srcs/lib/ft_strarrfree.c			\
 					./srcs/lib/ft_strcleaner.c			\
 					./srcs/lib/ft_strjoindel.c			\
+					./srcs/lib/ft_strjoin.c				\
 					./srcs/lib/get_next_line.c			\
 					./srcs/lib/ft_word_cutter.c			\
 					./srcs/lib/ft_putarrstr_fd.c		\
