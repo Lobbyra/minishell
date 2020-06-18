@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 16:47:17 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/17 16:37:58 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/06/18 15:24:37 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ static int	wait_instruction(char **cmd)
 /*
 ** Used to free variables alloced for just one command.
 */
-static void	reset(t_stock *stock, char *command)
+static void	reset(t_stock *stock)
 {
 	int i_jobs;
 
 	i_jobs = 0;
-	if (i_jobs)
+	if (stock->jobs != NULL)
 	{
 		while (i_jobs < stock->n_jobs)
 			ft_freestrs(stock->jobs[i_jobs++]);
@@ -50,33 +50,29 @@ static void	reset(t_stock *stock, char *command)
 		free(stock->pipes);
 	if (stock->error_strings)
 		free(stock->error_strings);
-	if (command)
-		free(command);
+	if (stock->user_input)
+		free(stock->user_input);
 }
 
 int			main(int argc, char **argv, char **envp)
 {
 	int		error;
 	t_stock	*stock;
-	char	*command;	
 
 	if (!(stock = init_stock(envp)))
 		return (1);
 	while (1)
 	{
 		error = 0;
-		if ((error = wait_instruction(&command)) == ERR_ERRNO)
+		if ((error = wait_instruction(&(stock->user_input))) == ERR_ERRNO)
 			error_printer(error);
 		if (error == SIG_CTRLD)
 			break ;
-		if (error == 0 && (error = command_to_jobs(stock, command)))
-			error_printer(error);
-		// print_jobs(stock->jobs, stock->n_jobs);
 		if (error == 0 && (error = parsing(stock) != 0))
 			error_printer(error);
 		if (error != ERR_MALLOC && (error = execution(stock)) != 0)
 			error_printer(error);
-		reset(stock, command);
+		reset(stock);
 	}
 	free_t_stock(stock);
 	return (0);

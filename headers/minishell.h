@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/15 13:22:38 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/17 14:31:53 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/06/18 15:06:14 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef char t_bool;
 typedef struct	s_stock
 {
 	char		**envp;
+	char		*user_input;
 	char		***jobs;
 	int			n_jobs;
 	t_bool		is_pipe;
@@ -54,7 +55,6 @@ void	free_t_stock(t_stock *stock);
 void	error_printer(int err);
 int		parsing(t_stock *stock);
 int		execution(t_stock *stock);
-int		command_to_jobs(t_stock *stock, char *cmd);
 
 /*
 **	Debug functions.
