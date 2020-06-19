@@ -6,7 +6,7 @@
 #    By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/15 13:51:51 by jecaudal          #+#    #+#              #
-#    Updated: 2020/06/19 13:50:42 by jereligi         ###   ########.fr        #
+#    Updated: 2020/06/19 15:37:31 by jereligi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,6 @@ SRCS			=	./srcs/main.c					\
 					./srcs/execution/execution.c	\
 					./srcs/init_stock.c				\
 					./srcs/free_t_stock.c			\
-					./srcs/command_to_jobs.c		\
 					./srcs/error_printer.c
 
 OBJS			=	$(SRCS:.c=.o)
