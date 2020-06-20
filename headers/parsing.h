@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 16:29:39 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/19 16:51:20 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/06/20 15:48:12 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,6 @@
 
 int		check_quote(t_stock *stock);
 int	 	check_pipe(t_stock *stock);
+int		check_end_backslash(t_stock *s);
 
 #endif
