@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/20 13:51:24 by jereligi          #+#    #+#             */
-/*   Updated: 2020/06/20 14:02:31 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/06/20 14:17:49 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int		additional_read_pipe(t_stock *s)
 		return (ERR_SYNTAX);
 	}
 	l_printf("|%s|\n", s->user_input);
-	return (0);
+	return (check_quote(s));
 }
 
 int				check_pipe(t_stock *s)
@@ -58,7 +58,8 @@ int				check_pipe(t_stock *s)
 				i++;
 			if (s->user_input[i] == '\0')
 			{
-				additional_read_pipe(s);
+				if (additional_read_pipe(s) == ERR_SYNTAX)
+					return (ERR_SYNTAX);
 				i = 0;
 			}
 		}
