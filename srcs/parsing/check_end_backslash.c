@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/20 15:22:41 by jereligi          #+#    #+#             */
-/*   Updated: 2020/06/20 16:11:55 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/06/20 16:23:16 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int				check_end_backslash(t_stock *s)
 		if (additional_read_backslash(s) == ERR_SYNTAX)
 			return (ERR_SYNTAX);
 	}
-	else
+	else if (s->user_input[i] == '\\' && s->user_input[i - 1] == '\\')
 	{
 		while (s->user_input[i] == '\\' && s->user_input[i - 1] == '\\')
 		{
