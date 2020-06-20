@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/15 13:22:38 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/18 15:06:14 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/06/20 15:43:27 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # define ERR_MALLOC 1
 # define ERR_ERRNO 2
 # define ERR_SYNTAX 3
+# define ERR_EXIT 4
 
 # include <stdio.h>
 # include <stdlib.h>

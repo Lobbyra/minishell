@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 16:47:17 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/18 15:24:37 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/06/20 15:46:21 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,22 +56,22 @@ static void	reset(t_stock *stock)
 
 int			main(int argc, char **argv, char **envp)
 {
-	int		error;
+	int		err;
 	t_stock	*stock;
 
 	if (!(stock = init_stock(envp)))
 		return (1);
 	while (1)
 	{
-		error = 0;
-		if ((error = wait_instruction(&(stock->user_input))) == ERR_ERRNO)
-			error_printer(error);
-		if (error == SIG_CTRLD)
+		err = 0;
+		if ((err = wait_instruction(&(stock->user_input))) == ERR_ERRNO)
+			error_printer(err);
+		if (err == SIG_CTRLD)
 			break ;
-		if (error == 0 && (error = parsing(stock) != 0))
-			error_printer(error);
-		if (error != ERR_MALLOC && (error = execution(stock)) != 0)
-			error_printer(error);
+		if (err == 0 && (err = parsing(stock) != 0))
+			error_printer(err);
+		if ((err == 0 || err == ERR_EXIT) && (err = execution(stock)) != 0)
+			error_printer(err);
 		reset(stock);
 	}
 	free_t_stock(stock);
