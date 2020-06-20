@@ -6,13 +6,13 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 15:54:35 by jereligi          #+#    #+#             */
-/*   Updated: 2020/06/19 15:55:27 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/06/20 13:55:45 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static int	  is_escape(int i, char *user_input)
+static int		is_escape(int i, char *user_input)
 {
 	if (i > 0)
 	{
@@ -22,7 +22,7 @@ static int	  is_escape(int i, char *user_input)
 	return (0);
 }
 
-static int	  additional_read(char quote, t_stock *s)
+static int		additional_read_quote(char quote, t_stock *s)
 {
 	int		status;
 	char	*tmp;
@@ -52,7 +52,7 @@ static int	  additional_read(char quote, t_stock *s)
 	return (0);
 }
 
-int			 check_quote(t_stock *s)
+int				check_quote(t_stock *s)
 {
 	int		i;
 	int		valid_quote;
@@ -64,7 +64,7 @@ int			 check_quote(t_stock *s)
 	while (valid_quote == 0)
 	{
 		if (s->user_input[i] == '\0')
-			if ((valid_quote = additional_read(quote, s)) == 3)
+			if ((valid_quote = additional_read_quote(quote, s)) == 3)
 				return (ERR_SYNTAX);
 		if ((s->user_input[i] == '"' && quote == '0') && (!is_escape(i, s->user_input)))
 			quote = '\"';
