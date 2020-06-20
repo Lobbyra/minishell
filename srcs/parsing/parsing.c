@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 16:02:38 by jereligi          #+#    #+#             */
-/*   Updated: 2020/06/20 14:07:42 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/06/20 16:01:46 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,7 @@ int		parsing(t_stock *stock)
 	printf("\033[32mcheck quote [ok]\033[37m\n");
 	check_pipe(stock);
 	printf("\033[32mcheck pipe [ok]\033[37m\n");
+	check_end_backslash(stock);
+	printf("\033[32mcheck end_backslash [ok]\033[37m\n");
 	return (0);
 }

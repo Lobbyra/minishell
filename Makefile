@@ -6,7 +6,7 @@
 #    By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/15 13:51:51 by jecaudal          #+#    #+#              #
-#    Updated: 2020/06/19 16:52:49 by jereligi         ###   ########.fr        #
+#    Updated: 2020/06/20 15:55:40 by jereligi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,13 +57,14 @@ SRCS_LIB		=	./srcs/print_jobs.c					\
 
 OBJS_LIB		=	$(SRCS_LIB:.c=.o)
 
-SRCS			=	./srcs/main.c					\
-					./srcs/parsing/parsing.c		\
-					./srcs/parsing/check_quote.c	\
-					./srcs/parsing/check_pipe.c		\
-					./srcs/execution/execution.c	\
-					./srcs/init_stock.c				\
-					./srcs/free_t_stock.c			\
+SRCS			=	./srcs/main.c							\
+					./srcs/parsing/parsing.c				\
+					./srcs/parsing/check_quote.c			\
+					./srcs/parsing/check_pipe.c				\
+					./srcs/parsing/check_end_backslash.c	\
+					./srcs/execution/execution.c			\
+					./srcs/init_stock.c						\
+					./srcs/free_t_stock.c					\
 					./srcs/error_printer.c
 
 OBJS			=	$(SRCS:.c=.o)
