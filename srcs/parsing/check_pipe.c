@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/20 13:51:24 by jereligi          #+#    #+#             */
-/*   Updated: 2020/06/20 14:17:49 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/06/22 13:37:46 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int				check_pipe(t_stock *s)
 	{
 		if (s->user_input[i] == '\0')
 			valid_pipe = 1;
-		if (s->user_input[i] == '|')
+		if (s->user_input[i] == '|' && s->user_input[i - 1] != '\\')
 		{
 			i++;
 			while (ft_isprint(s->user_input[i]) == 0 && s->user_input[i])

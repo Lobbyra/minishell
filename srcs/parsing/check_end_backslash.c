@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/20 15:22:41 by jereligi          #+#    #+#             */
-/*   Updated: 2020/06/20 16:23:16 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/06/22 15:40:17 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int		additional_read_backslash(t_stock *s)
 		tmp = ft_strdup_n(s->user_input, ft_strlen(s->user_input) - 1);
 		free(s->user_input);
 		s->user_input = tmp;
-		return (ERR_SYNTAX);
+		return (ERR_EXIT);
 	}
 	l_printf("|%s|\n", s->user_input);
 	if (check_quote(s) == ERR_SYNTAX || check_pipe(s) == ERR_SYNTAX)
