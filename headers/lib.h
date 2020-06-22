@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 16:20:45 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/18 16:40:23 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/06/22 15:25:44 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	ft_putchar(char c);
 void	ft_freestrs(char **strs);
 void	l_printf(char *str, ...);
 void	ft_strarrfree(char **strs);
+void	ft_skip(char **ptr, char c);
 void	ft_putnbr_fd(int nb, int fd);
 void	ft_close_fds(int *fds, int n);
 void	ft_putchar_fd(char c, int fd);
