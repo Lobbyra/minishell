@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/20 14:38:32 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/23 15:57:41 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/06/23 17:12:27 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,12 +82,3 @@ int	part_len(char *str, char first_letter)
 	}
 	return (count);
 }
-
-/*
-int main(int argc, char **argv)
-{
-	if (argc == 2)
-		printf("The len of [%s] is %d\n", argv[1], part_len(argv[1], argv[1][0]));
-	return (0);
-}
-*/

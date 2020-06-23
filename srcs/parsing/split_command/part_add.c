@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/23 13:37:00 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/23 15:58:59 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/06/23 16:55:24 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,6 @@ char	*part_add(char *arg, char *cmd, int p_len)
 	else if (quote == '\"')
 		cpy_dquote(&i_new, cmd, p_len);
 	*i_new = '\0';
+	free(arg);
 	return (new);
 }

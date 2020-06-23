@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 15:49:03 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/22 16:17:30 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/06/23 17:02:14 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ static int	pre_alloc(char **new, int n_args)
 		n++;
 		new++;
 	}
+	*new = NULL;
 	return (n);
 }
 
@@ -52,7 +53,7 @@ char		**init_split(int n_args)
 	char	**new;
 	int		ptrs_alloced;
 	
-	if (!(new = (char**)malloc(sizeof(char*) * (n_args))))
+	if (!(new = (char**)malloc(sizeof(char*) * (n_args + 1))))
 		return (NULL);
 	ptrs_alloced = pre_alloc(new, n_args);
 	if (ptrs_alloced != n_args)

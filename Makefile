@@ -6,7 +6,7 @@
 #    By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/15 13:51:51 by jecaudal          #+#    #+#              #
-#    Updated: 2020/06/23 16:43:42 by jecaudal         ###   ########.fr        #
+#    Updated: 2020/06/23 17:09:00 by jecaudal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,7 +69,6 @@ SRCS			=	./srcs/main.c									\
 					./srcs/parsing/split_command/part_len.c			\
 					./srcs/parsing/split_command/skip_part.c		\
 					./srcs/parsing/split_command/init_split.c		\
-					./srcs/parsing/split_command/word_count.c		\
 					./srcs/parsing/split_command/split_command.c	\
 					./srcs/execution/execution.c					\
 					./srcs/error_printer.c
