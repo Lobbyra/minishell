@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+         #
+#    By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/15 13:51:51 by jecaudal          #+#    #+#              #
-#    Updated: 2020/06/23 17:09:00 by jecaudal         ###   ########.fr        #
+#    Updated: 2020/06/23 18:00:25 by jereligi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,9 @@ SRCS_LIB		=	./srcs/print_jobs.c					\
 					./srcs/lib/ft_strarrnuller.c		\
 					./srcs/lib/ft_putarrarrstrs.c		\
 					./srcs/lib/ft_get_this_word.c		\
-					./srcs/lib/get_next_line_utils.c
+					./srcs/lib/get_next_line_utils.c	\
+					./srcs/lib/ft_full_len_arrstr.c		\
+					./srcs/lib/ft_isalnum.c				\
 
 OBJS_LIB		=	$(SRCS_LIB:.c=.o)
 
@@ -65,6 +67,9 @@ SRCS			=	./srcs/main.c									\
 					./srcs/parsing/check_quote.c					\
 					./srcs/parsing/check_pipe.c						\
 					./srcs/parsing/check_end_backslash.c			\
+					./srcs/parsing/env_var.c						\
+					./srcs/parsing/env_var_utils.c					\
+					./srcs/parsing/remplace_env_var.c				\
 					./srcs/parsing/split_command/part_add.c			\
 					./srcs/parsing/split_command/part_len.c			\
 					./srcs/parsing/split_command/skip_part.c		\

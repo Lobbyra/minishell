@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 16:29:39 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/20 15:48:12 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/06/23 17:28:52 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,11 @@
 int		check_quote(t_stock *stock);
 int	 	check_pipe(t_stock *stock);
 int		check_end_backslash(t_stock *s);
+char	*env_var(t_stock *s);
+char	**pre_malloc_arrstring(int nb_env_var);
+int		number_env_var(char *user_input);
+int		free_env_var_data(char **tab, char **value);
+char	*remove_and_replace(char *user_input, char **tab, char **value);
+int		remplace_env_var(char *new, char *value);
 
 #endif

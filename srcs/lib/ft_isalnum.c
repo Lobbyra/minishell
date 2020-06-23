@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/17 16:02:38 by jereligi          #+#    #+#             */
-/*   Updated: 2020/06/22 18:39:12 by jereligi         ###   ########.fr       */
+/*   Created: 2020/06/23 15:35:50 by jereligi          #+#    #+#             */
+/*   Updated: 2020/06/23 15:41:11 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int		parsing(t_stock *stock)
+int		ft_isalnum(char c)
 {
-	int		i;
-
-	i = 0;
-	l_printf("|%s|\n", stock->user_input);
-	if (check_quote(stock) == 3)
-		return (ERR_SYNTAX);
-	printf("\033[32mcheck quote [ok]\033[37m\n");
-	check_pipe(stock);
-	printf("\033[32mcheck pipe [ok]\033[37m\n");
-	check_end_backslash(stock);
-	printf("\033[32mcheck end_backslash [ok]\033[37m\n");
-	env_var(stock);
+	if ((c >= '0' && c <= '9') || (c >= 'a' && c <= 'z') || \
+	(c >= 'A' && c <= 'Z'))
+		return (1);
 	return (0);
 }

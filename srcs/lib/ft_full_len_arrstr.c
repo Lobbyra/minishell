@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   ft_full_len_arrstr.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/17 16:02:38 by jereligi          #+#    #+#             */
-/*   Updated: 2020/06/22 18:39:12 by jereligi         ###   ########.fr       */
+/*   Created: 2020/06/23 16:34:11 by jereligi          #+#    #+#             */
+/*   Updated: 2020/06/23 16:36:19 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int		parsing(t_stock *stock)
+int		ft_full_len_arrstr(char **arr)
 {
-	int		i;
+	int	i;
+	int	count;
 
 	i = 0;
-	l_printf("|%s|\n", stock->user_input);
-	if (check_quote(stock) == 3)
-		return (ERR_SYNTAX);
-	printf("\033[32mcheck quote [ok]\033[37m\n");
-	check_pipe(stock);
-	printf("\033[32mcheck pipe [ok]\033[37m\n");
-	check_end_backslash(stock);
-	printf("\033[32mcheck end_backslash [ok]\033[37m\n");
-	env_var(stock);
-	return (0);
+	count = 0;
+	while (arr[i])
+	{
+		count = count + ft_strlen(arr[i]);
+		i++;
+	}
+	return (count);
 }

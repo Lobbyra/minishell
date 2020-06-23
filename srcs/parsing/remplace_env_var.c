@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   remplace_env_var.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/17 16:02:38 by jereligi          #+#    #+#             */
-/*   Updated: 2020/06/22 18:39:12 by jereligi         ###   ########.fr       */
+/*   Created: 2020/06/23 17:17:46 by jereligi          #+#    #+#             */
+/*   Updated: 2020/06/23 17:28:21 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
 
-int		parsing(t_stock *stock)
+int		remplace_env_var(char *new, char *value)
 {
-	int		i;
+	int i;
 
 	i = 0;
-	l_printf("|%s|\n", stock->user_input);
-	if (check_quote(stock) == 3)
-		return (ERR_SYNTAX);
-	printf("\033[32mcheck quote [ok]\033[37m\n");
-	check_pipe(stock);
-	printf("\033[32mcheck pipe [ok]\033[37m\n");
-	check_end_backslash(stock);
-	printf("\033[32mcheck end_backslash [ok]\033[37m\n");
-	env_var(stock);
-	return (0);
+	while (value[i])
+	{
+		new[i] = value[i];
+		i++;
+	}
+	return (i);
 }
