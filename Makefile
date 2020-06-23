@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+         #
+#    By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/15 13:51:51 by jecaudal          #+#    #+#              #
-#    Updated: 2020/06/22 15:25:17 by jecaudal         ###   ########.fr        #
+#    Updated: 2020/06/23 16:43:42 by jecaudal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,14 +58,20 @@ SRCS_LIB		=	./srcs/print_jobs.c					\
 
 OBJS_LIB		=	$(SRCS_LIB:.c=.o)
 
-SRCS			=	./srcs/main.c							\
-					./srcs/parsing/parsing.c				\
-					./srcs/parsing/check_quote.c			\
-					./srcs/parsing/check_pipe.c				\
-					./srcs/parsing/check_end_backslash.c	\
-					./srcs/execution/execution.c			\
-					./srcs/init_stock.c						\
-					./srcs/free_t_stock.c					\
+SRCS			=	./srcs/main.c									\
+					./srcs/init_stock.c								\
+					./srcs/free_t_stock.c							\
+					./srcs/parsing/parsing.c						\
+					./srcs/parsing/check_quote.c					\
+					./srcs/parsing/check_pipe.c						\
+					./srcs/parsing/check_end_backslash.c			\
+					./srcs/parsing/split_command/part_add.c			\
+					./srcs/parsing/split_command/part_len.c			\
+					./srcs/parsing/split_command/skip_part.c		\
+					./srcs/parsing/split_command/init_split.c		\
+					./srcs/parsing/split_command/word_count.c		\
+					./srcs/parsing/split_command/split_command.c	\
+					./srcs/execution/execution.c					\
 					./srcs/error_printer.c
 
 OBJS			=	$(SRCS:.c=.o)

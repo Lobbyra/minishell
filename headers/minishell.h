@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/15 13:22:38 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/20 15:43:27 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/06/23 16:40:38 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,6 @@ void	print_jobs(char ***jobs, int n_jobs);
 # include "parsing.h"
 # include "execution.h"
 # include "error_messages.h"
+# include "split_command.h"
 
 #endif
