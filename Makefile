@@ -6,7 +6,7 @@
 #    By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/15 13:51:51 by jecaudal          #+#    #+#              #
-#    Updated: 2020/06/24 13:32:32 by jecaudal         ###   ########.fr        #
+#    Updated: 2020/06/24 15:10:52 by jereligi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,6 +57,7 @@ SRCS_LIB		=	./srcs/print_jobs.c						\
 					./srcs/lib/ft_get_this_word.c			\
 					./srcs/lib/get_next_line_utils.c		\
 					./srcs/lib/ft_full_len_arrstr.c			\
+					./srcs/lib/ft_strlcpy.c					\
 					./srcs/lib/ft_protected_putarrstr_fd.c
 
 OBJS_LIB		=	$(SRCS_LIB:.c=.o)
@@ -71,6 +72,9 @@ SRCS			=	./srcs/main.c									\
 					./srcs/parsing/env_var.c						\
 					./srcs/parsing/env_var_utils.c					\
 					./srcs/parsing/remplace_env_var.c				\
+					./srcs/parsing/check_double_pipe.c				\
+					./srcs/parsing/verif_exec.c						\
+					./srcs/parsing/get_path.c						\
 					./srcs/parsing/split_command/part_add.c			\
 					./srcs/parsing/split_command/part_len.c			\
 					./srcs/parsing/split_command/skip_part.c		\

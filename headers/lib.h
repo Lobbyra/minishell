@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 16:20:45 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/24 13:31:02 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/06/24 15:10:19 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int		ft_full_len_arrstr(char **arr);
 int		ft_fdcaster(int fd_src, int fd_dst);
 int		ft_strncmp(char *s1, char *s2, unsigned int n);
 int		ft_protected_putarrstr_fd(char **argv, char *sep, int fd);
+int		ft_strlcpy(char *dest, char *src, unsigned int size);
 
 char    *ft_strdup(char *str);
 char    *ft_basename(char *path);
