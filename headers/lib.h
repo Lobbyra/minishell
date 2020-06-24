@@ -6,7 +6,11 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 16:20:45 by jecaudal          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2020/06/24 15:10:19 by jereligi         ###   ########.fr       */
+=======
+/*   Updated: 2020/06/24 15:43:51 by jecaudal         ###   ########.fr       */
+>>>>>>> dd7c671ee6f5de87144757617222cf9f634ee930
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +40,7 @@ void	*ft_memcpy_n(void *s1, void *s2, unsigned int n);
 
 char	**ft_strarrdup(char **arr);
 char	**ft_split(char *str, char *charset);
+char	**ft_addstr_to_strs(char **strs, char *to_add);
 char	**ft_strarrnuller(char **tab, unsigned int size);
 
 int		ft_isalnum(char c);

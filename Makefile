@@ -6,7 +6,11 @@
 #    By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/15 13:51:51 by jecaudal          #+#    #+#              #
+<<<<<<< HEAD
 #    Updated: 2020/06/24 15:10:52 by jereligi         ###   ########.fr        #
+=======
+#    Updated: 2020/06/24 15:43:13 by jecaudal         ###   ########.fr        #
+>>>>>>> dd7c671ee6f5de87144757617222cf9f634ee930
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,9 +59,13 @@ SRCS_LIB		=	./srcs/print_jobs.c						\
 					./srcs/lib/ft_strarrnuller.c			\
 					./srcs/lib/ft_putarrarrstrs.c			\
 					./srcs/lib/ft_get_this_word.c			\
-					./srcs/lib/get_next_line_utils.c		\
+					./srcs/lib/ft_addstr_to_strs.c			\
 					./srcs/lib/ft_full_len_arrstr.c			\
+<<<<<<< HEAD
 					./srcs/lib/ft_strlcpy.c					\
+=======
+					./srcs/lib/get_next_line_utils.c		\
+>>>>>>> dd7c671ee6f5de87144757617222cf9f634ee930
 					./srcs/lib/ft_protected_putarrstr_fd.c
 
 OBJS_LIB		=	$(SRCS_LIB:.c=.o)
