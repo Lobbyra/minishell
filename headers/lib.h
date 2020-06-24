@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 16:20:45 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/23 16:36:41 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/06/24 13:31:02 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,14 @@ char	**ft_strarrdup(char **arr);
 char	**ft_split(char *str, char *charset);
 char	**ft_strarrnuller(char **tab, unsigned int size);
 
+int		ft_isalnum(char c);
 int		ft_strlen(char *str);
 int		ft_strarrlen(char **tab);
 int		ft_strcmp(char *s1, char *s2);
+int		ft_full_len_arrstr(char **arr);
 int		ft_fdcaster(int fd_src, int fd_dst);
 int		ft_strncmp(char *s1, char *s2, unsigned int n);
-int		ft_isalnum(char c);
-int		ft_full_len_arrstr(char **arr);
+int		ft_protected_putarrstr_fd(char **argv, char *sep, int fd);
 
 char    *ft_strdup(char *str);
 char    *ft_basename(char *path);

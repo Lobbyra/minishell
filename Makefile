@@ -6,7 +6,7 @@
 #    By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/15 13:51:51 by jecaudal          #+#    #+#              #
-#    Updated: 2020/06/23 18:00:25 by jereligi         ###   ########.fr        #
+#    Updated: 2020/06/24 13:32:32 by jecaudal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,45 +18,46 @@ CFLAGS			+=	-Wall -Wextra -I ./headers/
 
 CC				=	gcc
 
-SRCS_LIB		=	./srcs/print_jobs.c					\
-					./srcs/lib/ft_skip.c				\
-					./srcs/lib/ft_split.c				\
-					./srcs/lib/ft_putnbr.c				\
-					./srcs/lib/ft_putstr.c				\
-					./srcs/lib/ft_strcmp.c				\
-					./srcs/lib/ft_strdup.c				\
-					./srcs/lib/ft_strlen.c				\
-					./srcs/lib/ft_strjoin.c				\
-					./srcs/lib/ft_putchar.c				\
-					./srcs/lib/ft_strncmp.c				\
-					./srcs/lib/ft_basename.c			\
-					./srcs/lib/ft_c_finder.c			\
-					./srcs/lib/ft_fdcaster.c			\
-					./srcs/lib/ft_freestrs.c			\
-					./srcs/lib/ft_memcpy_n.c			\
-					./srcs/lib/ft_strdup_n.c			\
-					./srcs/lib/ft_strlen_n.c			\
-					./srcs/lib/ft_close_fds.c			\
-					./srcs/lib/ft_putnbr_fd.c			\
-					./srcs/lib/ft_strarrdup.c			\
-					./srcs/lib/ft_strarrlen.c			\
-					./srcs/lib/ft_strdupdel.c			\
-					./srcs/lib/ft_putarrstr.c			\
-					./srcs/lib/ft_putstr_fd.c			\
-					./srcs/lib/ft_putchar_fd.c			\
-					./srcs/lib/ft_strarrfree.c			\
-					./srcs/lib/ft_strcleaner.c			\
-					./srcs/lib/ft_strjoindel.c			\
-					./srcs/lib/get_next_line.c			\
-					./srcs/lib/ft_word_cutter.c			\
-					./srcs/lib/ft_putarrstr_fd.c		\
-					./srcs/lib/ft_putnbrarr_fd.c		\
-					./srcs/lib/ft_strarrnuller.c		\
-					./srcs/lib/ft_putarrarrstrs.c		\
-					./srcs/lib/ft_get_this_word.c		\
-					./srcs/lib/get_next_line_utils.c	\
-					./srcs/lib/ft_full_len_arrstr.c		\
-					./srcs/lib/ft_isalnum.c				\
+SRCS_LIB		=	./srcs/print_jobs.c						\
+					./srcs/lib/ft_skip.c					\
+					./srcs/lib/ft_split.c					\
+					./srcs/lib/ft_putnbr.c					\
+					./srcs/lib/ft_putstr.c					\
+					./srcs/lib/ft_strcmp.c					\
+					./srcs/lib/ft_strdup.c					\
+					./srcs/lib/ft_strlen.c					\
+					./srcs/lib/ft_isalnum.c					\
+					./srcs/lib/ft_strjoin.c					\
+					./srcs/lib/ft_putchar.c					\
+					./srcs/lib/ft_strncmp.c					\
+					./srcs/lib/ft_basename.c				\
+					./srcs/lib/ft_c_finder.c				\
+					./srcs/lib/ft_fdcaster.c				\
+					./srcs/lib/ft_freestrs.c				\
+					./srcs/lib/ft_memcpy_n.c				\
+					./srcs/lib/ft_strdup_n.c				\
+					./srcs/lib/ft_strlen_n.c				\
+					./srcs/lib/ft_close_fds.c				\
+					./srcs/lib/ft_putnbr_fd.c				\
+					./srcs/lib/ft_strarrdup.c				\
+					./srcs/lib/ft_strarrlen.c				\
+					./srcs/lib/ft_strdupdel.c				\
+					./srcs/lib/ft_putarrstr.c				\
+					./srcs/lib/ft_putstr_fd.c				\
+					./srcs/lib/ft_putchar_fd.c				\
+					./srcs/lib/ft_strarrfree.c				\
+					./srcs/lib/ft_strcleaner.c				\
+					./srcs/lib/ft_strjoindel.c				\
+					./srcs/lib/get_next_line.c				\
+					./srcs/lib/ft_word_cutter.c				\
+					./srcs/lib/ft_putarrstr_fd.c			\
+					./srcs/lib/ft_putnbrarr_fd.c			\
+					./srcs/lib/ft_strarrnuller.c			\
+					./srcs/lib/ft_putarrarrstrs.c			\
+					./srcs/lib/ft_get_this_word.c			\
+					./srcs/lib/get_next_line_utils.c		\
+					./srcs/lib/ft_full_len_arrstr.c			\
+					./srcs/lib/ft_protected_putarrstr_fd.c
 
 OBJS_LIB		=	$(SRCS_LIB:.c=.o)
 
