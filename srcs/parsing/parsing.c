@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 16:02:38 by jereligi          #+#    #+#             */
-/*   Updated: 2020/06/24 14:56:30 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/06/24 18:35:37 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int		parsing(t_stock *stock)
 	i = 0;
 	while (tmp[i])
 		l_printf("[%s]\n", tmp[i++]);
-	verif_exec(stock, tmp);
+	// verif_exec(stock, tmp);
+	command_to_jobs(stock, tmp);
 	return (0);
 }

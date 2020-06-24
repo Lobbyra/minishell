@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 16:29:39 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/24 15:01:00 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/06/24 17:06:22 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ int		remplace_env_var(char *new, char *value);
 int		check_double_pipe(char *user_input);
 int		verif_exec(t_stock *stock, char **command);
 char    **get_path(char **envp);
+int		command_to_jobs(t_stock *s, char **command);
 
 #endif

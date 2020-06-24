@@ -6,7 +6,7 @@
 #    By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/15 13:51:51 by jecaudal          #+#    #+#              #
-#    Updated: 2020/06/24 16:51:34 by jereligi         ###   ########.fr        #
+#    Updated: 2020/06/24 17:06:48 by jereligi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,6 +76,7 @@ SRCS			=	./srcs/main.c									\
 					./srcs/parsing/check_double_pipe.c				\
 					./srcs/parsing/verif_exec.c						\
 					./srcs/parsing/get_path.c						\
+					./srcs/parsing/command_to_jobs.c				\
 					./srcs/parsing/split_command/part_add.c			\
 					./srcs/parsing/split_command/part_len.c			\
 					./srcs/parsing/split_command/skip_part.c		\
