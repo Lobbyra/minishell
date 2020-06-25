@@ -6,7 +6,7 @@
 #    By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/15 13:51:51 by jecaudal          #+#    #+#              #
-#    Updated: 2020/06/25 16:16:13 by jereligi         ###   ########.fr        #
+#    Updated: 2020/06/25 17:39:39 by jecaudal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ SRCS_LIB		=	./srcs/print_jobs.c						\
 					./srcs/lib/ft_memcpy_n.c				\
 					./srcs/lib/ft_strdup_n.c				\
 					./srcs/lib/ft_strlen_n.c				\
+					./srcs/lib/ft_strlen_c.c				\
 					./srcs/lib/ft_close_fds.c				\
 					./srcs/lib/ft_putnbr_fd.c				\
 					./srcs/lib/ft_strarrdup.c				\

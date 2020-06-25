@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 16:20:45 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/24 16:50:36 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/06/25 17:39:24 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int		ft_isalnum(char c);
 int		ft_strlen(char *str);
 int		ft_strarrlen(char **tab);
 int		ft_strcmp(char *s1, char *s2);
+int		ft_strlen_c(char *str, char c);
 int		ft_full_len_arrstr(char **arr);
 int		ft_fdcaster(int fd_src, int fd_dst);
 int		ft_strncmp(char *s1, char *s2, unsigned int n);
