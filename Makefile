@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+         #
+#    By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/15 13:51:51 by jecaudal          #+#    #+#              #
-#    Updated: 2020/06/25 17:39:39 by jecaudal         ###   ########.fr        #
+#    Updated: 2020/06/25 17:51:19 by jecaudal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,7 @@ SRCS_LIB		=	./srcs/print_jobs.c						\
 					./srcs/lib/ft_putchar_fd.c				\
 					./srcs/lib/ft_strarrfree.c				\
 					./srcs/lib/ft_strcleaner.c				\
+					./srcs/lib/ft_skip_until.c				\
 					./srcs/lib/ft_strjoindel.c				\
 					./srcs/lib/get_next_line.c				\
 					./srcs/lib/ft_word_cutter.c				\
