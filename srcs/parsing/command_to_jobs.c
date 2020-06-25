@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 18:32:53 by jereligi          #+#    #+#             */
-/*   Updated: 2020/06/25 13:47:33 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/06/25 16:15:10 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ static int		number_jobs(char **command)
 	int	len;
 
 	i = 0;
+	if (!command[i])
+		return (0);
 	len = 1;
 	while (command[i])
 	{
@@ -28,27 +30,39 @@ static int		number_jobs(char **command)
 	return (len);
 }
 
-static int		jobs_len(char ***jobs, char **command)
+static int		job_alloc(char ***jobs, int *n, int *len, int *status)
+{
+	if (!(jobs[*n] = (char **)malloc(sizeof(char *) * (*len + 1))))
+		return (-1);
+	jobs[*n][*len] = NULL;
+	*n = *n + 1;
+	*len = -1;
+	*status = 0;
+	return (0);
+}
+
+static int		jobs_alloc(char ***jobs, char **command)
 {
 	int	i;
 	int	n;
 	int	len;
+	int	status;
 
 	i = 0;
 	n = 0;
 	len = 0;
+	status = 0;
 	while (command[i])
 	{
 		if (command[i][0] == '|' || command[i + 1] == '\0')
-			len = i + 1;
-		if (len != 0)
 		{
-			if (!(jobs[n] = (char **)malloc(sizeof(char *) * len + 1)))
-				return (-1);
-			jobs[n][len] = NULL;
-			n++;
-			len = 0;
+			status = 1;
+			if (nopipe(command) == 0 || command[i + 1] == '\0')
+				len++;
 		}
+		if (status != 0)
+			job_alloc(jobs, &n, &len, &status);
+		len++;
 		i++;
 	}
 	return (0);
@@ -82,46 +96,24 @@ static int		insert_data_jobs(char ***jobs, char **command)
 
 int				command_to_jobs(t_stock *s, char **command)
 {
+	int		i;
 	int		len;
 	char	***jobs;
 
 	len = number_jobs(command);
-	if (!(jobs = (char ***)malloc(sizeof(char **) * len + 1)))
+	if (!(jobs = (char ***)malloc(sizeof(char **) * (len + 1))))
 		return (-1);
 	jobs[len] = NULL;
-	jobs_len(jobs, command);
+	jobs_alloc(jobs, command);
 	insert_data_jobs(jobs, command);
-	// s->jobs = jobs;
-	int	n, x, i;
-	n = 0;
-	while (jobs[n])
-	{
-		x = 0;
-		while (jobs[n][x])
-		{
-			l_printf("jobss[%d][%d] : %s\n", n, x, jobs[n][x]);
-			x++;
-		}
-		n++;
-	}
-	s->n_jobs = n;
+	s->jobs = jobs;
+	i = 0;
+	while (jobs[i])
+		i++;
+	s->n_jobs = i;
 	i = 0;
 	while (command[i])
 		free(command[i++]);
 	free(command);
-	i = 0;
-	while (jobs[i])
-	{
-		n = 0;
-		while (jobs[i][n])
-		{
-			free(jobs[i][n++]);
-		}
-		i++;
-	}
-	i = 0;
-	while (jobs[i])
-		free(jobs[i++]);
-	free(jobs);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 16:29:39 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/25 13:35:53 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/06/25 16:15:47 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int		remplace_env_var(char *new, char *value);
 int		verif_exec(t_stock *stock, char **command);
 int		free_env_var_data(char **tab, char **value);
 int		command_to_jobs(t_stock *s, char **command);
+int		nopipe(char **command);
+
 
 char	*env_var(t_stock *s);
 char	*remove_and_replace(char *user_input, char **tab, char **value);

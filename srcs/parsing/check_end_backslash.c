@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/20 15:22:41 by jereligi          #+#    #+#             */
-/*   Updated: 2020/06/22 15:40:17 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/06/25 15:59:31 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int				check_end_backslash(t_stock *s)
 
 	i = 0;
 	status = 0;
-	l_printf("|%s|\n", s->user_input);
 	while (s->user_input[i])
 		i++;
 	i--;
