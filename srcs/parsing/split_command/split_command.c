@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/20 16:50:52 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/23 17:15:14 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/06/25 13:45:33 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,28 @@ static int	word_counter(char *user_input)
 	count = 0;
 	while (*user_input)
 	{
-		while (*user_input != '\0' && *user_input != ' ')
-			skip_part(&user_input);
 		ft_skip(&user_input, ' ');
-		count++;
+		if (*user_input == '|')
+		{
+			user_input++;
+			count++;
+		}
+		else if (*user_input)
+		{
+			while (*user_input != '\0' && *user_input != ' ' && *user_input != '|')
+				skip_part(&user_input);
+			count++;
+		}
 	}
 	return (count);
+}
+
+static void	pipe_management(char ***i_new, char **cmd)
+{
+	free(**i_new);
+	**i_new = ft_strdup("|");
+	(*i_new)++;
+	(*cmd)++;
 }
 
 char		**split_command(char *cmd)
@@ -65,12 +81,13 @@ char		**split_command(char *cmd)
 	while (*cmd)
 	{
 		ft_skip(&cmd, ' ');
-		if (*cmd)
+		if (*cmd == '|')
+			pipe_management(&i_new, &cmd);
+		else
 		{
-			while (*cmd && *cmd != ' ')
+			while (*cmd && *cmd != ' ' && *cmd != '|')
 			{
-				*i_new = part_add(*i_new, cmd, part_len(cmd, *cmd));
-				if (!(*i_new))
+				if (!(*i_new = part_add(*i_new, cmd, part_len(cmd, *cmd))))
 					return (panic_split_command(new, i_new));
 				skip_part(&cmd);
 			}

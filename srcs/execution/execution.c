@@ -6,13 +6,13 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/16 14:02:43 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/16 14:03:04 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/06/23 18:00:41 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int		execution(t_stock *stock)
+int		execution(t_stock *jobs)
 {
 	return (0);
 }

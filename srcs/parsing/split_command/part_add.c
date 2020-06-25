@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/23 13:37:00 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/23 16:55:24 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/06/24 16:55:14 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 */
 static void cpy_nquote(char **i_new, char *cmd, int p_len)
 {
+	// printf("in cpy_nquote : cmd = %s\n", cmd);
+	// printf("in cpy_nquote : p_len = %d\n", p_len);
 	while (p_len > 0)
 	{
 		if (*cmd == '\\')

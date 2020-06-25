@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/23 13:21:40 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/23 16:35:58 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/06/24 17:58:09 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,16 @@ void	skip_part(char **cmd)
 		skip_part_quote(cmd);
 	else if (quote == '\"')
 		skip_part_dquote(cmd);
+	else if (quote == '|')
+		(*cmd)++;
 	else
+	{
 		while (**cmd)
 		{
-			if ((**cmd == ' ' || **cmd == '\'' || **cmd == '\"') &&
-				*(*cmd - 1) != '\\')
+			if ((**cmd == ' ' || **cmd == '\'' || **cmd == '\"' || **cmd == '|')
+			&&	*(*cmd - 1) != '\\')
 				break ;
 			(*cmd)++;
 		}
+	}
 }
