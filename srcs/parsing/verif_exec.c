@@ -5,63 +5,98 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/24 13:39:40 by jereligi          #+#    #+#             */
-/*   Updated: 2020/06/24 16:16:21 by jereligi         ###   ########.fr       */
+/*   Created: 2020/06/25 18:08:03 by jereligi          #+#    #+#             */
+/*   Updated: 2020/06/25 18:10:56 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-// char      *check_all_path(char **envp, char *command)
-// {
-//     int             i;
-//     char            *exec;
-//     char            *tmp;
-// 	char			**path;
-//     struct stat     buf;
-
-//     i = 0;
-//     exec = ft_strjoin("/", command);
-// 	path = get_path(envp);
-//     while (path[i])
-//     {
-//         tmp = ft_strjoin(path[i], exec);
-//         errno = 0; 
-//         stat(tmp, &buf);
-//         if (errno == 0)
-// 		{
-// 			free(exec);
-// 			free(path);
-// 			return (tmp);
-// 		}
-// 		free(tmp);
-//         i++;
-//     }
-//     return (ERR_PARSING_PATH);
-// }
-
-static int     check_path(t_stock *stock, char *command)
+static int	is_builtins(char *jobs)
 {
-    struct stat     buf;
+	int		i;
+	int		len;
 
-    stat(command, &buf);
-    if (errno != 0)
-	{
-		ft_strjoin(stock->error_strings, \
-		ft_strjoin("minishell: no such file or directory: ", command));
+	i = 0;
+	len = ft_strlen(jobs);
+	if (ft_strncmp(jobs, "export", len) == 0)
 		return (1);
-	}
-    return (0);
+	if (ft_strncmp(jobs, "unset", len) == 0)
+		return (1);
+	return (0);
 }
 
-static int		check_is_slash(char *str)
+char		*ft_pwd(void)
+{
+	char *str;
+
+	if (!(str = (char*)malloc(sizeof(char) * 4028 + 1)))
+		return (NULL);
+	getcwd(str, 4028);
+	return (str);
+}
+
+static int	check_all_path(t_stock *s, int n)
+{
+	int			i;
+	char		*exec;
+	char		*tmp;
+	char		**path;
+	struct stat	buf;
+
+	i = 0;
+	exec = ft_strjoin("/", s->jobs[n][0]);
+	path = get_path(s->envp);
+	while (path[i])
+	{
+		tmp = ft_strjoin(path[i], exec);
+		errno = 0;
+		stat(tmp, &buf);
+		if (errno == 0)
+		{
+			free(exec);
+			free(path);
+			free(s->jobs[n][0]);
+			l_printf("exec: %s", tmp);
+			s->jobs[n][0] = tmp;
+			return (1);
+		}
+		free(tmp);
+		i++;
+	}
+	if (is_builtins(s->jobs[n][0]))
+		return (1);
+	ft_strjoindel(s->error_strings, \
+	ft_strjoin("minishell: command not found: ", s->jobs[n][0]), 2);
+	l_printf("error path: %s", s->jobs[n][0]);
+	s->jobs[n][0] = NULL;
+	return (0);
+}
+
+static int	check_path(t_stock *s, int i)
+{
+	struct stat	buf;
+
+	stat(s->jobs[i][0], &buf);
+	if (errno != 0)
+	{
+		ft_strjoindel(s->error_strings, \
+		ft_strjoin("minishell: no such file or directory: ", s->jobs[i][0]), 2);
+		l_printf("error path: %s", s->jobs[i][0]);
+		s->jobs[i][0] = NULL;
+		return (1);
+	}
+	return (0);
+}
+
+static int	check_is_slash(char *str)
 {
 	int	i;
 
 	i = 0;
 	while (str[i])
 	{
-		if (i == 0 && str[i]  == '/')
+		if (i == 0 && str[i] == '/')
 			return (1);
 		else if (str[i] == '/')
 			return (2);
@@ -70,38 +105,26 @@ static int		check_is_slash(char *str)
 	return (0);
 }
 
-int				verif_exec(t_stock *s, char **command)
+int			verif_exec(t_stock *s)
 {
 	int i;
-	int	n;
-	int ret;
 	int	status;
 
 	i = 0;
 	status = 0;
-	while (command[i])
+	while (s->jobs[i])
 	{
-		n = 0;
-		while (command[i][n])
+		status = check_is_slash(s->jobs[i][0]);
+		if (status == 1)
+			check_path(s, i);
+		else if (status == 2)
 		{
-			if (command[i][n] == '|')
-				status = 1;
-			else if (i == 0 || status == 1)
-			{
-				l_printf("exec:%s\n", &command[i][n]);
-				if ((ret = check_is_slash(&command[i][n])) != 0)
-				{
-					if (ret == 1)
-						if (check_path(s, &command[i][n]) == 1)
-						{
-							
-						}
-				}
-				status = 0;
-				break ;
-			}
-			n++;
+			s->jobs[i][0] = ft_strjoindel(ft_pwd(), \
+			ft_strjoindel("/", s->jobs[i][0], 2), 3);
+			check_path(s, i);
 		}
+		else if (status == 0)
+			check_all_path(s, i);
 		i++;
 	}
 	return (0);
