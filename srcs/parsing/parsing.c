@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 16:02:38 by jereligi          #+#    #+#             */
-/*   Updated: 2020/06/25 16:01:40 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/06/25 16:36:55 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ int		parsing(t_stock *stock)
 	tmp = split_command(stock->user_input);
 	if (command_to_jobs(stock, tmp) == 0)
 		printf("\n\033[32mcommand_to_jobs [ok]\033[37m\n");
+	verif_exec(stock);
 	return (0);
 }
