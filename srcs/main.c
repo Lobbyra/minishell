@@ -6,13 +6,11 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 16:47:17 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/20 15:46:21 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/06/26 18:21:46 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-
 
 /*
 ** Read stdin to get command from the user.
@@ -24,6 +22,7 @@ static int	wait_instruction(char **cmd)
 {
 	int status;
 
+	l_printf("%s", OUR_PS1);
 	status = get_next_line(0, cmd);
 	if (status == -1)
 		return (ERR_ERRNO);
@@ -54,11 +53,17 @@ static void	reset(t_stock *stock)
 		free(stock->user_input);
 }
 
+void		ctrl_c_management(int nothing)
+{
+	l_printf("\r\n%s", OUR_PS1);
+}
+
 int			main(int argc, char **argv, char **envp)
 {
 	int		err;
 	t_stock	*stock;
 
+	signal(SIGINT, ctrl_c_management);
 	if (!(stock = init_stock(envp)))
 		return (1);
 	while (1)
@@ -75,5 +80,6 @@ int			main(int argc, char **argv, char **envp)
 		reset(stock);
 	}
 	free_t_stock(stock);
+	l_printf("exit\n");
 	return (0);
 }

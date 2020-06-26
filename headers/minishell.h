@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/15 13:22:38 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/24 15:45:14 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/06/26 18:15:06 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 # define ERR_ERRNO 2
 # define ERR_SYNTAX 3
 # define ERR_EXIT 4
+
+# define OUR_PS1 "minishell$>"
 
 # include <stdio.h>
 # include <stdlib.h>
