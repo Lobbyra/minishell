@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 14:42:06 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/26 17:18:16 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/06/26 17:56:35 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ int		unset(char ***envp, char **job)
 	return (0);
 }
 
+/*
 int		main(int argc, char **argv, char **envp)
 {
 	char **dup;
@@ -109,3 +110,4 @@ int		main(int argc, char **argv, char **envp)
 }
 
 __attribute__((destructor)) static void leak() { getchar(); }
+*/
