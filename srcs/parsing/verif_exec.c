@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verif_exec.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 18:08:03 by jereligi          #+#    #+#             */
-/*   Updated: 2020/06/25 18:10:56 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/06/26 18:02:10 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static int	check_all_path(t_stock *s, int n)
 		return (1);
 	ft_strjoindel(s->error_strings, \
 	ft_strjoin("minishell: command not found: ", s->jobs[n][0]), 2);
-	l_printf("error path: %s", s->jobs[n][0]);
+	l_printf("error path: %s\n", s->jobs[n][0]);
 	s->jobs[n][0] = NULL;
 	return (0);
 }
@@ -82,7 +82,7 @@ static int	check_path(t_stock *s, int i)
 	{
 		ft_strjoindel(s->error_strings, \
 		ft_strjoin("minishell: no such file or directory: ", s->jobs[i][0]), 2);
-		l_printf("error path: %s", s->jobs[i][0]);
+		l_printf("error path: %s\n", s->jobs[i][0]);
 		s->jobs[i][0] = NULL;
 		return (1);
 	}
