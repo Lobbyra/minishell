@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 16:20:45 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/25 17:50:46 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/06/26 14:07:23 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	ft_putstr(char *s);
 void	ft_putchar(char c);
 void	ft_freestrs(char **strs);
 void	l_printf(char *str, ...);
+void	ft_sort_strs(char **argv);
 void	ft_strarrfree(char **strs);
 void	ft_skip(char **ptr, char c);
 void	ft_putnbr_fd(int nb, int fd);
