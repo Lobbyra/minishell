@@ -1,35 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort_strs.c                                     :+:      :+:    :+:   */
+/*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/26 13:29:49 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/26 15:55:20 by jecaudal         ###   ########.fr       */
+/*   Created: 2020/06/23 18:40:04 by jecaudal          #+#    #+#             */
+/*   Updated: 2020/06/24 13:42:34 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+**	This is the builtin source code of pwd.
+**	Return errno if write or getcwd call exit with error.
+*/
+
 #include "minishell.h"
 
-void	ft_sort_strs(char **argv)
+int pwd(int fd)
 {
-	int i;
-	char *temp;
-
-	i = 0;
-	while (argv[i])
-	{
-		if (argv[i + 1] && ft_strcmp(argv[i], argv[i + 1]) > 0)
-		{
-			temp = argv[i];
-			argv[i] = argv[i + 1];
-			argv[i + 1] = temp;
-			i = 0;
-		}
-		else
-		{
-			i++;
-		}
-	}
+	char *path;
+	
+	errno = 0;
+	if (!(path = getcwd(NULL, MAX_PATH_LEN)))
+		return (errno);
+	if (write(fd, path, ft_strlen(path)) == -1 || write(fd, "\n", 1) == -1)
+		return (errno);
+	return (0);
 }
+
+/*
+int		main(int argc, char **argv)
+{
+	if (argc == 2)
+		printf("pwd = %d\n", pwd(atoi(argv[1])));
+	return (0);
+}
+*/

@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort_strs.c                                     :+:      :+:    :+:   */
+/*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/26 13:29:49 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/26 15:55:20 by jecaudal         ###   ########.fr       */
+/*   Created: 2020/06/24 13:20:02 by jecaudal          #+#    #+#             */
+/*   Updated: 2020/06/24 13:42:29 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	ft_sort_strs(char **argv)
+int		env(char **envp, int fd)
 {
-	int i;
-	char *temp;
-
-	i = 0;
-	while (argv[i])
-	{
-		if (argv[i + 1] && ft_strcmp(argv[i], argv[i + 1]) > 0)
-		{
-			temp = argv[i];
-			argv[i] = argv[i + 1];
-			argv[i + 1] = temp;
-			i = 0;
-		}
-		else
-		{
-			i++;
-		}
-	}
+	errno = 0;
+	if (ft_protected_putarrstr_fd(envp, "\n", fd) != 0)
+		return (errno);
+	if (write(fd, "\n", 1) == -1)
+		return (errno);
+	return (0);
 }
+
+/*
+int		main(int argc, char **argv, char **envp)
+{
+	if (argc == 2)
+		env(envp, atoi(argv[1]));
+	return (0);
+}
+*/

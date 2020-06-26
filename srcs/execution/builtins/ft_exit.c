@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort_strs.c                                     :+:      :+:    :+:   */
+/*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/26 13:29:49 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/26 15:55:20 by jecaudal         ###   ########.fr       */
+/*   Created: 2020/06/24 13:43:09 by jecaudal          #+#    #+#             */
+/*   Updated: 2020/06/26 15:14:50 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+**	Builtin source code of exit, in minishell, this feature does not support
+**	options or argument. So in all cases we will need to insert in parameter
+**	our stock->exit_status.
+*/
+
 #include "minishell.h"
 
-void	ft_sort_strs(char **argv)
+void	ft_exit(int err)
 {
-	int i;
-	char *temp;
+	exit(err);
+}
 
-	i = 0;
-	while (argv[i])
-	{
-		if (argv[i + 1] && ft_strcmp(argv[i], argv[i + 1]) > 0)
-		{
-			temp = argv[i];
-			argv[i] = argv[i + 1];
-			argv[i + 1] = temp;
-			i = 0;
-		}
-		else
-		{
-			i++;
-		}
-	}
+int		main(int argc, char **argv)
+{
+	ft_exit(1554);
+	return (0);
 }
