@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/23 18:03:21 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/23 18:37:53 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/06/29 18:31:56 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@
 
 #include "minishell.h"
 
+static int	errno_exit(int err)
+{
+	l_printf("minishell: echo: %s\n", strerror(errno));
+	return (1);
+}
+
 static int	protected_putarrstr_fd(char **argv, char *sep, int fd)
 {
 	if (argv && fd > 0)
@@ -24,13 +30,13 @@ static int	protected_putarrstr_fd(char **argv, char *sep, int fd)
 		{
 			if (write(fd, *argv, ft_strlen(*argv)) == -1 ||
 				write(fd, sep, ft_strlen(sep)) == -1)
-				return (errno);
+				return (errno_exit(errno));
 			argv++;
 		}
 		if (*argv)
 		{
 			if (write(fd, *argv, ft_strlen(*argv)) == -1)
-				return (errno);
+				return (errno_exit(errno));
 		}
 	}
 	return (0);
@@ -38,6 +44,7 @@ static int	protected_putarrstr_fd(char **argv, char *sep, int fd)
 
 int			echo(char **job, int fd)
 {
+	errno = 0;
 	if (ft_strarrlen(job) > 1)
 	{
 		if (ft_strcmp(job[1], "-n") == 0)
@@ -50,7 +57,7 @@ int			echo(char **job, int fd)
 			if (protected_putarrstr_fd(job + 1, " ", fd) > 0)
 				return (1);
 			if (write(1, "\n", fd) == -1)
-				return (errno);
+				return (errno_exit(errno));
 		}
 	}
 	return (0);	

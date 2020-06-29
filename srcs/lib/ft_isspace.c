@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_messages.h                                   :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/15 16:22:22 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/26 18:42:28 by jecaudal         ###   ########.fr       */
+/*   Created: 2020/06/29 18:35:56 by jecaudal          #+#    #+#             */
+/*   Updated: 2020/06/29 18:37:32 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_MESSAGES_H
-# define ERROR_MESSAGES_H
+#include "minishell.h"
 
-# define ERR_MALLOC_MSG "Minishell occurs a memory allocation " \
-						"error, check if you memory isn't full.\n"
-
-#endif
+t_bool	ft_isspace(char c)
+{
+	if (c == '\t' ||
+		c == '\n' ||
+		c == '\v' ||
+		c == '\f' ||
+		c == '\r' ||
+		c == ' ')
+		return (TRUE);
+	return (FALSE);
+}

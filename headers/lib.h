@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 16:20:45 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/26 14:07:23 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/06/29 18:39:16 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include "minishell.h"
 
+t_bool	ft_isnum(char c);
+t_bool	ft_isspace(char c);
 t_bool	ft_c_finder(char c, char *set);
 
 void	ft_putnbr(int nb);
@@ -42,6 +44,7 @@ char	**ft_addstr_to_strs(char **strs, char *to_add);
 char	**ft_strarrnuller(char **tab, unsigned int size);
 
 int		ft_isalnum(char c);
+int		ft_atoi(char *str);
 int		ft_strlen(char *str);
 int		ft_strarrlen(char **tab);
 int		ft_strcmp(char *s1, char *s2);
@@ -52,14 +55,14 @@ int		ft_strncmp(char *s1, char *s2, unsigned int n);
 int		ft_protected_putarrstr_fd(char **argv, char *sep, int fd);
 int		ft_strlcpy(char *dest, char *src, unsigned int size);
 
-char    *ft_strdup(char *str);
-char    *ft_basename(char *path);
-char    *ft_strdupdel(char *str);
-char    *ft_strcleaner(char *str);
+char	*ft_strdup(char *str);
+char	*ft_basename(char *path);
+char	*ft_strdupdel(char *str);
+char	*ft_strcleaner(char *str);
 char	*ft_get_this_word(char *str);
-char    *ft_strdup_n(char *str, int n);
-char    *ft_word_cutter(char *str, char *sep);
-char    *ft_strjoindel(char *s1, char *s2, int param);
+char	*ft_strdup_n(char *str, int n);
+char	*ft_word_cutter(char *str, char *sep);
+char	*ft_strjoindel(char *s1, char *s2, int param);
 char	*ft_strjoin(char *s1, char *s2);
 
 unsigned int	ft_strlen_n(char *str, int n);

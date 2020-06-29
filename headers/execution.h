@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 15:10:39 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/26 17:24:15 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/06/29 18:47:14 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,15 @@
 # define EXECUTION_H
 
 # define MAX_PATH_LEN 4096
+
+
+/*
+**	Sub function of execution.
+*/
+int		init_pipes(int **pipes, int n_jobs);
+void	terminator(char ***jobs, int n_jobs, char *status);
+int		instance_builder(t_stock *s, int jobpos, int *pipes);
+int		builtin_caller(char **job, char *exit_status, int fd, char ***envp);
 
 /*
 **	Builtins functions

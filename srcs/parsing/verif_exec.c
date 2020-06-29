@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 18:08:03 by jereligi          #+#    #+#             */
-/*   Updated: 2020/06/26 18:02:10 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/06/29 14:17:58 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static int	check_all_path(t_stock *s, int n)
 			free(exec);
 			free(path);
 			free(s->jobs[n][0]);
-			l_printf("exec: %s", tmp);
+			l_printf("exec: %s\n", tmp);
 			s->jobs[n][0] = tmp;
 			return (1);
 		}

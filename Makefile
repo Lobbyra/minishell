@@ -6,7 +6,7 @@
 #    By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/15 13:51:51 by jecaudal          #+#    #+#              #
-#    Updated: 2020/06/26 17:47:10 by jecaudal         ###   ########.fr        #
+#    Updated: 2020/06/29 18:41:00 by jecaudal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,12 +20,15 @@ CC				=	gcc
 
 SRCS_LIB		=	./srcs/print_jobs.c						\
 					./srcs/lib/ft_skip.c					\
+					./srcs/lib/ft_atoi.c					\
 					./srcs/lib/ft_split.c					\
+					./srcs/lib/ft_isnum.c					\
 					./srcs/lib/ft_putnbr.c					\
 					./srcs/lib/ft_putstr.c					\
 					./srcs/lib/ft_strcmp.c					\
 					./srcs/lib/ft_strdup.c					\
 					./srcs/lib/ft_strlen.c					\
+					./srcs/lib/ft_isspace.c					\
 					./srcs/lib/ft_isalnum.c					\
 					./srcs/lib/ft_strjoin.c					\
 					./srcs/lib/ft_putchar.c					\
@@ -69,6 +72,7 @@ OBJS_LIB		=	$(SRCS_LIB:.c=.o)
 SRCS			=	./srcs/main.c									\
 					./srcs/init_stock.c								\
 					./srcs/free_t_stock.c							\
+					./srcs/error_printer.c							\
 					./srcs/parsing/env_var.c						\
 					./srcs/parsing/parsing.c						\
 					./srcs/parsing/get_path.c						\
@@ -87,6 +91,10 @@ SRCS			=	./srcs/main.c									\
 					./srcs/parsing/split_command/init_split.c		\
 					./srcs/parsing/split_command/split_command.c	\
 					./srcs/execution/execution.c					\
+					./srcs/execution/init_pipes.c					\
+					./srcs/execution/terminator.c					\
+					./srcs/execution/builtin_caller.c				\
+					./srcs/execution/instance_builder.c				\
 					./srcs/execution/builtins/cd.c					\
 					./srcs/execution/builtins/env.c					\
 					./srcs/execution/builtins/pwd.c					\
@@ -94,8 +102,7 @@ SRCS			=	./srcs/main.c									\
 					./srcs/execution/builtins/unset.c				\
 					./srcs/execution/builtins/export.c				\
 					./srcs/execution/builtins/ft_exit.c				\
-					./srcs/execution/builtins/export_utils.c		\
-					./srcs/error_printer.c
+					./srcs/execution/builtins/export_utils.c
 
 OBJS			=	$(SRCS:.c=.o)
 

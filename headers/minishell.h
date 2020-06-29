@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/15 13:22:38 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/26 18:15:06 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/06/29 15:50:15 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct	s_stock
 	int			*pipes;
 	char		exit_status;
 	char		*error_strings;
+	t_bool		is_debug;
 }				t_stock;
 
 t_stock	*init_stock(char **envp);

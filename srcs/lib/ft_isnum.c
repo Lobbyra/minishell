@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_messages.h                                   :+:      :+:    :+:   */
+/*   ft_isnum.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/15 16:22:22 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/26 18:42:28 by jecaudal         ###   ########.fr       */
+/*   Created: 2020/06/29 18:35:58 by jecaudal          #+#    #+#             */
+/*   Updated: 2020/06/29 18:37:34 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_MESSAGES_H
-# define ERROR_MESSAGES_H
+#include "minishell.h"
 
-# define ERR_MALLOC_MSG "Minishell occurs a memory allocation " \
-						"error, check if you memory isn't full.\n"
-
-#endif
+t_bool	ft_isnum(char c)
+{
+	if (c >= '0' && c <= '9')
+		return (TRUE);
+	return (FALSE);
+}

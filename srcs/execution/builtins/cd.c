@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 13:53:35 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/26 17:37:57 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/06/29 18:22:18 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int		cd(char *path)
 		ft_putstr_fd(": ", 2);
 		ft_putstr_fd(strerror(errno), 2);
 		ft_putstr_fd("\n", 2);
+		return (1);
 	}
 	return (0);
 }

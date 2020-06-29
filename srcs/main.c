@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 16:47:17 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/26 18:21:46 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/06/29 17:37:56 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,21 +39,39 @@ static void	reset(t_stock *stock)
 	int i_jobs;
 
 	i_jobs = 0;
-	if (stock->jobs != NULL)
-	{
-		while (i_jobs < stock->n_jobs)
-			ft_freestrs(stock->jobs[i_jobs++]);
-		free(stock->jobs);
-	}
+	// if (stock->jobs != NULL)
+	// {
+	// 	while (i_jobs < stock->n_jobs)
+	// 		ft_freestrs(stock->jobs[i_jobs++]);
+	// 	free(stock->jobs);
+	// 	stock->jobs = NULL;
+	// }
+	stock->jobs = NULL;
 	if (stock->pipes)
+	{
 		free(stock->pipes);
+		stock->pipes = NULL;
+	}
 	if (stock->error_strings)
+	{
 		free(stock->error_strings);
+		stock->error_strings = NULL;
+	}
 	if (stock->user_input)
+	{
 		free(stock->user_input);
+		stock->user_input = NULL;
+	}
 }
 
-void		ctrl_c_management(int nothing)
+static t_bool	debug_arg_detection(int argc, char **argv)
+{
+	if (argc >= 2 && ft_strcmp(argv[1], "--debug") == 0)
+		return (TRUE);
+	return (FALSE);
+}
+
+static void		ctrl_c_management(int nothing)
 {
 	l_printf("\r\n%s", OUR_PS1);
 }
@@ -66,6 +84,7 @@ int			main(int argc, char **argv, char **envp)
 	signal(SIGINT, ctrl_c_management);
 	if (!(stock = init_stock(envp)))
 		return (1);
+	stock->is_debug = debug_arg_detection(argc, argv);
 	while (1)
 	{
 		err = 0;
@@ -74,7 +93,10 @@ int			main(int argc, char **argv, char **envp)
 		if (err == SIG_CTRLD)
 			break ;
 		if (err == 0 && (err = parsing(stock) != 0))
+		{
+			printf("Parsing : err = %d\n", err);
 			error_printer(err);
+		}
 		if ((err == 0 || err == ERR_EXIT) && (err = execution(stock)) != 0)
 			error_printer(err);
 		reset(stock);
