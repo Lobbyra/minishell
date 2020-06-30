@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 16:29:13 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/30 17:37:20 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/06/30 17:55:17 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,9 @@ int			instance_builder(t_stock *s, int jobpos, int *pipes, t_bool is_pipe)
 		s->jobs[jobpos][0] = exec_name;
 		redirector(pipes, jobpos, is_pipe, s->is_debug);
 		close_pipes(pipes, s->n_jobs * 2 - 2);
-		if (execve(path, s->jobs[jobpos], s->envp) == -1)
+		if (is_builtin(path) == TRUE)
+			builtin_caller(s->jobs[jobpos], &(s->exit_status), 1, &(s->envp));
+		else if (execve(path, s->jobs[jobpos], s->envp) == -1)
 			l_printf("minishell: child: %s\n", strerror(errno));
 	}
 	else if (child == -1)

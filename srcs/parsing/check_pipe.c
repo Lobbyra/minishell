@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_pipe.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/20 13:51:24 by jereligi          #+#    #+#             */
-/*   Updated: 2020/06/22 13:37:46 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/06/30 18:08:58 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ static int		additional_read_pipe(t_stock *s)
 		l_printf("%s\n", s->error_strings);
 		return (ERR_SYNTAX);
 	}
-	l_printf("|%s|\n", s->user_input);
+	if (s->is_debug == TRUE)
+		l_printf("|%s|\n", s->user_input);
 	return (check_quote(s));
 }
 

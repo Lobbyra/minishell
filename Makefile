@@ -6,7 +6,7 @@
 #    By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/15 13:51:51 by jecaudal          #+#    #+#              #
-#    Updated: 2020/06/30 17:33:37 by jecaudal         ###   ########.fr        #
+#    Updated: 2020/06/30 17:51:47 by jecaudal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -94,6 +94,7 @@ SRCS			=	./srcs/main.c									\
 					./srcs/execution/init_pipes.c					\
 					./srcs/execution/terminator.c					\
 					./srcs/execution/redirector.c					\
+					./srcs/execution/is_builtin.c					\
 					./srcs/execution/close_pipes.c					\
 					./srcs/execution/jobs_caller.c					\
 					./srcs/execution/builtin_caller.c				\

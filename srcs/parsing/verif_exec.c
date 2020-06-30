@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 18:08:03 by jereligi          #+#    #+#             */
-/*   Updated: 2020/06/29 14:17:58 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/06/30 18:08:06 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char		*ft_pwd(void)
 	return (str);
 }
 
-static int	check_all_path(t_stock *s, int n)
+static int	check_all_path(t_stock *s, int n, t_bool is_debug)
 {
 	int			i;
 	char		*exec;
@@ -57,7 +57,8 @@ static int	check_all_path(t_stock *s, int n)
 			free(exec);
 			free(path);
 			free(s->jobs[n][0]);
-			l_printf("exec: %s\n", tmp);
+			if (is_debug == TRUE)
+				l_printf("exec: %s\n", tmp);
 			s->jobs[n][0] = tmp;
 			return (1);
 		}
@@ -124,7 +125,7 @@ int			verif_exec(t_stock *s)
 			check_path(s, i);
 		}
 		else if (status == 0)
-			check_all_path(s, i);
+			check_all_path(s, i, s->is_debug);
 		i++;
 	}
 	return (0);

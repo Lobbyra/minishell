@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_end_backslash.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/20 15:22:41 by jereligi          #+#    #+#             */
-/*   Updated: 2020/06/25 15:59:31 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/06/30 18:09:29 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ static int		additional_read_backslash(t_stock *s)
 		s->user_input = tmp;
 		return (ERR_EXIT);
 	}
-	l_printf("|%s|\n", s->user_input);
+	if (s->is_debug == TRUE)
+		l_printf("|%s|\n", s->user_input);
 	if (check_quote(s) == ERR_SYNTAX || check_pipe(s) == ERR_SYNTAX)
 		return (ERR_SYNTAX);
 	return (0);
