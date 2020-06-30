@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 18:18:48 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/29 18:47:24 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/06/30 14:44:31 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		builtin_caller(char **job, char *exit_status, int fd, char ***envp)
 	else if (ft_strcmp(exec_name, "echo") == 0)
 		*exit_status = echo(job, fd);
 	else if (ft_strcmp(exec_name, "env") == 0)
-		*exit_status = env(envp, fd);
+		*exit_status = env(*envp, fd);
 	else if (ft_strcmp(exec_name, "export") == 0)
 		*exit_status = export(envp, job, fd);
 	else if (ft_strcmp(exec_name, "exit") == 0)

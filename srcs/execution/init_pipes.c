@@ -6,9 +6,16 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 15:41:42 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/29 17:01:00 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/06/30 17:43:11 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/*
+**	This function will create a array of int that contain all pipes will be
+**	needed by piping redirection.
+**	You can find an illustration of this system here :
+**	https://urlz.fr/dnNk
+*/
 
 #include "minishell.h"
 
@@ -20,41 +27,17 @@ static int	panic_init_pipes(int *new)
 
 int			init_pipes(int **pipes, int n_jobs)
 {
-	int *new;
+	int i;
 	int n_pipes;
 
-	errno = 0;
-	n_pipes = n_jobs * 2 - 4;
-	if (n_jobs == 1)
-	{
-		*pipes = NULL;
-		return (0);
-	}
-	if (!(new = (int*)malloc(sizeof(int) * (n_pipes))))
+	i = 0;
+	n_pipes = (n_jobs - 1) * 2;
+	if (!(*pipes = (int*)malloc(sizeof(int) * (n_pipes))))
 		return (ERR_MALLOC);
-	while (n_jobs > 1)
+	while (i / 2 < n_jobs - 1)
 	{
-		if (pipe(new + (n_jobs * 2 - 4)) == -1)
-			return (panic_init_pipes(new));
-		n_jobs--;
+		pipe((*pipes) + i);
+		i += 2;
 	}
-	if (pipe(new) == -1)
-		return (panic_init_pipes(new));
-	*pipes = new;
 	return (0);
 }
-
-// int		main(int argc, char **argv)
-// {
-// 	if (argc >= 2)
-// 	{
-// 		int *new;
-
-// 		new = init_pipes(atoi(argv[1]));
-// 		if (new)
-// 			ft_putnbrarr_fd(new, atoi(argv[1]) * 2 - 2, 1);
-// 		else
-// 			printf("(NULL)\n");
-// 	}
-// 	return (0);
-// }

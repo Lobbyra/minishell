@@ -6,18 +6,25 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 16:29:13 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/29 17:35:40 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/06/30 17:37:20 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void	debug_ib(char *path, char *exec_name)
+/*
+**	This function will call redirection piping and execute binaries.
+*/
+
+static void	debug_ib(char *path, char *exec_name, int jobpos)
 {
+	l_printf("### DEBUG INSTANCE BUILDER ###\n");
 	if (path)
 		l_printf("path = %s\n", path);
 	if (exec_name)
 		l_printf("exec_name = %s\n", exec_name);
+	l_printf("jobpos = %d\n", jobpos);
+	write(1, "\n", 1);
 }
 
 static int	panic_ib(char *path, char *exec_name, int err)
@@ -29,7 +36,7 @@ static int	panic_ib(char *path, char *exec_name, int err)
 	return (err);
 }
 
-int			instance_builder(t_stock *s, int jobpos, int *pipes)
+int			instance_builder(t_stock *s, int jobpos, int *pipes, t_bool is_pipe)
 {
 	pid_t	child;
 	char	*path;
@@ -41,11 +48,14 @@ int			instance_builder(t_stock *s, int jobpos, int *pipes)
 	if (!(exec_name = ft_basename(s->jobs[jobpos][0])))
 		return (panic_ib(path, NULL, ERR_MALLOC));
 	if (s->is_debug == TRUE)
-		debug_ib(path, exec_name);
+		debug_ib(path, exec_name, jobpos);
 	child = fork();
 	if (child == 0)
 	{
+		free(s->jobs[jobpos][0]);
 		s->jobs[jobpos][0] = exec_name;
+		redirector(pipes, jobpos, is_pipe, s->is_debug);
+		close_pipes(pipes, s->n_jobs * 2 - 2);
 		if (execve(path, s->jobs[jobpos], s->envp) == -1)
 			l_printf("minishell: child: %s\n", strerror(errno));
 	}

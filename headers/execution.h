@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 15:10:39 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/29 18:47:14 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/06/30 17:32:45 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,13 @@
 /*
 **	Sub function of execution.
 */
+int		jobs_caller(t_stock *s);
 int		init_pipes(int **pipes, int n_jobs);
+void	close_pipes(int *pipes, int n_pipes);
 void	terminator(char ***jobs, int n_jobs, char *status);
-int		instance_builder(t_stock *s, int jobpos, int *pipes);
+int		instance_builder(t_stock *s, int jobpos, int *pipes, t_bool is_pipe);
 int		builtin_caller(char **job, char *exit_status, int fd, char ***envp);
+void	redirector(int *pipes, int jobpos, t_bool is_pipe, t_bool is_debug);
 
 /*
 **	Builtins functions

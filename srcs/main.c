@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 16:47:17 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/29 17:37:56 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/06/30 13:47:21 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,10 +93,7 @@ int			main(int argc, char **argv, char **envp)
 		if (err == SIG_CTRLD)
 			break ;
 		if (err == 0 && (err = parsing(stock) != 0))
-		{
-			printf("Parsing : err = %d\n", err);
 			error_printer(err);
-		}
 		if ((err == 0 || err == ERR_EXIT) && (err = execution(stock)) != 0)
 			error_printer(err);
 		reset(stock);
