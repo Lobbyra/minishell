@@ -6,7 +6,7 @@
 #    By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/15 13:51:51 by jecaudal          #+#    #+#              #
-#    Updated: 2020/06/30 17:51:47 by jecaudal         ###   ########.fr        #
+#    Updated: 2020/06/30 18:32:59 by jecaudal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRCS_LIB		=	./srcs/print_jobs.c						\
 					./srcs/lib/ft_split.c					\
 					./srcs/lib/ft_isnum.c					\
 					./srcs/lib/ft_putnbr.c					\
+					./srcs/lib/ft_ctostr.c					\
 					./srcs/lib/ft_putstr.c					\
 					./srcs/lib/ft_strcmp.c					\
 					./srcs/lib/ft_strdup.c					\

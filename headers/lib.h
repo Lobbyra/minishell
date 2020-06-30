@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 16:20:45 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/29 18:39:16 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/06/30 18:32:46 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int		ft_strncmp(char *s1, char *s2, unsigned int n);
 int		ft_protected_putarrstr_fd(char **argv, char *sep, int fd);
 int		ft_strlcpy(char *dest, char *src, unsigned int size);
 
+char	*ft_ctostr(char c);
 char	*ft_strdup(char *str);
 char	*ft_basename(char *path);
 char	*ft_strdupdel(char *str);
