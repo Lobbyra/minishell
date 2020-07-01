@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Jeanxavier <Jeanxavier@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 16:29:39 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/25 16:25:09 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/01 13:10:43 by Jeanxavier       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int		number_env_var(char *user_input);
 int		check_double_pipe(char *user_input);
 int		remplace_env_var(char *new, char *value);
 int		verif_exec(t_stock *stock);
+int		management_check_all_path(t_stock *s, int n, t_bool is_debug);
 int		free_env_var_data(char **tab, char **value);
 int		command_to_jobs(t_stock *s, char **command);
 int		nopipe(char **command);
