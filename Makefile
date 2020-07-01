@@ -6,7 +6,7 @@
 #    By: Jeanxavier <Jeanxavier@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/15 13:51:51 by jecaudal          #+#    #+#              #
-#    Updated: 2020/07/01 13:11:58 by Jeanxavier       ###   ########.fr        #
+#    Updated: 2020/07/01 14:55:37 by Jeanxavier       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,6 +85,7 @@ SRCS			=	./srcs/main.c									\
 					./srcs/parsing/remplace_env_var.c				\
 					./srcs/parsing/verif_exec_utils.c				\
 					./srcs/parsing/check_double_pipe.c				\
+					./srcs/parsing/verif_metacharacter.c			\
 					./srcs/parsing/check_end_backslash.c			\
 					./srcs/parsing/command_to_jobs_utils.c			\
 					./srcs/parsing/split_command/part_add.c			\

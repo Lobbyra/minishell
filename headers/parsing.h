@@ -6,7 +6,7 @@
 /*   By: Jeanxavier <Jeanxavier@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 16:29:39 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/01 13:10:43 by Jeanxavier       ###   ########.fr       */
+/*   Updated: 2020/07/01 14:53:13 by Jeanxavier       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int		management_check_all_path(t_stock *s, int n, t_bool is_debug);
 int		free_env_var_data(char **tab, char **value);
 int		command_to_jobs(t_stock *s, char **command);
 int		nopipe(char **command);
+int		verif_metacharacter(t_stock *s, char **command);
 
 
 char	*env_var(t_stock *s);

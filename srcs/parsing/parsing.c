@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Jeanxavier <Jeanxavier@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 16:02:38 by jereligi          #+#    #+#             */
-/*   Updated: 2020/06/30 18:05:14 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/01 14:58:33 by Jeanxavier       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ static int	debug_parsing(t_stock *stock)
 		return (ERR_SYNTAX);
 	env_var(stock);
 	tmp = split_command(stock->user_input);
+	if (verif_metacharacter(stock, tmp) == 0)
+		return (ERR_SYNTAX);
 	if (command_to_jobs(stock, tmp) == 0)
 		printf("\n\033[32mcommand_to_jobs [ok]\033[37m\n");
 	verif_exec(stock);
@@ -52,6 +54,8 @@ int		parsing(t_stock *stock)
 		return (ERR_SYNTAX);
 	env_var(stock);
 	tmp = split_command(stock->user_input);
+	if (verif_metacharacter(stock, tmp) == 0)
+		return (ERR_SYNTAX);
 	command_to_jobs(stock, tmp);
 	verif_exec(stock);
 	return (0);
