@@ -6,11 +6,11 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/20 14:38:32 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/24 17:02:36 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/06/30 18:43:14 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libc.h>
+#include "minishell.h"
 
 /*
 ** Prend la une partie d'un argument et la mesure en fonction de son premier
@@ -70,8 +70,8 @@ int	part_len(char *str, char first_letter)
 	{
 		while (*str)
 		{
-			if ((*str == ' ' || *str == '\'' || *str == '\"' || *str == '|') &&
-				*(str - 1) != '\'')
+			if ((*str == ' ' || *str == '\'' || *str == '\"'
+			|| is_special_c(str)) && *(str - 1) != '\'')
 				break ;
 			if (*str == '\\')
 				str++;
@@ -79,7 +79,7 @@ int	part_len(char *str, char first_letter)
 			if (*str)
 				str++;
 		}
-		if (count == 0 && *str == '|')
+		if (count == 0 && is_special_c(str))
 			count++;
 	}
 	return (count);

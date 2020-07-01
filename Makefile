@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: Jeanxavier <Jeanxavier@student.42.fr>      +#+  +:+       +#+         #
+#    By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/15 13:51:51 by jecaudal          #+#    #+#              #
-#    Updated: 2020/07/01 14:55:37 by Jeanxavier       ###   ########.fr        #
+#    Updated: 2020/07/01 15:22:06 by jecaudal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,6 +92,8 @@ SRCS			=	./srcs/main.c									\
 					./srcs/parsing/split_command/part_len.c			\
 					./srcs/parsing/split_command/skip_part.c		\
 					./srcs/parsing/split_command/init_split.c		\
+					./srcs/parsing/split_command/join_outpend.c		\
+					./srcs/parsing/split_command/is_special_c.c		\
 					./srcs/parsing/split_command/split_command.c	\
 					./srcs/execution/execution.c					\
 					./srcs/execution/init_pipes.c					\

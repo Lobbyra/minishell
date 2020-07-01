@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   is_special_c.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/01 15:30:17 by Lobbyra           #+#    #+#             */
-/*   Updated: 2020/07/01 14:42:12 by jecaudal         ###   ########.fr       */
+/*   Created: 2020/06/30 18:23:56 by jecaudal          #+#    #+#             */
+/*   Updated: 2020/06/30 18:52:17 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int		ft_strcmp(char *s1, char *s2)
+int is_special_c(char *c)
 {
-	char *null_s1;
-	char *null_s2;
-	
-	null_s1 = "";
-	null_s2 = "";
-	if (s1 == NULL)
-		s1 = null_s1;
-	if (s2 == NULL)
-		s2 = null_s2;
-	while (*s1 == *s2 && *s1 && *s2)
-	{
-		s1++;
-		s2++;
-	}
-	return (*s1 - *s2);
+	if (*c == '|' || *c == '<')
+		return (*c == '|' || *c == '<');
+	else if (ft_strncmp(c, ">>", 2) == 0)
+		return ((ft_strncmp(c, ">>", 2) == 0));
+	return (*c == '>');
 }
