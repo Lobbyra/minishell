@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 16:29:13 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/01 15:45:12 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/02 13:44:45 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,17 +43,17 @@ int			instance_builder(t_stock *s, int jobpos, int *pipes, t_bool is_pipe)
 	char	*exec_name;
 
 	errno = 0;
-	if (!(path = ft_strdup(s->jobs[jobpos][0])))
+	if (!(path = ft_strdup(find_exec(s->jobs[jobpos])[0])))
 		return (ERR_MALLOC);
-	if (!(exec_name = ft_basename(s->jobs[jobpos][0])))
+	if (!(exec_name = ft_basename(find_exec(s->jobs[jobpos])[0])))
 		return (panic_ib(path, NULL, ERR_MALLOC));
 	if (s->is_debug == TRUE)
 		debug_ib(path, exec_name, jobpos);
 	child = fork();
 	if (child == 0)
 	{
-		free(s->jobs[jobpos][0]);
-		s->jobs[jobpos][0] = exec_name;
+		free(find_exec(s->jobs[jobpos])[0]);
+		find_exec(s->jobs[jobpos])[0] = exec_name;
 		redirector(pipes, jobpos, is_pipe, s->is_debug);
 		close_pipes(pipes, s->n_jobs * 2 - 2);
 		if (is_builtin(path) == TRUE)

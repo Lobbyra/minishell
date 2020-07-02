@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 18:18:48 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/01 16:53:14 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/02 13:57:45 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	builtin_call_parent(char **job, char *exit_stat, int fd, char ***envp)
 
 	exec_name = ft_basename(*job);
 	if (ft_strcmp(exec_name, "cd") == 0)
-		*exit_stat = cd(job[1]);
+		*exit_stat = cd(*(find_exec(job) + 1));
 	else if (ft_strcmp(exec_name, "echo") == 0)
 		*exit_stat = echo(job, fd);
 	else if (ft_strcmp(exec_name, "env") == 0)
@@ -26,7 +26,7 @@ void	builtin_call_parent(char **job, char *exit_stat, int fd, char ***envp)
 	else if (ft_strcmp(exec_name, "export") == 0)
 		*exit_stat = export(envp, job, fd);
 	else if (ft_strcmp(exec_name, "exit") == 0)
-		ft_exit(ft_atoi(job[1]));
+		ft_exit(ft_atoi(*(find_exec(job) + 1)));
 	else if (ft_strcmp(exec_name, "pwd") == 0)
 		*exit_stat = pwd(fd);
 	else if (ft_strcmp(exec_name, "unset") == 0)
@@ -40,7 +40,7 @@ void	builtin_call_child(char **job, char *exit_stat, char ***envp)
 
 	exec_name = ft_basename(*job);
 	if (ft_strcmp(exec_name, "cd") == 0)
-		*exit_stat = cd(job[1]);
+		*exit_stat = cd(*(find_exec(job) + 1));
 	else if (ft_strcmp(exec_name, "echo") == 0)
 		*exit_stat = echo(job, 1);
 	else if (ft_strcmp(exec_name, "env") == 0)
@@ -48,7 +48,7 @@ void	builtin_call_child(char **job, char *exit_stat, char ***envp)
 	else if (ft_strcmp(exec_name, "export") == 0)
 		*exit_stat = export(envp, job, 1);
 	else if (ft_strcmp(exec_name, "exit") == 0)
-		ft_exit(ft_atoi(job[1]));
+		ft_exit(ft_atoi(*(find_exec(job) + 1)));
 	else if (ft_strcmp(exec_name, "pwd") == 0)
 		*exit_stat = pwd(1);
 	else if (ft_strcmp(exec_name, "unset") == 0)

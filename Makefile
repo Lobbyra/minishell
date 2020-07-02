@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: Jeanxavier <Jeanxavier@student.42.fr>      +#+  +:+       +#+         #
+#    By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/15 13:51:51 by jecaudal          #+#    #+#              #
-#    Updated: 2020/07/02 11:07:57 by Jeanxavier       ###   ########.fr        #
+#    Updated: 2020/07/02 13:46:06 by jecaudal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,6 +72,7 @@ OBJS_LIB		=	$(SRCS_LIB:.c=.o)
 
 SRCS			=	./srcs/main.c									\
 					./srcs/init_stock.c								\
+					./srcs/find_exec.c							\
 					./srcs/free_t_stock.c							\
 					./srcs/error_printer.c							\
 					./srcs/parsing/env_var.c						\
