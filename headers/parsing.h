@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Jeanxavier <Jeanxavier@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 16:29:39 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/01 16:14:20 by Jeanxavier       ###   ########.fr       */
+/*   Updated: 2020/07/02 14:48:30 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int		command_to_jobs(t_stock *s, char **command);
 int		nopipe(char **command);
 int		verif_metacharacter(t_stock *s, char **command);
 int		is_metacharacter(char c);
+int		verif_files(t_stock *s);
 
 
 char	*env_var(t_stock *s);

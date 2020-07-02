@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 17:30:00 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/30 17:55:51 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/02 16:26:09 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 #include "minishell.h"
 
-static void	debug_redirector(int *pipes, int jobpos, t_bool is_pipe)
+static void	debug_redirector(int jobpos, t_bool is_pipe)
 {
 	l_printf("### DEBUG REDIRECTOR ###\n");
 	l_printf("is_pipe = %d\n", is_pipe);
@@ -30,17 +30,27 @@ static void	debug_redirector(int *pipes, int jobpos, t_bool is_pipe)
 		l_printf("STDIN redirected.\n\n");
 }
 
-void		redirector(int *pipes, int jobpos, t_bool is_pipe, t_bool is_debug)
+int			redirector(int *pipes, int jobpos, t_bool is_pipe, t_stock *s)
 {
-	if (jobpos == 0 && is_pipe == TRUE)
-		dup2(pipes[(jobpos * 2) + 1], STDOUT);
-	else if (jobpos > 0 && is_pipe == TRUE)
+	int err;
+
+	err = 0;
+	if (is_out_redir(s->jobs[jobpos]) == TRUE)
+		err = redirector_file_out(s, jobpos);
+	else
 	{
-		dup2(pipes[(jobpos * 2) + 1], STDOUT);
-		dup2(pipes[(jobpos * 2) - 2], STDIN);
+		if (jobpos == 0 && is_pipe == TRUE)
+			dup2(pipes[(jobpos * 2) + 1], STDOUT);
+		else if (jobpos > 0 && is_pipe == TRUE)
+		{
+			dup2(pipes[(jobpos * 2) + 1], STDOUT);
+			dup2(pipes[(jobpos * 2) - 2], STDIN);
+		}
+		else if (jobpos > 0 && is_pipe == FALSE)
+			dup2(pipes[(jobpos * 2) - 2], STDIN);
+		if (s->is_debug == TRUE)
+			debug_redirector(jobpos, is_pipe);
 	}
-	else if (jobpos > 0 && is_pipe == FALSE)
-		dup2(pipes[(jobpos * 2) - 2], STDIN);
-	if (is_debug == TRUE)
-		debug_redirector(pipes, jobpos, is_pipe);
+	s->jobs[jobpos] = rm_redir(s->jobs[jobpos]);
+	return (err);
 }

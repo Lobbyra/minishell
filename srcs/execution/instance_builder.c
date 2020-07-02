@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 16:29:13 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/02 13:44:45 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/02 16:26:44 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ static int	panic_ib(char *path, char *exec_name, int err)
 
 int			instance_builder(t_stock *s, int jobpos, int *pipes, t_bool is_pipe)
 {
+	int		err;
 	pid_t	child;
 	char	*path;
 	char	*exec_name;
@@ -49,16 +50,15 @@ int			instance_builder(t_stock *s, int jobpos, int *pipes, t_bool is_pipe)
 		return (panic_ib(path, NULL, ERR_MALLOC));
 	if (s->is_debug == TRUE)
 		debug_ib(path, exec_name, jobpos);
-	child = fork();
-	if (child == 0)
+	if ((child = fork()) == 0)
 	{
 		free(find_exec(s->jobs[jobpos])[0]);
 		find_exec(s->jobs[jobpos])[0] = exec_name;
-		redirector(pipes, jobpos, is_pipe, s->is_debug);
+		err = redirector(pipes, jobpos, is_pipe, s);
 		close_pipes(pipes, s->n_jobs * 2 - 2);
-		if (is_builtin(path) == TRUE)
+		if (err == 0 && is_builtin(path) == TRUE)
 			builtin_call_child(s->jobs[jobpos], &(s->exit_status), &(s->envp));
-		else if (execve(path, s->jobs[jobpos], s->envp) == -1)
+		else if (err == 0 && execve(path, s->jobs[jobpos], s->envp) == -1)
 			l_printf("minishell: child: %s\n", strerror(errno));
 	}
 	else if (child == -1)

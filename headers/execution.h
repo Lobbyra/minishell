@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 15:10:39 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/01 16:52:50 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/02 16:19:03 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		init_pipes(int **pipes, int n_jobs);
 void	close_pipes(int *pipes, int n_pipes);
 void	terminator(char ***jobs, int n_jobs, char *status);
 void	builtin_call_child(char **job, char *exit_stat, char ***envp);
-void	redirector(int *pipes, int jobpos, t_bool is_pipe, t_bool is_debug);
+int		redirector(int *pipes, int jobpos, t_bool is_pipe, t_stock *s);
 int		instance_builder(t_stock *s, int jobpos, int *pipes, t_bool is_pipe);
 void	builtin_call_parent(char **job, char *ex_stat, int fd, char ***envp);
 
@@ -46,5 +46,12 @@ int		export(char ***envp, char **job, int fd);
 t_bool	is_var_exist(char **envp, char *arg);
 void	print_envp_export(char **envp, int fd);
 int		var_replacement(char **envp, char *arg);
+
+/*
+**	Sub function of redirector.
+*/
+char 	**rm_redir(char **job);
+t_bool	is_out_redir(char **job);
+int		redirector_file_out(t_stock *s, int jobpos);
 
 #endif
