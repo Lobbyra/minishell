@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+         #
+#    By: Jeanxavier <Jeanxavier@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/15 13:51:51 by jecaudal          #+#    #+#              #
-#    Updated: 2020/07/01 15:22:06 by jecaudal         ###   ########.fr        #
+#    Updated: 2020/07/02 11:07:57 by Jeanxavier       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,6 +79,7 @@ SRCS			=	./srcs/main.c									\
 					./srcs/parsing/get_path.c						\
 					./srcs/parsing/check_pipe.c						\
 					./srcs/parsing/verif_exec.c						\
+					./srcs/parsing/verif_files.c					\
 					./srcs/parsing/check_quote.c					\
 					./srcs/parsing/env_var_utils.c					\
 					./srcs/parsing/command_to_jobs.c				\

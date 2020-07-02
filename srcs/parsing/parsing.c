@@ -6,7 +6,7 @@
 /*   By: Jeanxavier <Jeanxavier@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 16:02:38 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/01 17:15:26 by Jeanxavier       ###   ########.fr       */
+/*   Updated: 2020/07/02 11:40:09 by Jeanxavier       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ static int	debug_parsing(t_stock *stock)
 		printf("\n\033[32mcommand_to_jobs [ok]\033[37m\n");
 	ft_putarrarrstrs(stock->jobs, stock->n_jobs);
 	verif_exec(stock);
+	verif_files(stock);
 	return (0);
 }
 
@@ -59,5 +60,6 @@ int		parsing(t_stock *stock)
 		return (ERR_SYNTAX);
 	command_to_jobs(stock, tmp);
 	verif_exec(stock);
+	verif_files(stock);
 	return (0);
 }
