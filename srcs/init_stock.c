@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/15 13:26:06 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/18 15:24:03 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/01 17:11:52 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ t_stock			*init_stock(char **envp)
 	new->jobs = NULL;
 	new->pipes = NULL;
 	new->error_strings = NULL;
+	new->exit_status = 0;
 	return (new);
 }

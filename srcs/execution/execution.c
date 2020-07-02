@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/16 14:02:43 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/30 18:48:25 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/01 16:54:46 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,7 @@ int		execution(t_stock *s)
 		debug_jobs(s->jobs, s->n_jobs);
 	if (s->n_jobs == 1 && is_builtin(s->jobs[0][0]) == TRUE)
 	{
-		err = builtin_caller(s->jobs[0], &s->exit_status, FALSE, &(s->envp));
-		if (err != 0)
-			return (err);
+		builtin_call_parent(s->jobs[0], &s->exit_status, 1, &(s->envp));
 	}
 	else if ((err = jobs_caller(s)) != 0)
 		return (err);
