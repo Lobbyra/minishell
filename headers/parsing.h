@@ -6,7 +6,7 @@
 /*   By: Jeanxavier <Jeanxavier@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 16:29:39 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/01 14:53:13 by Jeanxavier       ###   ########.fr       */
+/*   Updated: 2020/07/01 16:14:20 by Jeanxavier       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define PARSING_H
 
 # define ERR_QUOTE1 "minishell: unexpected EOF while looking for matching `"
-# define ERR_QUOTE2 "\'\nminishell: syntax error: unexpected end of file"
-# define ERR_PIPE "minishell: syntax error: unexpected end of file"
+# define ERR_QUOTE2 "\'\nminishell: syntax error: unexpected end of file\n"
+# define ERR_PIPE "minishell: syntax error: unexpected end of file\n"
 
 int	 	check_pipe(t_stock *stock);
 int		check_quote(t_stock *stock);
@@ -29,6 +29,7 @@ int		free_env_var_data(char **tab, char **value);
 int		command_to_jobs(t_stock *s, char **command);
 int		nopipe(char **command);
 int		verif_metacharacter(t_stock *s, char **command);
+int		is_metacharacter(char c);
 
 
 char	*env_var(t_stock *s);

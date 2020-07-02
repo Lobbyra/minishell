@@ -6,13 +6,13 @@
 /*   By: Jeanxavier <Jeanxavier@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 14:15:46 by Jeanxavier        #+#    #+#             */
-/*   Updated: 2020/07/01 14:56:20 by Jeanxavier       ###   ########.fr       */
+/*   Updated: 2020/07/01 16:18:15 by Jeanxavier       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static int		is_metacharacter(char c)
+int				is_metacharacter(char c)
 {
 	if (c == '>' || c == '<')
 		return (1);
@@ -31,7 +31,7 @@ int				verif_metacharacter(t_stock *s, char **command)
 			s->error_strings = ft_strjoindel(s->error_strings, \
 			"minishell: syntax error near unexpected token `", 1);
 			s->error_strings = ft_strjoindel(s->error_strings, \
-			ft_strjoin(command[i + 1], "'"), 2);
+			ft_strjoin(command[i + 1], "'\n"), 3);
 			l_printf("[%s]\n", s->error_strings);
 			return (0);
 		}

@@ -6,7 +6,7 @@
 /*   By: Jeanxavier <Jeanxavier@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 12:45:58 by Jeanxavier        #+#    #+#             */
-/*   Updated: 2020/07/01 13:12:31 by Jeanxavier       ###   ########.fr       */
+/*   Updated: 2020/07/01 18:44:43 by Jeanxavier       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,16 @@ static int	is_builtins(char *jobs)
 		return (1);
 	if (ft_strncmp(jobs, "unset", len) == 0)
 		return (1);
+	if (ft_strncmp(jobs, "exit", len) == 0)
+		return (1);
 	return (0);
 }
 
 static int free_alloc(char *exec, char **path, t_stock *s, int n)
 {
-	int	i;
-
-	i = 0;
 	free(exec);
 	free(s->jobs[n][0]);
-	while (path[i])
-		free(path[i++]);
-	free(path);
+	ft_strarrfree(path);
 	return (0);
 }
 
@@ -50,7 +47,7 @@ static int	check_all_path(t_stock *s, int n, t_bool is_debug)
 	i = 0;
 	exec = ft_strjoin("/", s->jobs[n][0]);
 	path = get_path(s->envp);
-	while (path[i++])
+	while (path[i])
 	{
 		tmp = ft_strjoin(path[i], exec);
 		errno = 0;
@@ -66,6 +63,7 @@ static int	check_all_path(t_stock *s, int n, t_bool is_debug)
 		free(tmp);
 		i++;
 	}
+	ft_strarrfree(path);
 	return (0);
 }
 
@@ -75,8 +73,9 @@ int			management_check_all_path(t_stock *s, int n, t_bool is_debug)
 		return (1);
 	if (is_builtins(s->jobs[n][0]))
 		return (1);
-	ft_strjoindel(s->error_strings, \
-	ft_strjoin("minishell: command not found: ", s->jobs[n][0]), 2);
+	s->error_strings = ft_strjoindel(s->error_strings, \
+	ft_strjoindel("minishell: command not found: ", \
+	ft_strjoin(s->jobs[n][0], "\n"), 2), 3);
 	l_printf("error path: %s\n", s->jobs[n][0]);
 	s->jobs[n][0] = NULL;
 	return (0);
