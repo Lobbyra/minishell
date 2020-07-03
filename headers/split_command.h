@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/23 13:22:27 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/01 15:21:47 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/03 16:06:24 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define SPLIT_COMMAND_H
 
 int		is_special_c(char *c);
-void	skip_part(char **cmd);
+int		skip_part(char **cmd);
 char	**init_split(int n_args);
 void	ft_putarrstr(char **argv, char *sep);
 int		part_len(char *str, char first_letter);

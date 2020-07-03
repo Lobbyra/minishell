@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/15 13:22:38 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/02 13:44:53 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/03 18:39:34 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define ERR_ERRNO 2
 # define ERR_SYNTAX 3
 # define ERR_EXIT 4
+# define ERR_CMD_VOID 5
 
 # define OUR_PS1 "minishell$>"
 
@@ -46,6 +47,7 @@ typedef struct	s_stock
 {
 	char		**envp;
 	char		*user_input;
+	char		*buf_user_input;
 	char		***jobs;
 	int			n_jobs;
 	t_bool		is_pipe;
@@ -55,12 +57,20 @@ typedef struct	s_stock
 	t_bool		is_debug;
 }				t_stock;
 
-t_stock	*init_stock(char **envp);
-void	free_t_stock(t_stock *stock);
 void	error_printer(int err);
 int		parsing(t_stock *stock);
-int		execution(t_stock *stock);
 char	**find_exec(char **job);
+t_stock	*init_stock(char **envp);
+int		execution(t_stock *stock);
+int		wait_instruction(t_stock *s);
+void	free_t_stock(t_stock *stock);
+
+/*
+**	Sub functions of wait_instruction
+*/
+
+int		check_user_input(char *user_input);
+int		panic_wait_instruction(char **to_free, int err);
 
 /*
 **	Debug functions.

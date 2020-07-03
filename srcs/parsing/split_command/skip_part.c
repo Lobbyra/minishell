@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/23 13:21:40 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/30 18:43:07 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/03 17:50:53 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,13 @@ static void	skip_part_dquote(char **cmd)
 		(*cmd)++;
 }
 
-void	skip_part(char **cmd)
+int		skip_part(char **cmd)
 {
-	char quote;
+	char	quote;
+	char	*save_cmd;
 
 	quote = **cmd;
+	save_cmd = *cmd;
 	if (quote == '\'')
 		skip_part_quote(cmd);
 	else if (quote == '\"')
@@ -60,4 +62,5 @@ void	skip_part(char **cmd)
 			(*cmd)++;
 		}
 	}
+	return (*cmd - save_cmd);
 }

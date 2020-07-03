@@ -6,30 +6,11 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 16:47:17 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/30 13:47:21 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/03 15:36:52 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-/*
-** Read stdin to get command from the user.
-** Return 1 if ctrl-D.
-** Return ERR_ERRNO if gnl error.
-** Return 0 else.
-*/
-static int	wait_instruction(char **cmd)
-{
-	int status;
-
-	l_printf("%s", OUR_PS1);
-	status = get_next_line(0, cmd);
-	if (status == -1)
-		return (ERR_ERRNO);
-	if (status == 2)
-		return (1);
-	return (0);
-}
 
 /*
 ** Used to free variables alloced for just one command.
@@ -88,7 +69,7 @@ int			main(int argc, char **argv, char **envp)
 	while (1)
 	{
 		err = 0;
-		if ((err = wait_instruction(&(stock->user_input))) == ERR_ERRNO)
+		if ((err = wait_instruction(stock)) == ERR_ERRNO)
 			error_printer(err);
 		if (err == SIG_CTRLD)
 			break ;
