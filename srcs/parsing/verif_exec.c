@@ -6,7 +6,7 @@
 /*   By: Jeanxavier <Jeanxavier@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 18:08:03 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/03 11:44:13 by Jeanxavier       ###   ########.fr       */
+/*   Updated: 2020/07/03 12:02:30 by Jeanxavier       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ static int	check_path(t_stock *s, int i)
 {
 	int			debug;
 	struct stat	buf;
-
+	
+	errno = 0;
 	stat(s->jobs[i][0], &buf);
 	debug = errno;
 	if (debug != 0)
@@ -35,7 +36,7 @@ static int	check_path(t_stock *s, int i)
 	{
 		ft_strjoindel(s->error_strings, \
 		ft_strjoin("minishell: no such file or directory: ", s->jobs[i][0]), 2);
-		l_printf("error path: %s\n", s->jobs[i][0]);
+		l_printf("error path: [%s]\n", s->jobs[i][0]);
 		s->jobs[i][0] = NULL;
 		return (1);
 	}
