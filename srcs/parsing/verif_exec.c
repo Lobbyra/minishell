@@ -6,7 +6,7 @@
 /*   By: Jeanxavier <Jeanxavier@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 18:08:03 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/01 13:05:16 by Jeanxavier       ###   ########.fr       */
+/*   Updated: 2020/07/03 11:44:13 by Jeanxavier       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,14 @@ char		*ft_pwd(void)
 
 static int	check_path(t_stock *s, int i)
 {
+	int			debug;
 	struct stat	buf;
 
 	stat(s->jobs[i][0], &buf);
-	if (errno != 0)
+	debug = errno;
+	if (debug != 0)
+		l_printf("%s\n", strerror(debug));
+	if (debug != 0)
 	{
 		ft_strjoindel(s->error_strings, \
 		ft_strjoin("minishell: no such file or directory: ", s->jobs[i][0]), 2);
