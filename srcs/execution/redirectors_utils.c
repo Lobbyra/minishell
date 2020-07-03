@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/02 14:05:40 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/02 16:30:44 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/02 18:45:53 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,17 @@ t_bool		is_out_redir(char **job)
 	return (FALSE);
 }
 
+t_bool		is_in_redir(char **job)
+{
+	while (*job)
+	{
+		if (ft_strcmp(*job, "<") == 0)
+			return (TRUE);
+		job++;
+	}
+	return (FALSE);
+}
+
 static int	len_less_redir(char **job)
 {
 	int count;
@@ -32,7 +43,7 @@ static int	len_less_redir(char **job)
 	{
 		if (ft_strcmp(*job, ">") == 0 ||
 			ft_strcmp(*job, ">>") == 0 ||
-			ft_strcmp(*job, ">>") == 0)
+			ft_strcmp(*job, "<") == 0)
 			job += 2;
 		else
 		{

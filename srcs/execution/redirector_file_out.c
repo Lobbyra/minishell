@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/02 14:13:03 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/02 16:29:13 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/03 14:35:40 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int		redirector_file_out(t_stock *s, int jobpos)
 		if (ft_strcmp(*i_job, ">") == 0 || ft_strcmp(*i_job, ">>") == 0)
 		{
 			if (ft_strcmp(*i_job, ">") == 0)
-				fd = open(*(i_job + 1), O_WRONLY | O_CREAT, 420);
+				fd = open(*(i_job + 1), O_WRONLY | O_TRUNC | O_CREAT, 420);
 			else
 				fd = open(*(i_job + 1), O_WRONLY | O_APPEND | O_CREAT, 420);
 			if (fd == -1)

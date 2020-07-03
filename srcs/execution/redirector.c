@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 17:30:00 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/02 16:26:09 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/03 13:26:07by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int			redirector(int *pipes, int jobpos, t_bool is_pipe, t_stock *s)
 	int err;
 
 	err = 0;
+	if (is_in_redir(s->jobs[jobpos]) == TRUE)
+		err = redirector_file_in(s->jobs[jobpos]);
 	if (is_out_redir(s->jobs[jobpos]) == TRUE)
 		err = redirector_file_out(s, jobpos);
 	else
@@ -42,15 +44,12 @@ int			redirector(int *pipes, int jobpos, t_bool is_pipe, t_stock *s)
 		if (jobpos == 0 && is_pipe == TRUE)
 			dup2(pipes[(jobpos * 2) + 1], STDOUT);
 		else if (jobpos > 0 && is_pipe == TRUE)
-		{
 			dup2(pipes[(jobpos * 2) + 1], STDOUT);
-			dup2(pipes[(jobpos * 2) - 2], STDIN);
-		}
-		else if (jobpos > 0 && is_pipe == FALSE)
-			dup2(pipes[(jobpos * 2) - 2], STDIN);
 		if (s->is_debug == TRUE)
 			debug_redirector(jobpos, is_pipe);
 	}
+	if (is_in_redir(s->jobs[jobpos]) == FALSE && jobpos > 0)
+		dup2(pipes[(jobpos * 2) - 2], STDIN);
 	s->jobs[jobpos] = rm_redir(s->jobs[jobpos]);
 	return (err);
 }

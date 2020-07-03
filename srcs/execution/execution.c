@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/16 14:02:43 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/02 13:55:24 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/03 13:48:52 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,21 @@ static void	debug_jobs(char ***jobs, int size)
 int		execution(t_stock *s)
 {
 	int		err;
+	int		save_stdout;
 
+	err = 0;
 	if (s->is_debug == TRUE)
 		debug_jobs(s->jobs, s->n_jobs);
 	if (s->n_jobs == 1 && is_builtin(find_exec(s->jobs[0])[0]) == TRUE)
 	{
-		builtin_call_parent(s->jobs[0], &s->exit_status, 1, &(s->envp));
+		save_stdout = dup(1);
+		if (is_out_redir(s->jobs[0]) == TRUE)
+			err = redirector_file_out(s, 0);
+		s->jobs[0] = rm_redir(s->jobs[0]);
+		if (err == 0)
+			builtin_call_parent(s->jobs[0], &s->exit_status, 1, &(s->envp));
+		dup2(save_stdout, 1);
+		close(save_stdout);
 	}
 	else if ((err = jobs_caller(s)) != 0)
 		return (err);

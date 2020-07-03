@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 16:29:13 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/02 16:26:44 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/02 18:47:13 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int			instance_builder(t_stock *s, int jobpos, int *pipes, t_bool is_pipe)
 		if (err == 0 && is_builtin(path) == TRUE)
 			builtin_call_child(s->jobs[jobpos], &(s->exit_status), &(s->envp));
 		else if (err == 0 && execve(path, s->jobs[jobpos], s->envp) == -1)
-			l_printf("minishell: child: %s\n", strerror(errno));
+			l_printf("minishell: execve: %s\n", strerror(errno));
 	}
 	else if (child == -1)
 		return (panic_ib(path, exec_name, ERR_ERRNO));
