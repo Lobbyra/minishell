@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_quote.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 15:54:35 by jereligi          #+#    #+#             */
-/*   Updated: 2020/06/22 15:40:33 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/04 10:51:36 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ static int		additional_read_quote(char quote, t_stock *s)
 	}
 	else
 		return (1);
-	l_printf("|%s|\n", s->user_input);
 	return (0);
 }
 
@@ -66,12 +65,15 @@ int				check_quote(t_stock *s)
 		if (s->user_input[i] == '\0')
 			if ((valid_quote = additional_read_quote(quote, s)) == 3)
 				return (ERR_SYNTAX);
-		if ((s->user_input[i] == '"' && quote == '0') && (!is_escape(i, s->user_input)))
+		if ((s->user_input[i] == '"' && quote == '0')
+		&& (!is_escape(i, s->user_input)))
 			quote = '\"';
-		else if ((s->user_input[i] == '\'' && quote == '0') && (!is_escape(i, s->user_input)))
+		else if ((s->user_input[i] == '\'' && quote == '0')
+		&& (!is_escape(i, s->user_input)))
 			quote = '\'';
 		else if (((quote == s->user_input[i]) && (!is_escape(i, s->user_input)))
-		|| (quote == '\'' && quote == s->user_input[i] && is_escape(i, s->user_input)))
+		|| (quote == '\'' && quote == s->user_input[i]
+		&& is_escape(i, s->user_input)))
 			quote = '0';
 		i++;
 	}

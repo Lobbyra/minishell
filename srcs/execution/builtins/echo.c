@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/23 18:03:21 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/29 18:31:56 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/04 14:08:37 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 #include "minishell.h"
 
-static int	errno_exit(int err)
+static int	errno_exit(void)
 {
 	l_printf("minishell: echo: %s\n", strerror(errno));
 	return (1);
@@ -30,13 +30,13 @@ static int	protected_putarrstr_fd(char **argv, char *sep, int fd)
 		{
 			if (write(fd, *argv, ft_strlen(*argv)) == -1 ||
 				write(fd, sep, ft_strlen(sep)) == -1)
-				return (errno_exit(errno));
+				return (errno_exit());
 			argv++;
 		}
 		if (*argv)
 		{
 			if (write(fd, *argv, ft_strlen(*argv)) == -1)
-				return (errno_exit(errno));
+				return (errno_exit());
 		}
 	}
 	return (0);
@@ -57,17 +57,8 @@ int			echo(char **job, int fd)
 			if (protected_putarrstr_fd(job + 1, " ", fd) > 0)
 				return (1);
 			if (write(1, "\n", fd) == -1)
-				return (errno_exit(errno));
+				return (errno_exit());
 		}
 	}
-	return (0);	
-}
-
-/*
-int		main(int argc, char **argv)
-{
-	if (argc > 1)
-		printf("echo = %d\n", echo(argv + 1, 1));
 	return (0);
 }
-*/

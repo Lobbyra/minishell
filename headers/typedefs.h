@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   typedefs.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/24 15:09:03 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/04 13:45:21 by jecaudal         ###   ########.fr       */
+/*   Created: 2020/07/04 11:48:04 by jecaudal          #+#    #+#             */
+/*   Updated: 2020/07/04 11:48:38 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#ifndef TYPEDEFS_H
+# define TYPEDEFS_H
 
-int	ft_strlcpy(char *dest, char *src, unsigned int size)
+typedef char	t_bool;
+
+typedef struct	s_stock
 {
-	unsigned int i;
+	char		**envp;
+	char		*user_input;
+	char		*buf_user_input;
+	char		***jobs;
+	int			n_jobs;
+	t_bool		is_pipe;
+	int			*pipes;
+	char		exit_status;
+	char		*error_strings;
+	t_bool		is_debug;
+}				t_stock;
 
-	i = 0;
-	if (size == 0)
-		return (0);
-	while (i < size && src[i] != '\0')
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (i);
-}
+#endif

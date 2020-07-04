@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 17:44:07 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/29 18:03:32 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/04 11:40:36 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 
 static int	count_non_builtins_jobs(char ***jobs, int n_jobs)
 {
-	int count;
-	char ***i_jobs;
+	int		count;
+	char	***i_jobs;
 
 	count = 0;
 	i_jobs = jobs;
@@ -32,7 +32,7 @@ static int	count_non_builtins_jobs(char ***jobs, int n_jobs)
 	return (count);
 }
 
-void	terminator(char ***jobs, int n_jobs, char *status)
+void		terminator(char ***jobs, int n_jobs, char *status)
 {
 	int n_dead;
 	int n_childs;

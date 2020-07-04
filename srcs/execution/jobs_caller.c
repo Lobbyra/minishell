@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:24:06 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/03 14:54:34 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/04 13:56:27 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	debug_jobs_caller(t_stock *stock, int *pipes)
 	l_printf("###___________________###\n\n");
 }
 
-int		jobs_caller(t_stock *s)
+int			jobs_caller(t_stock *s)
 {
 	int		err;
 	int		*pipes;
@@ -43,10 +43,7 @@ int		jobs_caller(t_stock *s)
 	{
 		if (**i_jobs)
 		{
-			if (s->n_jobs > 1 && i_jobs - s->jobs < s->n_jobs - 1)
-				is_pipe = TRUE;
-			else
-				is_pipe = FALSE;
+			is_pipe = (s->n_jobs > 1 && i_jobs - s->jobs < s->n_jobs - 1);
 			instance_builder(s, i_jobs - s->jobs, pipes, is_pipe);
 		}
 		i_jobs++;

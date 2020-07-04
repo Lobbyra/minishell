@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 14:49:08 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/26 16:02:39 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/04 11:22:11 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,28 +91,3 @@ int				export(char ***envp, char **job, int fd)
 	}
 	return (err);
 }
-
-/*
-int		main(int argc, char **argv, char **envp)
-{
-	char **dup_envp;
-	char *test[2] = {"export", NULL};
-
-	if (argc >= 2)
-	{
-		dup_envp = ft_strarrdup(envp);
-		// l_printf("Envp before addition :\n\n");
-		// print_envp_export(dup_envp, 1);
-		// l_printf("----------------------------\n\n");
-		printf("export = %d\n", export(&dup_envp, argv + 1, 1));
-		// export(&dup_envp, argv + 1, 1);
-		export(&dup_envp, test, 1);
-		// l_printf("Envp after addition :\n\n");
-		// print_envp_export(dup_envp, 1);
-		ft_freestrs(dup_envp);
-	}
-	return (0);
-}
-
-__attribute__((destructor)) static void leak() { getchar(); }
-*/

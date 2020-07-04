@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 16:29:39 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/02 14:48:30 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/04 11:43:52 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # define ERR_QUOTE2 "\'\nminishell: syntax error: unexpected end of file\n"
 # define ERR_PIPE "minishell: syntax error: unexpected end of file\n"
 
-int	 	check_pipe(t_stock *stock);
+int		check_pipe(t_stock *stock);
 int		check_quote(t_stock *stock);
 int		check_end_backslash(t_stock *s);
 int		number_env_var(char *user_input);
@@ -32,11 +32,10 @@ int		verif_metacharacter(t_stock *s, char **command);
 int		is_metacharacter(char c);
 int		verif_files(t_stock *s);
 
-
 char	*env_var(t_stock *s);
 char	*remove_and_replace(char *user_input, char **tab, char **value);
 
-char    **get_path(char **envp);
+char	**get_path(char **envp);
 char	**split_command(char *cmd);
 char	**pre_malloc_arrstring(int nb_env_var);
 

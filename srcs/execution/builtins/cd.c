@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 13:53:35 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/29 18:22:18 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/04 11:21:55 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,3 @@ int		cd(char *path)
 	}
 	return (0);
 }
-
-/*
-int		main(int argc, char **argv)
-{
-	l_printf("### DEBUG : curr_path = [%d", pwd(1));
-	fflush(stdout);
-	l_printf("]\n\n");
-	fflush(stdout);
-	if (argc == 2)
-		cd(argv[1]);
-	l_printf("### DEBUG : now_path = [%d", pwd(1));
-	fflush(stdout);
-	l_printf("]\n\n");
-	fflush(stdout);
-	return (0);
-}
-*/

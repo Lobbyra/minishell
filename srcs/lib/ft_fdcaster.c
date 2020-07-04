@@ -6,13 +6,14 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/09 13:13:35 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/13 16:10:52 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/04 13:42:07 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 ** This function take two file descriptors. One source and one destination.
-** It will read all content from source (fd_src) fd and write it in destination (fd_dst).
+** It will read all content from source (fd_src) fd and write it in
+** destination (fd_dst).
 ** If a open or read error happend, this fun return -1.
 ** This function require get_next_line() of github/lobbyra/get_next_line .
 */

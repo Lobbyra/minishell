@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 18:05:40 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/03 18:39:23 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/04 11:21:07 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 /*
 **	Static function of check_user_input.
 */
+
 static int	print_error(void)
 {
 	ft_putstr_fd("minishell: ", 2);
@@ -25,6 +26,7 @@ static int	print_error(void)
 /*
 **	static function of check_user_input.
 */
+
 static void	skip_cmd(char **str)
 {
 	char **save_str;
@@ -48,6 +50,7 @@ static void	skip_cmd(char **str)
 **	For example : echo test ; ; echo exit
 **	contain an empty command.
 */
+
 int			check_user_input(char *user_input)
 {
 	char	*i_ui;
@@ -66,7 +69,7 @@ int			check_user_input(char *user_input)
 	return (0);
 }
 
-int		panic_wait_instruction(char **to_free, int err)
+int			panic_wait_instruction(char **to_free, int err)
 {
 	if (*to_free != NULL)
 	{

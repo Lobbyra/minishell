@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/15 15:19:36 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/16 16:49:33 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/04 11:18:35 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	free_jobs(char ***jobs, int n_jobs)
 	}
 }
 
-void	free_t_stock(t_stock *stock)
+void		free_t_stock(t_stock *stock)
 {
 	if (stock)
 	{

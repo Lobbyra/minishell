@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/23 14:48:32 by jereligi          #+#    #+#             */
-/*   Updated: 2020/06/30 18:15:12 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/04 14:06:13 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ char	*remove_and_replace(char *user_input, char **tab, char **value)
 	int		x;
 	char	*new;
 
+	tab = NULL;
 	if (!(new = (char *)malloc(sizeof(char) * \
 	count_len_new_str(user_input, value) + 1)))
 		return (NULL);

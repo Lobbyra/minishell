@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 17:50:50 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/30 17:51:10 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/04 11:28:15 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_bool	is_builtin(char *path)
 {
 	t_bool	ret;
 	char	*exec_name;
-	
+
 	ret = FALSE;
 	if (!(exec_name = ft_basename(path)))
 		return (FALSE);

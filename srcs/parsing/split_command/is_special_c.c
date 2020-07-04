@@ -6,13 +6,13 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 18:23:56 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/30 18:52:17 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/04 10:37:44 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int is_special_c(char *c)
+int		is_special_c(char *c)
 {
 	if (*c == '|' || *c == '<')
 		return (*c == '|' || *c == '<');

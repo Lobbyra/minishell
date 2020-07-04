@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/23 18:40:04 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/24 13:42:34 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/04 11:23:28 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 
 #include "minishell.h"
 
-int pwd(int fd)
+int		pwd(int fd)
 {
 	char *path;
-	
+
 	errno = 0;
 	if (!(path = getcwd(NULL, MAX_PATH_LEN)))
 		return (errno);
@@ -28,12 +28,3 @@ int pwd(int fd)
 		return (errno);
 	return (0);
 }
-
-/*
-int		main(int argc, char **argv)
-{
-	if (argc == 2)
-		printf("pwd = %d\n", pwd(atoi(argv[1])));
-	return (0);
-}
-*/

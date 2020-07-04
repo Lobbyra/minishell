@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 15:36:34 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/03 18:39:57 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/04 14:20:20 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 /*
 **	Will return a duplication of cmd without the first command.
 */
-static char *cut_cmd(char *cmd)
+
+static char	*cut_cmd(char *cmd)
 {
 	char	*ret;
 	char	*save_cmd;
@@ -43,10 +44,11 @@ static char *cut_cmd(char *cmd)
 /*
 **	Return the len of the first command in str.
 */
+
 static int	len_first_cmd(char *str)
 {
 	char *i_str;
-	
+
 	i_str = str;
 	while (*i_str)
 	{
@@ -75,6 +77,7 @@ static void	pass_n_cpy(char **i_str, char **i_new)
 **	This function will return a copy of the first command in str.
 **	Commands are separated by non-quoted char ';'.
 */
+
 static char	*get_cmd(char *str)
 {
 	char	*new;
@@ -106,11 +109,14 @@ static char	*get_cmd(char *str)
 
 int			wait_instruction(t_stock *s)
 {
-	int status;
+	char	*pwd;
+	int		status;
 
+	pwd = NULL;
 	if (s->buf_user_input == NULL)
 	{
-		l_printf("%s", OUR_PS1);
+		pwd = getcwd(NULL, MAX_PATH_LEN);
+		l_printf("minishell[%s]$>", pwd);
 		status = get_next_line(0, &(s->buf_user_input));
 		if (status == -1)
 			return (panic_wait_instruction(&(s->buf_user_input), ERR_ERRNO));
@@ -121,5 +127,7 @@ int			wait_instruction(t_stock *s)
 	}
 	s->user_input = get_cmd(s->buf_user_input);
 	s->buf_user_input = cut_cmd(s->buf_user_input);
+	if (pwd != NULL)
+		free(pwd);
 	return (0);
 }

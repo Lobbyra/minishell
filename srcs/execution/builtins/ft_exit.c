@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 13:43:09 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/26 17:56:44 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/04 11:22:17 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,3 @@ void	ft_exit(int err)
 {
 	exit(err);
 }
-
-/*
-int		main(int argc, char **argv)
-{
-	ft_exit(1554);
-	return (0);
-}
-*/

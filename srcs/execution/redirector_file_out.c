@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/02 14:13:03 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/03 14:35:40 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/04 11:39:38 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ static int	process_redir(int fd, char *path)
 	return (0);
 }
 
-int		redirector_file_out(t_stock *s, int jobpos)
+int			redirector_file_out(t_stock *s, int jobpos)
 {
 	int		fd;
 	char	**i_job;
-	
+
 	i_job = s->jobs[jobpos];
 	while (*i_job)
 	{

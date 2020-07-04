@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 16:47:17 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/03 15:36:52 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/04 14:20:24 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,12 @@
 /*
 ** Used to free variables alloced for just one command.
 */
-static void	reset(t_stock *stock)
+
+static void		reset(t_stock *stock)
 {
 	int i_jobs;
 
 	i_jobs = 0;
-	// if (stock->jobs != NULL)
-	// {
-	// 	while (i_jobs < stock->n_jobs)
-	// 		ft_freestrs(stock->jobs[i_jobs++]);
-	// 	free(stock->jobs);
-	// 	stock->jobs = NULL;
-	// }
 	stock->jobs = NULL;
 	if (stock->pipes)
 	{
@@ -54,10 +48,17 @@ static t_bool	debug_arg_detection(int argc, char **argv)
 
 static void		ctrl_c_management(int nothing)
 {
-	l_printf("\r\n%s", OUR_PS1);
+	char *pwd;
+
+	pwd = NULL;
+	pwd = getcwd(NULL, MAX_PATH_LEN);
+	nothing = 0;
+	l_printf("\r\nminishell[%s]$>", pwd);
+	if (pwd != NULL)
+		free(pwd);
 }
 
-int			main(int argc, char **argv, char **envp)
+int				main(int argc, char **argv, char **envp)
 {
 	int		err;
 	t_stock	*stock;

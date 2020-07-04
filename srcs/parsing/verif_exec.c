@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verif_exec.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Jeanxavier <Jeanxavier@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 18:08:03 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/03 12:02:30 by Jeanxavier       ###   ########.fr       */
+/*   Updated: 2020/07/04 11:07:23 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	check_path(t_stock *s, int i)
 {
 	int			debug;
 	struct stat	buf;
-	
+
 	errno = 0;
 	stat(s->jobs[i][0], &buf);
 	debug = errno;

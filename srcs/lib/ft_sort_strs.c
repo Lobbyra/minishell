@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 13:29:49 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/26 15:55:20 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/04 13:44:08 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_sort_strs(char **argv)
 {
-	int i;
-	char *temp;
+	int		i;
+	char	*temp;
 
 	i = 0;
 	while (argv[i])

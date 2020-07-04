@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/20 14:38:32 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/30 18:43:14 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/04 10:46:16 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	part_len_dquote(char *str)
 	while (*str)
 	{
 		if (*str == '\"' && *(str - 1) != '\\')
-			break;
+			break ;
 		if (*str == '\\' &&
 		(*(str + 1) == '\"' || *(str + 1) == '$' || *(str + 1) == '`'))
 			str++;
@@ -44,20 +44,20 @@ static int	part_len_dquote(char *str)
 static int	part_len_quote(char *str)
 {
 	int count;
-	
+
 	str++;
 	count = 0;
 	while (*str)
 	{
 		if (*str == '\'')
-			break;
+			break ;
 		str++;
 		count++;
 	}
 	return (count);
 }
 
-int	part_len(char *str, char first_letter)
+int			part_len(char *str, char first_letter)
 {
 	int count;
 

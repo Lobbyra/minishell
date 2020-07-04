@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/02 14:05:40 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/02 18:45:53 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/04 11:40:15 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static int	len_less_redir(char **job)
 	return (count);
 }
 
-char 		**rm_redir(char **job)
+char		**rm_redir(char **job)
 {
 	char	**new;
 	char	**i_new;

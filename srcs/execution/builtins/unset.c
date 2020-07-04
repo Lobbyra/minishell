@@ -6,13 +6,13 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 14:42:06 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/26 17:56:35 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/04 11:23:44 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 **	This is the code source of minishell builtin of unset.
-**	This function will 
+**	This function will
 */
 
 #include "minishell.h"
@@ -44,7 +44,7 @@ static t_bool	is_correct_name(char *arg)
 	return (TRUE);
 }
 
-static char	**panic_var_deletion(char **new, char **i_new)
+static char		**panic_var_deletion(char **new, char **i_new)
 {
 	while (i_new > new)
 	{
@@ -55,7 +55,7 @@ static char	**panic_var_deletion(char **new, char **i_new)
 	return (NULL);
 }
 
-char	**var_deletion(char **save_envp, char **envp, char *var)
+static char		**var_deletion(char **save_envp, char **envp, char *var)
 {
 	char	**new;
 	char	**i_new;
@@ -69,7 +69,7 @@ char	**var_deletion(char **save_envp, char **envp, char *var)
 		{
 			if (!(*i_new = ft_strdup(*envp)))
 				return (panic_var_deletion(new, i_new));
-			i_new++;	
+			i_new++;
 		}
 		envp++;
 	}
@@ -78,7 +78,7 @@ char	**var_deletion(char **save_envp, char **envp, char *var)
 	return (new);
 }
 
-int		unset(char ***envp, char **job)
+int				unset(char ***envp, char **job)
 {
 	int i;
 
@@ -93,21 +93,3 @@ int		unset(char ***envp, char **job)
 	}
 	return (0);
 }
-
-/*
-int		main(int argc, char **argv, char **envp)
-{
-	char **dup;
-
-	if (argc >= 2)
-	{
-		dup = ft_strarrdup(envp);
-		printf("unset = %d\n", unset(&dup, argv + 1));
-		ft_putarrstr(dup, "\n");
-		ft_freestrs(dup);
-	}
-	return (0);
-}
-
-__attribute__((destructor)) static void leak() { getchar(); }
-*/

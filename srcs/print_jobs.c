@@ -6,13 +6,13 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/16 16:54:44 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/17 16:18:10 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/04 11:19:33 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void print_jobs(char ***jobs, int n_jobs)
+void	print_jobs(char ***jobs, int n_jobs)
 {
 	int i;
 

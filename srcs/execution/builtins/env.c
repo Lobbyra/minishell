@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 13:20:02 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/24 13:42:29 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/04 11:22:38 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,3 @@ int		env(char **envp, int fd)
 		return (errno);
 	return (0);
 }
-
-/*
-int		main(int argc, char **argv, char **envp)
-{
-	if (argc == 2)
-		env(envp, atoi(argv[1]));
-	return (0);
-}
-*/

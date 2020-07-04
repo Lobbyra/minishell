@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/20 15:22:41 by jereligi          #+#    #+#             */
-/*   Updated: 2020/06/30 18:09:29 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/04 10:49:43 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,7 @@ int				check_end_backslash(t_stock *s)
 
 	i = 0;
 	status = 0;
-	while (s->user_input[i])
-		i++;
-	i--;
+	i = ft_strlen(s->user_input) - 1;
 	if (s->user_input[i] == '\\' && s->user_input[i - 1] != '\\')
 	{
 		if (additional_read_backslash(s) == ERR_SYNTAX)

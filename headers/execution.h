@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 15:10:39 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/02 17:35:51 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/04 11:51:22 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define EXECUTION_H
 
 # define MAX_PATH_LEN 4096
-
 
 /*
 **	Sub function of execution.
@@ -50,7 +49,7 @@ int		var_replacement(char **envp, char *arg);
 /*
 **	Sub function of redirector.
 */
-char 	**rm_redir(char **job);
+char	**rm_redir(char **job);
 t_bool	is_in_redir(char **job);
 t_bool	is_out_redir(char **job);
 int		redirector_file_in(char **job);

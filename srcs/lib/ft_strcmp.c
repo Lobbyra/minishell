@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/01 15:30:17 by Lobbyra           #+#    #+#             */
-/*   Updated: 2020/07/01 14:42:12 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/04 13:44:48 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int		ft_strcmp(char *s1, char *s2)
 {
 	char *null_s1;
 	char *null_s2;
-	
+
 	null_s1 = "";
 	null_s2 = "";
 	if (s1 == NULL)

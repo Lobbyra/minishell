@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 15:49:03 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/23 17:02:14 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/04 10:37:18 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char		**init_split(int n_args)
 {
 	char	**new;
 	int		ptrs_alloced;
-	
+
 	if (!(new = (char**)malloc(sizeof(char*) * (n_args + 1))))
 		return (NULL);
 	ptrs_alloced = pre_alloc(new, n_args);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verif_exec_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Jeanxavier <Jeanxavier@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 12:45:58 by Jeanxavier        #+#    #+#             */
-/*   Updated: 2020/07/01 18:44:43 by Jeanxavier       ###   ########.fr       */
+/*   Updated: 2020/07/04 11:09:29 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	is_builtins(char *jobs)
 	return (0);
 }
 
-static int free_alloc(char *exec, char **path, t_stock *s, int n)
+static int	free_alloc(char *exec, char **path, t_stock *s, int n)
 {
 	free(exec);
 	free(s->jobs[n][0]);
@@ -69,7 +69,7 @@ static int	check_all_path(t_stock *s, int n, t_bool is_debug)
 
 int			management_check_all_path(t_stock *s, int n, t_bool is_debug)
 {
-	if (check_all_path(s, n , is_debug) == 1)
+	if (check_all_path(s, n, is_debug) == 1)
 		return (1);
 	if (is_builtins(s->jobs[n][0]))
 		return (1);

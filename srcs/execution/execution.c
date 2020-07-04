@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/16 14:02:43 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/03 13:48:52 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/04 11:25:50 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	debug_jobs(char ***jobs, int size)
 	l_printf("###____________###\n\n");
 }
 
-int		execution(t_stock *s)
+int			execution(t_stock *s)
 {
 	int		err;
 	int		save_stdout;

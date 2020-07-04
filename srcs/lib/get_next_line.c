@@ -6,25 +6,11 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 09:04:57 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/16 14:39:21 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/04 13:47:04 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-#include <stdio.h>
-
-static int	ft_strcmp(char *s1, char *s2)
-{
-	if (s1 && s2)
-		while (*s1 == *s2 && *s1 && *s2)
-		{
-			s1++;
-			s2++;
-		}
-	else
-		return (0);
-	return (*s1 - *s2);
-}
+#include "minishell.h"
 
 int			ft_strlen_c(char *str, char c)
 {

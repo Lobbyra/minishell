@@ -6,7 +6,7 @@
 #    By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/15 13:51:51 by jecaudal          #+#    #+#              #
-#    Updated: 2020/07/03 18:12:53 by jecaudal         ###   ########.fr        #
+#    Updated: 2020/07/04 14:12:22 by jecaudal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME			=	minishell
 
 HEADER			=	headers/
 
-CFLAGS			+=	-Wall -Wextra -I ./headers/
+CFLAGS			+=	-Werror -Wall -Wextra -I ./headers/
 
 CC				=	gcc
 
@@ -126,23 +126,22 @@ PATH_L_PRINTF	=	./srcs/lib/simplified_printf/
 
 L_PRINTF		=	-L./srcs/lib/simplified_printf -llprintf
 
-all				:
-					@echo "/!\\ Please use dev rule for now. /!\\"
+all				:	$(NAME)
 
 make_l_printf	:
 					@make -C $(PATH_L_PRINTF)
 
-dev				:	make_l_printf $(OBJS_LIB) $(OBJS)
+$(NAME)			:	make_l_printf $(OBJS_LIB) $(OBJS)
 					$(CC) -o $(NAME) $(L_PRINTF) $(OBJS_LIB) $(OBJS)
 
-fdev			:	make_l_printf $(OBJS_LIB) $(OBJS)
+f				:	make_l_printf $(OBJS_LIB) $(OBJS)
 					$(CC) -o $(NAME) $(L_PRINTF) -fsanitize=address $(OBJS_LIB) $(OBJS)
 
-dev-clean		:
+clean		:
 					rm -f $(OBJS_LIB) $(OBJS)
 
-dev-fclean		:	dev-clean
+fclean		:		clean
 					rm -f $(NAME)
 					@make fclean -C $(PATH_L_PRINTF)
 
-dev-re			:	dev-clean dev
+re			:		fclean $(NAME)

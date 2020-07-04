@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Jeanxavier <Jeanxavier@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 16:02:38 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/02 11:40:09 by Jeanxavier       ###   ########.fr       */
+/*   Updated: 2020/07/04 11:06:22 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	debug_parsing(t_stock *stock)
 	return (0);
 }
 
-int		parsing(t_stock *stock)
+int			parsing(t_stock *stock)
 {
 	int		i;
 	char	**tmp;

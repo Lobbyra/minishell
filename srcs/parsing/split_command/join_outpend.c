@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 13:48:15 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/01 15:21:25 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/04 10:38:10 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static char	**panic_replacement(char **new, char **i_new)
 	return (NULL);
 }
 
-static char **replacement(char **arr)
+static char	**replacement(char **arr)
 {
 	char	**new;
 	char	**i_new;

@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/20 16:50:52 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/01 15:29:31 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/04 10:47:35 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 **		- Part :	A part is a sequence quoted or non-quoted seperate by the
 **					start, the end or quoted sequence. example :
 **					hey"world"'wassup' = {hey, "world", 'wassup'}
-**	
+**
 **	Description :
 **	This function will split each argument from the cmd less quotes and
 **	backslash when it's necessary.
@@ -75,7 +75,7 @@ char		**split_command(char *cmd)
 {
 	char **new;
 	char **i_new;
-	
+
 	if (!(new = init_split(word_counter(cmd))))
 		return (NULL);
 	i_new = new;
@@ -99,21 +99,3 @@ char		**split_command(char *cmd)
 		return (NULL);
 	return (new);
 }
-
-/*
-int		main(int argc, char **argv)
-{
-	if (argc == 2)
-	{
-		char **arr;
-		
-		printf("[%s] splitted = [", argv[1]);
-		fflush(stdout);
-		arr = split_command(argv[1]);
-		ft_putarrstr(arr, "], [");
-		ft_freestrs(arr);
-		printf("]\n");
-	}	
-	return (0);
-}
-*/

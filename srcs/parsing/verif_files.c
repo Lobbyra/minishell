@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verif_files.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Jeanxavier <Jeanxavier@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 14:12:46 by Jeanxavier        #+#    #+#             */
-/*   Updated: 2020/07/02 11:41:23 by Jeanxavier       ###   ########.fr       */
+/*   Updated: 2020/07/04 11:16:06 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int		write_right(t_stock *s, char *file)
 	{
 		s->error_strings = ft_strjoindel(s->error_strings, \
 		ft_strjoin("minishell: ", file), 2);
-		s->error_strings = ft_strjoindel(s->error_strings, "Permission denied", 1);
+		s->error_strings = ft_strjoindel(s->error_strings, ERR_PERM_DENIED, 1);
 		if (s->is_debug == TRUE)
 			l_printf("\033[31mno writing rights \033[37m[%s]\n", file);
 		return (0);
@@ -36,7 +36,7 @@ static int		read_right(t_stock *s, char *file)
 	{
 		s->error_strings = ft_strjoindel(s->error_strings, \
 		ft_strjoin("minishell: ", file), 3);
-		s->error_strings = ft_strjoindel(s->error_strings, "Permission denied\n", 1);
+		s->error_strings = ft_strjoindel(s->error_strings, ERR_PERM_DENIED, 1);
 		if (s->is_debug == TRUE)
 			l_printf("\033[31mno reading rights \033[37m[%s]\n", file);
 		return (0);
@@ -74,10 +74,10 @@ static int		check_file(t_stock *s, int i, int n)
 				return (0);
 		}
 	}
-	return (0);	
+	return (0);
 }
 
-int		verif_files(t_stock *s)
+int				verif_files(t_stock *s)
 {
 	int i;
 	int	n;
