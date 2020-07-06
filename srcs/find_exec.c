@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/02 13:31:28 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/02 13:46:16 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/06 14:16:42 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 
 char	**find_exec(char **job)
 {
+	if (!job)
+		return (NULL);
 	while (*job)
 	{
 		if (ft_strcmp(*job, ">") == 0 ||

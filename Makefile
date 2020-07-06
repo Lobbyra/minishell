@@ -6,7 +6,7 @@
 #    By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/15 13:51:51 by jecaudal          #+#    #+#              #
-#    Updated: 2020/07/04 14:12:22 by jecaudal         ###   ########.fr        #
+#    Updated: 2020/07/06 13:33:12 by jecaudal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,6 +71,7 @@ SRCS_LIB		=	./srcs/print_jobs.c						\
 OBJS_LIB		=	$(SRCS_LIB:.c=.o)
 
 SRCS			=	./srcs/main.c									\
+					./srcs/reset.c									\
 					./srcs/find_exec.c								\
 					./srcs/init_stock.c								\
 					./srcs/free_t_stock.c							\

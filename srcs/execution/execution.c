@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/16 14:02:43 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/04 11:25:50 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/06 14:15:24 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,13 @@ int			execution(t_stock *s)
 {
 	int		err;
 	int		save_stdout;
+	char	**exec;
 
 	err = 0;
 	if (s->is_debug == TRUE)
 		debug_jobs(s->jobs, s->n_jobs);
-	if (s->n_jobs == 1 && is_builtin(find_exec(s->jobs[0])[0]) == TRUE)
+	exec = find_exec(s->jobs[0]);
+	if (s->n_jobs == 1 && exec && is_builtin(*exec) == TRUE)
 	{
 		save_stdout = dup(1);
 		if (is_out_redir(s->jobs[0]) == TRUE)

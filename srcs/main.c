@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 16:47:17 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/04 14:20:24 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/06 14:17:24 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,6 @@
 /*
 ** Used to free variables alloced for just one command.
 */
-
-static void		reset(t_stock *stock)
-{
-	int i_jobs;
-
-	i_jobs = 0;
-	stock->jobs = NULL;
-	if (stock->pipes)
-	{
-		free(stock->pipes);
-		stock->pipes = NULL;
-	}
-	if (stock->error_strings)
-	{
-		free(stock->error_strings);
-		stock->error_strings = NULL;
-	}
-	if (stock->user_input)
-	{
-		free(stock->user_input);
-		stock->user_input = NULL;
-	}
-}
 
 static t_bool	debug_arg_detection(int argc, char **argv)
 {

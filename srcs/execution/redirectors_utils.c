@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/02 14:05:40 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/04 11:40:15 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/06 13:30:37 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,6 @@ char		**rm_redir(char **job)
 			i_new++;
 		}
 	}
+	ft_freestrs(save_job);
 	return (new);
 }
