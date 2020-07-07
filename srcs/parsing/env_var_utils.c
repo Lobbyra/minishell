@@ -6,7 +6,7 @@
 /*   By: Jeanxavier <Jeanxavier@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/23 14:48:32 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/07 18:15:51 by Jeanxavier       ###   ########.fr       */
+/*   Updated: 2020/07/07 18:50:39 by Jeanxavier       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@ int		number_env_var(char *user_input)
 	number_env_var = 0;
 	while (user_input[i])
 	{
-		if (user_input[i] == '\'' && user_input[i] == '\"')
+		if (user_input[i] == '\'' || user_input[i] == '\"')
 			word_between_simple_quote(&i, user_input, &quote);
-		if (user_input[i] == '$' && user_input[i - 1] != '\\' && quote == 0)
+		l_printf("quote:%d | s:%c\n", quote, user_input[i]);
+		if (user_input[i] == '$' && user_input[i - 1] != '\\' && (quote == 0 || quote == 2))
 			number_env_var++;
 		i++;
 	}

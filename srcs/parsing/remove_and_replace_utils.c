@@ -6,7 +6,7 @@
 /*   By: Jeanxavier <Jeanxavier@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/07 14:47:13 by Jeanxavier        #+#    #+#             */
-/*   Updated: 2020/07/07 18:17:07 by Jeanxavier       ###   ########.fr       */
+/*   Updated: 2020/07/07 18:52:13 by Jeanxavier       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	is_env_exit_status(char *env_var, char **value, int i, t_stock *s)
 
 void	word_between_simple_quote(int *i, char *user_input, int *quote)
 {
-	if ((user_input[*i] == '\"' && *quote == '0')
+	if ((user_input[*i] == '\"' && *quote == 0)
 	&& (!is_escape(*i, user_input)))
 		*quote = 2;
 	else if ((user_input[*i] == '\'' && *quote == 0)
@@ -54,9 +54,9 @@ char	*remove_and_replace_utils(char *user_input, char *new, char **value)
 	quote = 0;
 	while (user_input[i])
 	{	
-		if (user_input[i] == '\'' || user_input[i] == '\"')
+		if (user_input[i] == '\'' || user_input[i] == '"')
 			word_between_simple_quote(&i, user_input, &quote);
-		if (user_input[i] == '$' && user_input[i - 1] != '\\' && quote == 0)
+		if (user_input[i] == '$' && user_input[i - 1] != '\\' && (quote == 0 || quote == 2))
 		{
 			i++;
 			while (user_input[i] && (ft_isalnum(user_input[i]) || user_input[i] == '?'))

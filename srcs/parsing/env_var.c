@@ -6,7 +6,7 @@
 /*   By: Jeanxavier <Jeanxavier@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/23 14:33:48 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/07 18:15:06 by Jeanxavier       ###   ########.fr       */
+/*   Updated: 2020/07/07 18:50:54 by Jeanxavier       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,9 @@ char		**get_env_var(char *user_input, int nb_env_var, t_bool is_debug)
 	tab_env_var = pre_malloc_arrstring(nb_env_var);
 	while (user_input[i])
 	{
-		if (user_input[i] == '\'' && user_input[i] == '\"')
+		if (user_input[i] == '\'' || user_input[i] == '\"')
 			word_between_simple_quote(&i, user_input, &quote);
-		if (user_input[i] == '$' && (!is_escape(i, user_input)) && quote == 0)
+		if (user_input[i] == '$' && (!is_escape(i, user_input)) && (quote == 0 || quote == 2))
 		{
 			free(tab_env_var[n]);
 			tab_env_var[n] = get_name(&user_input[i + 1]);
