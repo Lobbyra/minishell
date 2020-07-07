@@ -6,7 +6,7 @@
 /*   By: Jeanxavier <Jeanxavier@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/07 14:47:13 by Jeanxavier        #+#    #+#             */
-/*   Updated: 2020/07/07 18:52:13 by Jeanxavier       ###   ########.fr       */
+/*   Updated: 2020/07/07 18:59:29 by Jeanxavier       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	word_between_simple_quote(int *i, char *user_input, int *quote)
 	else if ((*quote == 2 && user_input[*i] == '\"') && \
 	(!is_escape(*i, user_input)))
 		*quote = 0;
-	*i = *i + 1;
 }
 
 char	*remove_and_replace_utils(char *user_input, char *new, char **value)
