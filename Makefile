@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+         #
+#    By: Jeanxavier <Jeanxavier@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/15 13:51:51 by jecaudal          #+#    #+#              #
-#    Updated: 2020/07/07 14:01:13 by jecaudal         ###   ########.fr        #
+#    Updated: 2020/07/07 17:44:07 by Jeanxavier       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,6 +79,7 @@ SRCS			=	./srcs/main.c									\
 					./srcs/wait_instruction.c						\
 					./srcs/wait_instruction_utils.c					\
 					./srcs/parsing/env_var.c						\
+					./srcs/parsing/ft_itoa.c						\
 					./srcs/parsing/parsing.c						\
 					./srcs/parsing/get_path.c						\
 					./srcs/parsing/check_pipe.c						\
@@ -93,6 +94,7 @@ SRCS			=	./srcs/main.c									\
 					./srcs/parsing/verif_metacharacter.c			\
 					./srcs/parsing/check_end_backslash.c			\
 					./srcs/parsing/command_to_jobs_utils.c			\
+					./srcs/parsing/remove_and_replace_utils.c		\
 					./srcs/parsing/split_command/part_add.c			\
 					./srcs/parsing/split_command/part_len.c			\
 					./srcs/parsing/split_command/skip_part.c		\

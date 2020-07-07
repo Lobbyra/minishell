@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_var_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Jeanxavier <Jeanxavier@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/23 14:48:32 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/04 14:06:13 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/07 18:15:51 by Jeanxavier       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,17 @@
 int		number_env_var(char *user_input)
 {
 	int		i;
+	int		quote;
 	int		number_env_var;
 
 	i = 0;
+	quote = 0;
 	number_env_var = 0;
 	while (user_input[i])
 	{
-		if (user_input[i] == '$' && user_input[i - 1] != '\\')
+		if (user_input[i] == '\'' && user_input[i] == '\"')
+			word_between_simple_quote(&i, user_input, &quote);
+		if (user_input[i] == '$' && user_input[i - 1] != '\\' && quote == 0)
 			number_env_var++;
 		i++;
 	}
@@ -33,13 +37,13 @@ char	**pre_malloc_arrstring(int nb_env_var)
 	int		i;
 	char	**tab;
 
-	if (!(tab = (char **)malloc(sizeof(char *) * nb_env_var + 1)))
+	if (!(tab = (char **)malloc(sizeof(char *) * (nb_env_var + 1))))
 		return (NULL);
 	tab[nb_env_var] = NULL;
 	i = 0;
 	while (i < nb_env_var)
 	{
-		if (!(tab[i] = (char *)malloc(sizeof(char))))
+		if (!(tab[i] = (char *)malloc(sizeof(char) * 1)))
 			return (NULL);
 		tab[i][0] = '\0';
 		i++;
@@ -94,28 +98,12 @@ int		count_len_new_str(char *user_input, char **value)
 
 char	*remove_and_replace(char *user_input, char **tab, char **value)
 {
-	int		i;
-	int		n;
-	int		x;
 	char	*new;
 
 	tab = NULL;
-	if (!(new = (char *)malloc(sizeof(char) * \
-	count_len_new_str(user_input, value) + 1)))
+	if (!(new = (char *)malloc(sizeof(char) * (count_len_new_str(user_input, value) + 1))))
 		return (NULL);
-	i = 0;
-	n = 0;
-	x = 0;
-	while (user_input[i])
-		if (user_input[i] == '$' && user_input[i - 1] != '\\')
-		{
-			i++;
-			while (user_input[i] && ft_isalnum(user_input[i]))
-				i++;
-			n = n + remplace_env_var(new + n, value[x]);
-			x++;
-		}
-		else
-			new[n++] = user_input[i++];
+	new[count_len_new_str(user_input, value)] = '\0';
+	new = remove_and_replace_utils(user_input, new, value);
 	return (new);
 }
