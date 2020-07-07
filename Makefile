@@ -6,7 +6,7 @@
 #    By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/15 13:51:51 by jecaudal          #+#    #+#              #
-#    Updated: 2020/07/06 13:33:12 by jecaudal         ###   ########.fr        #
+#    Updated: 2020/07/07 14:01:13 by jecaudal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -100,6 +100,7 @@ SRCS			=	./srcs/main.c									\
 					./srcs/parsing/split_command/join_outpend.c		\
 					./srcs/parsing/split_command/is_special_c.c		\
 					./srcs/parsing/split_command/split_command.c	\
+					./srcs/parsing/split_command/quoted_meta_case.c	\
 					./srcs/execution/execution.c					\
 					./srcs/execution/init_pipes.c					\
 					./srcs/execution/terminator.c					\
@@ -127,7 +128,7 @@ PATH_L_PRINTF	=	./srcs/lib/simplified_printf/
 
 L_PRINTF		=	-L./srcs/lib/simplified_printf -llprintf
 
-all				:	$(NAME)
+all				:	f
 
 make_l_printf	:
 					@make -C $(PATH_L_PRINTF)

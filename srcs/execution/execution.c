@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/16 14:02:43 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/06 14:15:24 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/07 17:17:54 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,18 @@ static void	debug_jobs(char ***jobs, int size)
 	l_printf("###____________###\n\n");
 }
 
+static void	rm_single_metachar(char **job)
+{
+	while (*job)
+	{
+		if (is_single_quoted_meta("", *job) == TRUE)
+		{
+			*job = single_quoted_remover(*job);
+		}
+		job++;
+	}
+}
+
 int			execution(t_stock *s)
 {
 	int		err;
@@ -41,6 +53,7 @@ int			execution(t_stock *s)
 		if (is_out_redir(s->jobs[0]) == TRUE)
 			err = redirector_file_out(s, 0);
 		s->jobs[0] = rm_redir(s->jobs[0]);
+		rm_single_metachar(s->jobs[0]);
 		if (err == 0)
 			builtin_call_parent(s->jobs[0], &s->exit_status, 1, &(s->envp));
 		dup2(save_stdout, 1);

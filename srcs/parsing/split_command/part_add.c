@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/23 13:37:00 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/04 10:45:08 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/07 16:05:18 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,10 @@ char			*part_add(char *arg, char *cmd, int p_len)
 	char	quote;
 
 	quote = *cmd;
+	if (is_single_quoted_meta(arg, cmd) == TRUE)
+		return (single_meta_quoted(arg, cmd));
+	else if (is_single_quoted_meta("", arg) == TRUE)
+		arg = single_quoted_remover(arg);
 	if (!(new = (char*)malloc(sizeof(char) * (ft_strlen(arg) + p_len + 1))))
 		return (NULL);
 	ft_memcpy_n(new, arg, ft_strlen(arg));
