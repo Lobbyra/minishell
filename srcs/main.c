@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 16:47:17 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/06 14:17:24 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/08 15:20:14 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,18 @@ static t_bool	debug_arg_detection(int argc, char **argv)
 	return (FALSE);
 }
 
-static void		ctrl_c_management(int nothing)
+t_bool g_is_ctrlc = FALSE;
+
+static void		inthandler(int nothing)
 {
 	char *pwd;
 
-	pwd = NULL;
 	pwd = getcwd(NULL, MAX_PATH_LEN);
 	nothing = 0;
 	l_printf("\r\nminishell[%s]$>", pwd);
 	if (pwd != NULL)
 		free(pwd);
+	g_is_ctrlc = TRUE;
 }
 
 int				main(int argc, char **argv, char **envp)
@@ -40,7 +42,7 @@ int				main(int argc, char **argv, char **envp)
 	int		err;
 	t_stock	*stock;
 
-	signal(SIGINT, ctrl_c_management);
+	signal(SIGINT, inthandler);
 	if (!(stock = init_stock(envp)))
 		return (1);
 	stock->is_debug = debug_arg_detection(argc, argv);

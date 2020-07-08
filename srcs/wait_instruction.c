@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 15:36:34 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/04 14:20:20 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/08 15:20:29 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,8 @@ static char	*get_cmd(char *str)
 	return (new);
 }
 
+extern t_bool g_is_ctrlc;
+
 int			wait_instruction(t_stock *s)
 {
 	char	*pwd;
@@ -116,7 +118,8 @@ int			wait_instruction(t_stock *s)
 	if (s->buf_user_input == NULL)
 	{
 		pwd = getcwd(NULL, MAX_PATH_LEN);
-		l_printf("minishell[%s]$>", pwd);
+		if (g_is_ctrlc == FALSE)
+			l_printf("minishell[%s]$>", pwd);
 		status = get_next_line(0, &(s->buf_user_input));
 		if (status == -1)
 			return (panic_wait_instruction(&(s->buf_user_input), ERR_ERRNO));
@@ -129,5 +132,6 @@ int			wait_instruction(t_stock *s)
 	s->buf_user_input = cut_cmd(s->buf_user_input);
 	if (pwd != NULL)
 		free(pwd);
+	g_is_ctrlc = FALSE;
 	return (0);
 }
