@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: Jeanxavier <Jeanxavier@student.42.fr>      +#+  +:+       +#+         #
+#    By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/15 13:51:51 by jecaudal          #+#    #+#              #
-#    Updated: 2020/07/07 17:44:07 by Jeanxavier       ###   ########.fr        #
+#    Updated: 2020/07/08 14:03:27 by jecaudal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -130,7 +130,7 @@ PATH_L_PRINTF	=	./srcs/lib/simplified_printf/
 
 L_PRINTF		=	-L./srcs/lib/simplified_printf -llprintf
 
-all				:	f
+all				:	$(NAME)
 
 make_l_printf	:
 					@make -C $(PATH_L_PRINTF)
