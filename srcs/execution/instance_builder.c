@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 16:29:13 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/08 14:22:13 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/08 14:32:07 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 
 static void	debug_ib(char *path, char *exec_name, int jobpos)
 {
-	l_printf("### DEBUG INSTANCE BUILDER ###\n");
 	if (path)
 		l_printf("path = %s\n", path);
 	if (exec_name)
@@ -29,8 +28,6 @@ static void	debug_ib(char *path, char *exec_name, int jobpos)
 
 static int	panic_ib(char *path, char *exec_name, int err)
 {
-	l_printf("### DEBUG PANIC_IB ###\n");
-	l_printf("path = %s, exec_name = %s\n", path, exec_name);
 	if (path)
 		free(path);
 	if (exec_name)
