@@ -6,7 +6,7 @@
 #    By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/15 13:51:51 by jecaudal          #+#    #+#              #
-#    Updated: 2020/07/08 14:03:27 by jecaudal         ###   ########.fr        #
+#    Updated: 2020/07/08 18:10:12 by jecaudal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ HEADER			=	headers/
 
 CFLAGS			+=	-Werror -Wall -Wextra -I ./headers/
 
-CC				=	gcc
+CC				=	clang
 
 SRCS_LIB		=	./srcs/print_jobs.c						\
 					./srcs/lib/ft_skip.c					\
@@ -75,6 +75,7 @@ SRCS			=	./srcs/main.c									\
 					./srcs/find_exec.c								\
 					./srcs/init_stock.c								\
 					./srcs/free_t_stock.c							\
+					./srcs/print_prompt.c							\
 					./srcs/error_printer.c							\
 					./srcs/wait_instruction.c						\
 					./srcs/wait_instruction_utils.c					\

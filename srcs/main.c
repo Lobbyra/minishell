@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 16:47:17 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/08 15:20:14 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/08 18:28:27 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,17 @@ static t_bool	debug_arg_detection(int argc, char **argv)
 
 t_bool g_is_ctrlc = FALSE;
 
-static void		inthandler(int nothing)
+static void		handler(int nothing)
 {
-	char *pwd;
-
-	pwd = getcwd(NULL, MAX_PATH_LEN);
 	nothing = 0;
-	l_printf("\r\nminishell[%s]$>", pwd);
-	if (pwd != NULL)
-		free(pwd);
+	l_printf("\r");
+	print_prompt();
+	g_is_ctrlc = TRUE;
+}
+
+static void		quithandler(int nothing)
+{
+	nothing = 0;
 	g_is_ctrlc = TRUE;
 }
 
@@ -42,7 +44,8 @@ int				main(int argc, char **argv, char **envp)
 	int		err;
 	t_stock	*stock;
 
-	signal(SIGINT, inthandler);
+	signal(SIGINT, handler);
+	signal(SIGQUIT, quithandler);
 	if (!(stock = init_stock(envp)))
 		return (1);
 	stock->is_debug = debug_arg_detection(argc, argv);
