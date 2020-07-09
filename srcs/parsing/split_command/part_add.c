@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/23 13:37:00 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/07 16:05:18 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/09 18:09:51 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void		cpy_dquote(char **i_new, char *cmd, int p_len)
 	while (p_len > 0)
 	{
 		if (*cmd == '\\' &&
-		(*(cmd + 1) == '\"' || *(cmd + 1) == '$' || *(cmd + 1) == '`'))
+		(cmd[1] == '\"' || cmd[1] == '$' || cmd[1] == '`' || cmd[1] == '\\'))
 			cmd++;
 		**i_new = *cmd;
 		*i_new += 1;
