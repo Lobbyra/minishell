@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 14:15:46 by Jeanxavier        #+#    #+#             */
-/*   Updated: 2020/07/04 11:17:08 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/09 16:19:43 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int				verif_metacharacter(t_stock *s, char **cmd)
 	int i;
 
 	i = 0;
-	while (cmd[i + 1])
+	while (cmd[i] && cmd[i + 1])
 	{
 		if (is_metacharacter(cmd[i][0]) && is_metacharacter(cmd[i + 1][0]))
 		{
