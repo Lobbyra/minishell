@@ -6,15 +6,32 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 16:29:13 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/08 14:32:07 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/09 15:44:51 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 /*
-**	This function will call redirection piping and execute binaries.
+**	This function will call redirection piping and execute binaries in child.
 */
+
+void	print_exec_err(char *path)
+{
+	struct stat	path_stat;
+	
+	stat(path, &path_stat);
+	l_printf("minishell: %s: ", path);
+	if (ft_c_finder('/', path) == FALSE)
+		l_printf("command not found\n");
+	else if (S_ISDIR(path_stat.st_mode) == TRUE)
+		l_printf("is a directory\n");
+	else if (S_ISREG(path_stat.st_mode) == TRUE)
+		l_printf("Permission denied\n");
+	else
+		l_printf("No such file or directory\n");
+	exit(127);
+}
 
 static void	debug_ib(char *path, char *exec_name, int jobpos)
 {
@@ -69,9 +86,9 @@ int			instance_builder(t_stock *s, int jobpos, int *pipes, t_bool is_pipe)
 		close_pipes(pipes, s->n_jobs * 2 - 2);
 		if (err == 0 && is_builtin(path) == TRUE)
 			builtin_call_child(s->jobs[jobpos], &(s->exit_status), &(s->envp));
-		else if (err == 0 && execve(path, s->jobs[jobpos], s->envp) == -1)
-			l_printf("minishell: execve: %s\n", strerror(errno));
-		exit(127);
+		else if (err == 0 && (ft_c_finder('/', path) == FALSE ||
+				execve(path, s->jobs[jobpos], s->envp) == -1))
+			print_exec_err(path);
 	}
 	else if (child == -1)
 		return (panic_ib(path, exec_name, ERR_ERRNO));
