@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 11:48:04 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/04 11:48:38 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/10 14:14:16 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct	s_stock
 	char		exit_status;
 	char		*error_strings;
 	t_bool		is_debug;
+	t_bool		is_cmd_closed;
 }				t_stock;
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 15:36:34 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/08 15:20:29 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/10 14:16:15 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,7 @@ int			wait_instruction(t_stock *s)
 	}
 	s->user_input = get_cmd(s->buf_user_input);
 	s->buf_user_input = cut_cmd(s->buf_user_input);
+	s->is_cmd_closed = (s->buf_user_input != NULL);
 	if (pwd != NULL)
 		free(pwd);
 	g_is_ctrlc = FALSE;
