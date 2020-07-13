@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/15 13:22:38 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/08 18:08:12 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/13 14:41:03 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@
 # include "execution.h"
 # include "error_messages.h"
 # include "split_command.h"
+# include "split_cmd.h"
 
 void			print_prompt(void);
 void			reset(t_stock *stock);

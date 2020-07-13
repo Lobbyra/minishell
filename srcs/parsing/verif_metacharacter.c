@@ -6,9 +6,14 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 14:15:46 by Jeanxavier        #+#    #+#             */
-/*   Updated: 2020/07/09 18:31:47 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/13 13:53:58 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/*
+**	This function check if there is two metacharacters followed with nothing
+**	between.
+*/
 
 #include "minishell.h"
 

@@ -6,7 +6,7 @@
 #    By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/15 13:51:51 by jecaudal          #+#    #+#              #
-#    Updated: 2020/07/08 18:10:12 by jecaudal         ###   ########.fr        #
+#    Updated: 2020/07/13 18:21:04 by jecaudal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -104,6 +104,13 @@ SRCS			=	./srcs/main.c									\
 					./srcs/parsing/split_command/is_special_c.c		\
 					./srcs/parsing/split_command/split_command.c	\
 					./srcs/parsing/split_command/quoted_meta_case.c	\
+					./srcs/parsing/split_cmd/pass_word.c			\
+					./srcs/parsing/split_cmd/split_cmd.c			\
+					./srcs/parsing/split_cmd/is_escaped.c			\
+					./srcs/parsing/split_cmd/pass_quote.c			\
+					./srcs/parsing/split_cmd/pass_dquote.c			\
+					./srcs/parsing/split_cmd/pass_spaces.c			\
+					./srcs/parsing/split_cmd/is_sep_char.c			\
 					./srcs/execution/execution.c					\
 					./srcs/execution/init_pipes.c					\
 					./srcs/execution/terminator.c					\

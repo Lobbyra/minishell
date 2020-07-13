@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Jeanxavier <Jeanxavier@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 16:02:38 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/07 15:04:25 by Jeanxavier       ###   ########.fr       */
+/*   Updated: 2020/07/13 18:25:02 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	debug_parsing(t_stock *stock)
 	if (check_double_pipe(stock->user_input) != 0)
 		return (ERR_SYNTAX);
 	env_var(stock);
-	tmp = split_command(stock->user_input);
+	tmp = split_cmd(stock->user_input);
 	if (verif_metacharacter(stock, tmp) == 0)
 		return (ERR_SYNTAX);
 	if (command_to_jobs(stock, tmp) == 0)
@@ -55,7 +55,7 @@ int			parsing(t_stock *stock)
 	if (check_double_pipe(stock->user_input) != 0)
 		return (ERR_SYNTAX);
 	env_var(stock);
-	tmp = split_command(stock->user_input);
+	tmp = split_cmd(stock->user_input);
 	if (verif_metacharacter(stock, tmp) == 0)
 		return (ERR_SYNTAX);
 	command_to_jobs(stock, tmp);
