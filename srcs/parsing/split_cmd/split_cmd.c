@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/13 13:45:38 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/13 18:23:05 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/14 18:55:36 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@
 
 #include "minishell.h"
 
-int		word_counter(char *ui)
+int word_counter(char *ui)
 {
-	int		i;
-	int		i_temp;
-	int		count;
+	int i;
+	int i_temp;
+	int count;
 
 	i = 0;
 	count = 0;
@@ -51,14 +51,26 @@ int		word_counter(char *ui)
 	return (count);
 }
 
-char	**split_cmd(char *ui)
+static void meta_cpy(char ***i_new, char *ui, int *i)
 {
-	int		i;
-	int		i_temp;
-	char	**new;
-	char	**i_new;
+	if (ft_strncmp(ui + *i, ">>", 2) == 0)
+	{
+		**i_new = ft_strdup(">>");
+		(*i) += 2;
+	}
+	else
+		**i_new = ft_ctostr(ui[(*i)++]);
+	*i_new++;
+}
 
-	if (!(new = (char**)malloc(sizeof(char*) * (word_counter(ui) + 1))))
+char **split_cmd(char *ui)
+{
+	int i;
+	int i_temp;
+	char **new;
+	char **i_new;
+
+	if (!(new = (char **)malloc(sizeof(char *) * (word_counter(ui) + 1))))
 		return (NULL);
 	i_new = new;
 	i = 0;
@@ -73,30 +85,8 @@ char	**split_cmd(char *ui)
 			i_new++;
 		}
 		else if (ui[i])
-		{
-			if (ft_strncmp(ui + i, ">>", 2) == 0)
-			{
-				*i_new = ft_strdup(">>");
-				i += 2;
-			}
-			else
-				*i_new = ft_ctostr(ui[i++]);
-			i_new++;
-		}
+			meta_cpy(&i_new, ui, &i);
 	}
 	*i_new = NULL;
 	return (new);
 }
-
-/*
-int		main(int argc, char **argv)
-{
-	if (argc > 1)
-	{
-		printf("[%s] splitted = \n", argv[1]);
-		ft_putarrstr(split_cmd(argv[1]), "], [");
-		write(1, "\n", 1);
-	}
-	return (0);
-}
-*/
