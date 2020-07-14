@@ -6,7 +6,7 @@
 #    By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/15 13:51:51 by jecaudal          #+#    #+#              #
-#    Updated: 2020/07/13 18:21:04 by jecaudal         ###   ########.fr        #
+#    Updated: 2020/07/14 18:12:47 by jecaudal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,6 +73,7 @@ OBJS_LIB		=	$(SRCS_LIB:.c=.o)
 SRCS			=	./srcs/main.c									\
 					./srcs/reset.c									\
 					./srcs/find_exec.c								\
+					./srcs/skip_part.c								\
 					./srcs/init_stock.c								\
 					./srcs/free_t_stock.c							\
 					./srcs/print_prompt.c							\
@@ -96,14 +97,6 @@ SRCS			=	./srcs/main.c									\
 					./srcs/parsing/check_end_backslash.c			\
 					./srcs/parsing/command_to_jobs_utils.c			\
 					./srcs/parsing/remove_and_replace_utils.c		\
-					./srcs/parsing/split_command/part_add.c			\
-					./srcs/parsing/split_command/part_len.c			\
-					./srcs/parsing/split_command/skip_part.c		\
-					./srcs/parsing/split_command/init_split.c		\
-					./srcs/parsing/split_command/join_outpend.c		\
-					./srcs/parsing/split_command/is_special_c.c		\
-					./srcs/parsing/split_command/split_command.c	\
-					./srcs/parsing/split_command/quoted_meta_case.c	\
 					./srcs/parsing/split_cmd/pass_word.c			\
 					./srcs/parsing/split_cmd/split_cmd.c			\
 					./srcs/parsing/split_cmd/is_escaped.c			\
@@ -130,7 +123,15 @@ SRCS			=	./srcs/main.c									\
 					./srcs/execution/builtins/unset.c				\
 					./srcs/execution/builtins/export.c				\
 					./srcs/execution/builtins/ft_exit.c				\
-					./srcs/execution/builtins/export_utils.c
+					./srcs/execution/builtins/export_utils.c		\
+					./srcs/execution/jobs_cleaner/pass_part.c		\
+					./srcs/execution/jobs_cleaner/arg_cleaner.c		\
+					./srcs/execution/jobs_cleaner/jobs_cleaner.c	\
+					./srcs/execution/jobs_cleaner/part_len_quote.c	\
+					./srcs/execution/jobs_cleaner/escaper_dquote.c	\
+					./srcs/execution/jobs_cleaner/escaper_nquote.c	\
+					./srcs/execution/jobs_cleaner/part_len_dquote.c	\
+					./srcs/execution/jobs_cleaner/part_len_nquote.c
 
 OBJS			=	$(SRCS:.c=.o)
 

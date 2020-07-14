@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 16:29:13 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/09 15:44:51 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/14 18:40:56 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ int			instance_builder(t_stock *s, int jobpos, int *pipes, t_bool is_pipe)
 		else if (err == 0 && (ft_c_finder('/', path) == FALSE ||
 				execve(path, s->jobs[jobpos], s->envp) == -1))
 			print_exec_err(path);
+		exit(1);
 	}
 	else if (child == -1)
 		return (panic_ib(path, exec_name, ERR_ERRNO));

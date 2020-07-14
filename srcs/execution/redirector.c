@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 11:38:23 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/07 17:18:18 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/14 18:03:37 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,6 @@ static void	debug_redirector(int jobpos, t_bool is_pipe)
 		l_printf("STDIN redirected.\n\n");
 }
 
-static void	rm_single_metachar(char **job)
-{
-	while (*job)
-	{
-		if (is_single_quoted_meta("", *job) == TRUE)
-		{
-			*job = single_quoted_remover(*job);
-		}
-		job++;
-	}
-}
-
 int			redirector(int *pipes, int jobpos, t_bool is_pipe, t_stock *s)
 {
 	int err;
@@ -63,6 +51,6 @@ int			redirector(int *pipes, int jobpos, t_bool is_pipe, t_stock *s)
 	if (is_in_redir(s->jobs[jobpos]) == FALSE && jobpos > 0)
 		dup2(pipes[(jobpos * 2) - 2], STDIN);
 	s->jobs[jobpos] = rm_redir(s->jobs[jobpos]);
-	rm_single_metachar(s->jobs[jobpos]);
+	jobs_cleaner(s->jobs);
 	return (err);
 }

@@ -1,22 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_special_c.c                                     :+:      :+:    :+:   */
+/*   jobs_cleaner.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/30 18:23:56 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/04 10:37:44 by jecaudal         ###   ########.fr       */
+/*   Created: 2020/07/13 18:56:18 by jecaudal          #+#    #+#             */
+/*   Updated: 2020/07/14 18:19:17 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+**	This function will look through all arg in jobs and clean it.
+**	In clean we mean removing backslash escaper, and, finally removing quotes.
+*/
+
 #include "minishell.h"
 
-int		is_special_c(char *c)
+char	***jobs_cleaner(char ***jobs)
 {
-	if (*c == '|' || *c == '<')
-		return (*c == '|' || *c == '<');
-	else if (ft_strncmp(c, ">>", 2) == 0)
-		return ((ft_strncmp(c, ">>", 2) == 0));
-	return (*c == '>');
+	char **i_arg;
+	char ***save_jobs;
+
+	save_jobs = jobs;
+	while (*jobs)
+	{
+		i_arg = *jobs;
+		while (*i_arg)
+		{
+			*i_arg = arg_cleaner(*i_arg);
+			i_arg++;
+		}
+		jobs++;
+	}
+	return (save_jobs);
 }
