@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_pipe.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/20 13:51:24 by jereligi          #+#    #+#             */
-/*   Updated: 2020/06/30 18:08:58 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/15 15:40:47 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int		additional_read_pipe(t_stock *s)
 		s->user_input = ft_strjoindel(s->user_input, tmp, 3);
 	else if (status == GNL_CTRLD)
 	{
-		s->error_strings = ft_strjoindel(s->error_strings, ERR_PIPE, 1);
+		s->error_strings = ft_strjoindel(s->error_strings, ERR_PIPE1, 1);
 		l_printf("%s\n", s->error_strings);
 		return (ERR_SYNTAX);
 	}
@@ -52,12 +52,22 @@ int				check_pipe(t_stock *s)
 	{
 		if (s->user_input[i] == '\0')
 			valid_pipe = 1;
-		if (s->user_input[i] == '|' && s->user_input[i - 1] != '\\')
+		if (i == 0 && s->user_input[i] == '|')
+		{
+			s->error_strings = ft_strjoindel(s->error_strings, ERR_PIPE2, 1);
+			return (ERR_SYNTAX);
+		}
+		else if (s->user_input[i] == '|' && s->user_input[i - 1] != '\\')
 		{
 			i++;
 			while (ft_isprint(s->user_input[i]) == 0 && s->user_input[i])
 				i++;
-			if (s->user_input[i] == '\0')
+			if (s->user_input[i] == '\0' && s->is_cmd_closed == 1)
+			{
+				s->error_strings = ft_strjoindel(s->error_strings, ERR_PIPE3, 1);
+				return (0);
+			}
+			else if (s->user_input[i] == '\0')
 			{
 				if (additional_read_pipe(s) == ERR_SYNTAX)
 					return (ERR_SYNTAX);

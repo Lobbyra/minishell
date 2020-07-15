@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 16:02:38 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/13 18:25:02 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/15 16:32:55 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ static int	debug_parsing(t_stock *stock)
 	if (check_quote(stock) == 3)
 		return (ERR_SYNTAX);
 	printf("\033[32mcheck quote [ok]\033[37m\n");
-	check_pipe(stock);
+	if (check_pipe(stock) != 0)
+		return (-1);
 	printf("\033[32mcheck pipe [ok]\033[37m\n");
 	check_end_backslash(stock);
 	printf("\033[32mcheck end_backslash [ok]\033[37m\n");
@@ -50,7 +51,8 @@ int			parsing(t_stock *stock)
 		return (debug_parsing(stock));
 	if (check_quote(stock) == 3)
 		return (ERR_SYNTAX);
-	check_pipe(stock);
+	if (check_pipe(stock) != 0)
+		return (-1);
 	check_end_backslash(stock);
 	if (check_double_pipe(stock->user_input) != 0)
 		return (ERR_SYNTAX);

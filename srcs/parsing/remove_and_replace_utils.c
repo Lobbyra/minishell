@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   remove_and_replace_utils.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Jeanxavier <Jeanxavier@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/07 14:47:13 by Jeanxavier        #+#    #+#             */
-/*   Updated: 2020/07/07 18:59:29 by Jeanxavier       ###   ########.fr       */
+/*   Updated: 2020/07/15 15:05:54 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char	*remove_and_replace_utils(char *user_input, char *new, char **value)
 	x = 0;
 	quote = 0;
 	while (user_input[i])
-	{	
+	{
 		if (user_input[i] == '\'' || user_input[i] == '"')
 			word_between_simple_quote(&i, user_input, &quote);
 		if (user_input[i] == '$' && user_input[i - 1] != '\\' && (quote == 0 || quote == 2))

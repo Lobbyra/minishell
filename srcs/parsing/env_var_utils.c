@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_var_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Jeanxavier <Jeanxavier@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/23 14:48:32 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/07 18:59:21 by Jeanxavier       ###   ########.fr       */
+/*   Updated: 2020/07/15 14:59:41 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ int		number_env_var(char *user_input)
 			word_between_simple_quote(&i, user_input, &quote);
 			i++;
 		}
-		if (user_input[i] == '$' && user_input[i - 1] != '\\' && (quote == 0 || quote == 2))
+		if (user_input[i] == '$' && user_input[i - 1] != '\\' && \
+		(quote == 0 || quote == 2))
 			number_env_var++;
 		i++;
 	}
@@ -104,7 +105,8 @@ char	*remove_and_replace(char *user_input, char **tab, char **value)
 	char	*new;
 
 	tab = NULL;
-	if (!(new = (char *)malloc(sizeof(char) * (count_len_new_str(user_input, value) + 1))))
+	if (!(new = (char *)malloc(sizeof(char) * \
+	(count_len_new_str(user_input, value) + 1))))
 		return (NULL);
 	new[count_len_new_str(user_input, value)] = '\0';
 	new = remove_and_replace_utils(user_input, new, value);

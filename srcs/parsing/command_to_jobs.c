@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 18:32:53 by jereligi          #+#    #+#             */
-/*   Updated: 2020/06/25 16:15:10 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/15 16:32:11 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ static int		job_alloc(char ***jobs, int *n, int *len, int *status)
 {
 	if (!(jobs[*n] = (char **)malloc(sizeof(char *) * (*len + 1))))
 		return (-1);
+	jobs[*n][*len - 1] = NULL;
 	jobs[*n][*len] = NULL;
 	*n = *n + 1;
 	*len = -1;
@@ -103,6 +104,7 @@ int				command_to_jobs(t_stock *s, char **command)
 	len = number_jobs(command);
 	if (!(jobs = (char ***)malloc(sizeof(char **) * (len + 1))))
 		return (-1);
+	jobs[len - 1] = NULL;
 	jobs[len] = NULL;
 	jobs_alloc(jobs, command);
 	insert_data_jobs(jobs, command);
