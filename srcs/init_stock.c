@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/15 13:26:06 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/06 13:23:16 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/15 18:53:41 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,23 @@ static t_stock	*panic_init_stock(t_stock *stock)
 	return (NULL);
 }
 
+static void		iter_shlvl(char **envp)
+{
+	int	lvl;
+
+	while (*envp)
+	{
+		if (ft_strncmp("SHLVL=", *envp, 6) == 0)
+		{
+			lvl = ft_atoi((*envp) + 6);
+			lvl++;
+			free(*envp);
+			*envp = ft_strjoindel("SHLVL=", ft_itoa(lvl), 2);
+		}
+		envp++;
+	}
+}
+
 t_stock			*init_stock(char **envp)
 {
 	t_stock	*new;
@@ -29,6 +46,7 @@ t_stock			*init_stock(char **envp)
 		return (NULL);
 	if (!(new->envp = ft_strarrdup(envp)))
 		return (panic_init_stock(new));
+	iter_shlvl(new->envp);
 	new->jobs = NULL;
 	new->pipes = NULL;
 	new->error_strings = NULL;
