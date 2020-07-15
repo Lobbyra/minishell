@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/23 14:33:48 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/15 16:12:02 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/15 16:43:17 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ char		**if_exist(char **tab_env_var, int nb_env_var, char **envp, t_stock *s)
 		{
 			while (envp[n])
 			{
-				len_var = ft_strlen(envp[n]);
+				len_var = ft_strlen_c(envp[n], '=');
 				if (ft_strncmp(tab_env_var[i], envp[n], len_var) == 0)
 				{
 					free(value[i]);
