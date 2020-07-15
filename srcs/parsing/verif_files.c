@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verif_files.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 14:12:46 by Jeanxavier        #+#    #+#             */
-/*   Updated: 2020/07/04 11:16:06 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/15 18:32:58 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,23 @@ static int		check_file(t_stock *s, int i, int n)
 	return (0);
 }
 
+static void		redirection_null(t_stock *s, int n, int i, int *status)
+{
+	ft_putstr("no redirection\n\n");
+	s->error_strings = ft_strjoindel(s->error_strings, ERR_REDICTION, 1);
+	*status = 0;
+	if (n > 0)
+	{
+		ft_strarrfree(s->jobs[i]);
+		s->jobs[i] = NULL;
+	}
+	else
+	{
+		ft_strarrfree(s->jobs[i]);
+		s->jobs[i - 1] = NULL;
+	}
+}
+
 int				verif_files(t_stock *s)
 {
 	int i;
@@ -99,6 +116,8 @@ int				verif_files(t_stock *s)
 			}
 			n++;
 		}
+		if (status == 1)
+			redirection_null(s, n , i , &status);
 		i++;
 	}
 	return (0);

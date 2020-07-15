@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   jobs_caller.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:24:06 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/04 13:56:27 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/15 18:18:23 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int			jobs_caller(t_stock *s)
 		debug_jobs_caller(s, pipes);
 	while (i_jobs - s->jobs < s->n_jobs)
 	{
-		if (**i_jobs)
+		if (*i_jobs && **i_jobs)
 		{
 			is_pipe = (s->n_jobs > 1 && i_jobs - s->jobs < s->n_jobs - 1);
 			instance_builder(s, i_jobs - s->jobs, pipes, is_pipe);
