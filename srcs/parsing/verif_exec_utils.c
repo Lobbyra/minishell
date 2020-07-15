@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 12:45:58 by Jeanxavier        #+#    #+#             */
-/*   Updated: 2020/07/15 14:19:09 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/15 17:56:35 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ static int	check_all_path(t_stock *s, int n, t_bool is_debug)
 	i = 0;
 	exec = ft_strjoin("/", s->jobs[n][0]);
 	path = get_path(s->envp);
+	if (path == NULL)
+		return (-1);
 	while (path[i])
 	{
 		tmp = ft_strjoin(path[i], exec);
