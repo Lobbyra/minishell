@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 18:18:48 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/04 11:24:08 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/15 18:36:14 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	builtin_call_parent(char **job, char *exit_stat, int fd, char ***envp)
 
 	exec_name = ft_basename(*job);
 	if (ft_strcmp(exec_name, "cd") == 0)
-		*exit_stat = cd(*(find_exec(job) + 1));
+		*exit_stat = cd(*(find_exec(job) + 1), *envp);
 	else if (ft_strcmp(exec_name, "echo") == 0)
 		*exit_stat = echo(job, fd);
 	else if (ft_strcmp(exec_name, "env") == 0)
@@ -40,7 +40,7 @@ void	builtin_call_child(char **job, char *exit_stat, char ***envp)
 
 	exec_name = ft_basename(*job);
 	if (ft_strcmp(exec_name, "cd") == 0)
-		*exit_stat = cd(*(find_exec(job) + 1));
+		*exit_stat = cd(*(find_exec(job) + 1), *envp);
 	else if (ft_strcmp(exec_name, "echo") == 0)
 		*exit_stat = echo(job, 1);
 	else if (ft_strcmp(exec_name, "env") == 0)

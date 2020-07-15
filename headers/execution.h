@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 15:10:39 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/14 18:02:37 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/15 18:33:24 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	***jobs_cleaner(char ***jobs);
 void	ft_exit(int err);
 
 int		pwd(int fd);
-int		cd(char *path);
+int		cd(char *path, char **envp);
 int		echo(char **job, int fd);
 int		env(char **envp, int fd);
 int		unset(char ***envp, char **job);

@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 13:53:35 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/04 11:21:55 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/15 18:36:40 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,49 @@
 
 #include "minishell.h"
 
-int		cd(char *path)
+static char		*get_home(char **envp)
 {
+	while (*envp)
+	{
+		if (ft_strncmp("HOME=", *envp, 5) == 0)
+			return (ft_strdup((*envp) + 5));
+		envp++;
+	}
+	return (NULL);
+}
+
+static int		home_not_set(void)
+{
+	ft_putstr_fd("minishell: cd: HOME not set\n", STDERR);
+	return (1);
+}
+
+static t_bool	is_home_in_envp(char **envp)
+{
+	while (*envp)
+	{
+		if (ft_strncmp("HOME=", *envp, 5) == 0)
+			return (TRUE);
+		envp++;
+	}
+	return (FALSE);
+}
+
+int				cd(char *path, char **envp)
+{
+	char	*home;
+	
 	errno = 0;
-	chdir(path);
+	if (path == NULL)
+	{
+		if (is_home_in_envp(envp) == FALSE)
+			return (home_not_set());
+		home = get_home(envp);
+		chdir(home);
+		free(home);
+	}
+	else
+		chdir(path);
 	if (errno != 0)
 	{
 		ft_putstr_fd("minishell: cd: ", 2);
