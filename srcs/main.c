@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 16:47:17 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/08 18:28:27 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/15 16:29:26 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int				main(int argc, char **argv, char **envp)
 			error_printer(err);
 		if (err == SIG_CTRLD)
 			break ;
+		ft_putstr_fd(stock->error_strings, STDERR);
 		if (err == 0 && (err = parsing(stock) != 0))
 			error_printer(err);
 		if ((err == 0 || err == ERR_EXIT) && (err = execution(stock)) != 0)

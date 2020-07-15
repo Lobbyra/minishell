@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 15:36:34 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/10 14:16:15 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/15 17:40:40 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,61 +16,30 @@
 **	Will return a duplication of cmd without the first command.
 */
 
-static char	*cut_cmd(char *cmd)
+static char *cut_cmd(char *cmd)
 {
-	char	*ret;
-	char	*save_cmd;
+	int		i;
+	char	*new;
 
-	save_cmd = cmd;
-	while (*cmd)
+	i = 0;
+	if (!cmd)
+		return (NULL);
+	while (cmd[i])
 	{
-		if (((*cmd == '\"' || *cmd == '\'') && cmd == save_cmd) ||
-			((*cmd == '\"' || *cmd == '\'') && *(cmd - 1) != '\\'))
-			skip_part(&cmd);
-		else if ((*cmd == ';' && cmd == save_cmd) ||
-			(*cmd == ';' && *(cmd - 1) != '\\'))
+		if (cmd[i] == '\"' && is_escaped(cmd, i) == FALSE)
+			i = pass_dquote(cmd, i);
+		if (cmd[i] == '\'' && is_escaped(cmd, i) == FALSE)
+			i = pass_quote(cmd, i);
+		if (cmd[i] == ';' && is_escaped(cmd, i) == FALSE)
 			break ;
-		else
-			cmd++;
+		i++;
 	}
-	if (*cmd == ';')
-		ret = ft_strdup(cmd + 1);
-	else
-		ret = NULL;
-	free(save_cmd);
-	return (ret);
-}
-
-/*
-**	Return the len of the first command in str.
-*/
-
-static int	len_first_cmd(char *str)
-{
-	char *i_str;
-
-	i_str = str;
-	while (*i_str)
-	{
-		if (((*i_str == '\"' || *i_str == '\'') && i_str == str) ||
-			((*i_str == '\"' || *i_str == '\'') && *(i_str - 1) != '\\'))
-			skip_part(&i_str);
-		else if ((*i_str == ';' && i_str == str) ||
-			(*i_str == ';' && *(i_str - 1) != '\\'))
-			break ;
-		else
-			i_str++;
-	}
-	return (i_str - str);
-}
-
-static void	pass_n_cpy(char **i_str, char **i_new)
-{
-	int skipped;
-
-	skipped = skip_part(i_str);
-	ft_memcpy_n(*i_new, *(i_str) - skipped, skipped);
-	skip_part(i_new);
+	if (cmd[i++] == ';' && !(new = ft_strdup(cmd + i)))
+		free(cmd);
+	else if (cmd[i - 1] != ';')
+		new = NULL;
+	free(cmd);
+	return (new);
 }
 
 /*
@@ -78,32 +47,27 @@ static void	pass_n_cpy(char **i_str, char **i_new)
 **	Commands are separated by non-quoted char ';'.
 */
 
-static char	*get_cmd(char *str)
+char *get_cmd(char *user_input)
 {
+	int		i;
 	char	*new;
-	char	*i_new;
-	char	*i_str;
 
-	i_str = str;
-	if (!(new = (char*)malloc(sizeof(char) * (len_first_cmd(str) + 1))))
-		return (NULL);
-	i_new = new;
-	while (*i_str)
+	i = 0;
+	while (user_input[i])
 	{
-		if (((*i_str == '\"' || *i_str == '\'') && i_str == str) ||
-			((*i_str == '\"' || *i_str == '\'') && *(i_str - 1) != '\\'))
-			pass_n_cpy(&i_str, &i_new);
-		else if ((*i_str == ';' && i_str == str) ||
-				(*i_str == ';' && *(i_str - 1) != '\\'))
+		if (user_input[i] == '\"' && is_escaped(user_input, i) == FALSE)
+			i = pass_dquote(user_input, i);
+		if (user_input[i] == '\'' && is_escaped(user_input, i) == FALSE)
+			i = pass_quote(user_input, i);
+		if (user_input[i] == ';' && is_escaped(user_input, i) == FALSE)
 			break ;
-		else
-		{
-			*i_new = *i_str;
-			i_str++;
-			i_new++;
-		}
+		i++;
 	}
-	new[len_first_cmd(str)] = '\0';
+	if (!(new = ft_strdup_n(user_input, i)))
+	{
+		free(user_input);
+		return (NULL);
+	}
 	return (new);
 }
 
