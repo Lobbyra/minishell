@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verif_exec_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 12:45:58 by Jeanxavier        #+#    #+#             */
-/*   Updated: 2020/07/04 11:09:29 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/15 14:19:09 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,5 @@ int			management_check_all_path(t_stock *s, int n, t_bool is_debug)
 		return (1);
 	if (is_builtins(s->jobs[n][0]))
 		return (1);
-	s->error_strings = ft_strjoindel(s->error_strings, \
-	ft_strjoindel("minishell: command not found: ", \
-	ft_strjoin(s->jobs[n][0], "\n"), 2), 3);
-	l_printf("error path: %s\n", s->jobs[n][0]);
-	s->jobs[n][0] = NULL;
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verif_exec.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 18:08:03 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/04 11:07:23 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/15 14:24:39 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,27 +20,6 @@ char		*ft_pwd(void)
 		return (NULL);
 	getcwd(str, 4028);
 	return (str);
-}
-
-static int	check_path(t_stock *s, int i)
-{
-	int			debug;
-	struct stat	buf;
-
-	errno = 0;
-	stat(s->jobs[i][0], &buf);
-	debug = errno;
-	if (debug != 0)
-		l_printf("%s\n", strerror(debug));
-	if (debug != 0)
-	{
-		ft_strjoindel(s->error_strings, \
-		ft_strjoin("minishell: no such file or directory: ", s->jobs[i][0]), 2);
-		l_printf("error path: [%s]\n", s->jobs[i][0]);
-		s->jobs[i][0] = NULL;
-		return (1);
-	}
-	return (0);
 }
 
 static int	check_is_slash(char *str)
@@ -69,13 +48,10 @@ int			verif_exec(t_stock *s)
 	while (s->jobs[i])
 	{
 		status = check_is_slash(s->jobs[i][0]);
-		if (status == 1)
-			check_path(s, i);
-		else if (status == 2)
+		if (status == 2)
 		{
 			s->jobs[i][0] = ft_strjoindel(ft_pwd(), \
 			ft_strjoindel("/", s->jobs[i][0], 2), 3);
-			check_path(s, i);
 		}
 		else if (status == 0)
 			management_check_all_path(s, i, s->is_debug);
