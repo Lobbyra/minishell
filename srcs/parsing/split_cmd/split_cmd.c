@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/13 13:45:38 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/14 18:55:36 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/15 13:12:12 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void meta_cpy(char ***i_new, char *ui, int *i)
 	}
 	else
 		**i_new = ft_ctostr(ui[(*i)++]);
-	*i_new++;
+	(*i_new)++;
 }
 
 char **split_cmd(char *ui)
