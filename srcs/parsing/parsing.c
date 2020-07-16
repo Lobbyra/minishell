@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 16:02:38 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/16 17:04:49 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/16 18:06:39 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ static int	debug_parsing(t_stock *stock)
 		printf("\n\033[32mcommand_to_jobs [ok]\033[37m\n");
 	ft_putarrarrstrs(stock->jobs, stock->n_jobs);
 	verif_exec(stock);
+	check_redirection_null(stock);
 	return (0);
 }
 
@@ -56,11 +57,13 @@ int			parsing(t_stock *stock)
 	check_end_backslash(stock);
 	if (check_double_pipe(stock->user_input) != 0)
 		return (ERR_SYNTAX);
+	verif_redirection_env_var(stock);
 	env_var(stock);
 	tmp = split_cmd(stock->user_input);
 	if (verif_metacharacter(stock, tmp) == 0)
 		return (ERR_SYNTAX);
 	command_to_jobs(stock, tmp);
 	verif_exec(stock);
+	check_redirection_null(stock);
 	return (0);
 }

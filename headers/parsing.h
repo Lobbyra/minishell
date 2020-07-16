@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 16:29:39 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/16 16:52:12 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/16 18:04:27 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int		is_metacharacter(char c);
 int		verif_files(t_stock *s);
 int		is_escape(int i, char *user_input);
 int		verif_redirection_env_var(t_stock *s);
+int		check_redirection_null(t_stock *s);
 
 int		*ft_intarradd(int *tab, int *size, int n);
 
