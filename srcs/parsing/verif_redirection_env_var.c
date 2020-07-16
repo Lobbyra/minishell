@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/15 18:42:30 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/16 16:58:50 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/16 18:28:50 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,15 @@ char			*is_env_var(char *str)
 	char	*tmp;
 
 	i = 0;
+	n = 0;
 	while (str[i] == ' ')
 		i++;
 	if (str[i] == '$')
+	{
 		i++;
-	n = 0;
-	while (ft_isalnum(str[i + n]) && str[i + n])
-		n++;
+		while (ft_isalnum(str[i + n]) && str[i + n])
+			n++;
+	}
 	if (!(tmp = (char *)malloc(sizeof(char) * (n + 1))))
 		return (NULL);
 	x = 0;
@@ -91,7 +93,6 @@ int				err_redirection_env_var(t_stock *s, char *str, int *i, int jobs)
 	char *tmp;
 
 	s->list_exec_abort = ft_intarradd(s->list_exec_abort, &s->size_list, jobs);
-	s->is_exec_abort = TRUE;
 	s->error_strings = ft_strjoindel(s->error_strings, "minishell: ", 1);
 	s->error_strings = ft_strjoindel(s->error_strings, str, 1);
 	s->error_strings = ft_strjoindel(s->error_strings, \
@@ -111,7 +112,6 @@ int				verif_redirection_env_var(t_stock *s)
 
 	i = 0;
 	jobs = 0;
-	s->is_exec_abort = FALSE;
 	s->size_list = 0;
 	while (s->user_input[i])
 	{

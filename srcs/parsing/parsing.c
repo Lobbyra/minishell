@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 16:02:38 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/16 18:06:39 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/16 18:23:16 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int			parsing(t_stock *stock)
 	char	**tmp;
 
 	i = 0;
+	stock->is_exec_abort = FALSE;
 	if (stock->is_debug == TRUE)
 		return (debug_parsing(stock));
 	if (check_quote(stock) == 3)
