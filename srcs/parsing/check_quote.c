@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_quote.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Jeanxavier <Jeanxavier@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 15:54:35 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/07 14:05:40 by Jeanxavier       ###   ########.fr       */
+/*   Updated: 2020/07/16 17:47:24 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,14 +66,14 @@ int				check_quote(t_stock *s)
 			if ((valid_quote = additional_read_quote(quote, s)) == 3)
 				return (ERR_SYNTAX);
 		if ((s->user_input[i] == '"' && quote == '0')
-		&& (!is_escape(i, s->user_input)))
+		&& (!is_escaped(s->user_input, i)))
 			quote = '\"';
 		else if ((s->user_input[i] == '\'' && quote == '0')
-		&& (!is_escape(i, s->user_input)))
+		&& (!is_escaped(s->user_input, i)))
 			quote = '\'';
-		else if (((quote == s->user_input[i]) && (!is_escape(i, s->user_input)))
+		else if (((quote == s->user_input[i]) && (!is_escaped(s->user_input, i)))
 		|| (quote == '\'' && quote == s->user_input[i]
-		&& is_escape(i, s->user_input)))
+		&& is_escaped(s->user_input, i)))
 			quote = '0';
 		i++;
 	}

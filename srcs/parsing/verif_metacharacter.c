@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verif_metacharacter.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 14:15:46 by Jeanxavier        #+#    #+#             */
-/*   Updated: 2020/07/13 13:53:58 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/16 17:49:56 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int				verif_metacharacter(t_stock *s, char **cmd)
 			"minishell: syntax error near unexpected token `", 1);
 			s->error_strings = ft_strjoindel(s->error_strings, \
 			ft_strjoin(cmd[i + 1], "'\n"), 3);
-			l_printf("%s", s->error_strings);
 			return (0);
 		}
 		i++;

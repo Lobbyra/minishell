@@ -6,7 +6,7 @@
 #    By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/15 13:51:51 by jecaudal          #+#    #+#              #
-#    Updated: 2020/07/16 16:51:43 by jereligi         ###   ########.fr        #
+#    Updated: 2020/07/16 17:44:02 by jereligi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,7 +86,6 @@ SRCS			=	./srcs/main.c									\
 					./srcs/parsing/get_path.c						\
 					./srcs/parsing/check_pipe.c						\
 					./srcs/parsing/verif_exec.c						\
-					./srcs/parsing/verif_files.c					\
 					./srcs/parsing/check_quote.c					\
 					./srcs/parsing/ft_intarradd.c					\
 					./srcs/parsing/env_var_utils.c					\
