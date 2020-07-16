@@ -6,35 +6,35 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 18:18:48 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/15 18:36:14 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/16 16:51:22 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	builtin_call_parent(char **job, char *exit_stat, int fd, char ***envp)
+void	builtin_call_parent(char **job, unsigned char *ex, int fd, char ***envp)
 {
 	char *exec_name;
 
 	exec_name = ft_basename(*job);
 	if (ft_strcmp(exec_name, "cd") == 0)
-		*exit_stat = cd(*(find_exec(job) + 1), *envp);
+		*ex = cd(*(find_exec(job) + 1), *envp);
 	else if (ft_strcmp(exec_name, "echo") == 0)
-		*exit_stat = echo(job, fd);
+		*ex = echo(job, fd);
 	else if (ft_strcmp(exec_name, "env") == 0)
-		*exit_stat = env(*envp, fd);
+		*ex = env(*envp, fd);
 	else if (ft_strcmp(exec_name, "export") == 0)
-		*exit_stat = export(envp, job, fd);
+		*ex = export(envp, job, fd);
 	else if (ft_strcmp(exec_name, "exit") == 0)
 		ft_exit(ft_atoi(*(find_exec(job) + 1)));
 	else if (ft_strcmp(exec_name, "pwd") == 0)
-		*exit_stat = pwd(fd);
+		*ex = pwd(fd);
 	else if (ft_strcmp(exec_name, "unset") == 0)
-		*exit_stat = unset(envp, job);
+		*ex = unset(envp, job);
 	free(exec_name);
 }
 
-void	builtin_call_child(char **job, char *exit_stat, char ***envp)
+void	builtin_call_child(char **job, unsigned char *exit_stat, char ***envp)
 {
 	char *exec_name;
 

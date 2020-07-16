@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 15:10:39 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/15 18:33:24 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/16 16:05:22 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@
 t_bool	is_builtin(char *path);
 
 void	close_pipes(int *pipes, int n_pipes);
-void	terminator(char ***jobs, int n_jobs, char *status);
-void	builtin_call_child(char **job, char *exit_stat, char ***envp);
-void	builtin_call_parent(char **job, char *ex_stat, int fd, char ***envp);
+void	terminator(char ***jobs, int n_jobs, unsigned char *status);
+void	builtin_call_child(char **job, unsigned char *exit_stat, char ***envp);
+void	builtin_call_parent(char **job, unsigned char *ex_stat, int fd, char ***envp);
 
 int		jobs_caller(t_stock *s);
 int		init_pipes(int **pipes, int n_jobs);

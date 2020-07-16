@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/15 13:22:38 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/13 14:41:03 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/16 14:05:33 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@
 
 void			print_prompt(void);
 void			reset(t_stock *stock);
-void			error_printer(int err);
+void			error_manager(t_stock *stock, int err);
 int				parsing(t_stock *stock);
 char			**find_exec(char **job);
 t_stock			*init_stock(char **envp);

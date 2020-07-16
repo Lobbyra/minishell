@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/02 18:04:07 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/04 11:39:05 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/16 14:47:42 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,10 @@ int			redirector_file_in(char **job)
 		{
 			if (ft_strcmp(*job, "<") == 0)
 				fd = open(*(job + 1), O_RDONLY);
+			path = *(job + 1);
+			l_printf("Debug redirector_file_in path = [%s]\n", path);
 			if (fd == -1)
 				break ;
-			path = *(job + 1);
 			job += 2;
 		}
 		else

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   terminator.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 17:44:07 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/15 18:29:49 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/16 16:51:45 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	count_non_builtins_jobs(char ***jobs, int n_jobs)
 	return (count);
 }
 
-void		terminator(char ***jobs, int n_jobs, char *status)
+void		terminator(char ***jobs, int n_jobs, unsigned char *status)
 {
 	int		n_dead;
 	int		n_childs;
@@ -46,13 +46,15 @@ void		terminator(char ***jobs, int n_jobs, char *status)
 	while (n_dead < n_childs)
 	{
 		wait((int*)status);
-		if (WIFSIGNALED(*status) && WTERMSIG(*status) == 3 &&
-			is_quit_printed == FALSE)
+		if (WIFSIGNALED(*status))
 		{
-			l_printf("\r^\\Quit: 3");
-			is_quit_printed = TRUE;
+			if (WTERMSIG(*status) == 3 && is_quit_printed == FALSE &&
+				(is_quit_printed = TRUE))
+				l_printf("\r^\\Quit: 3");
+			*status = (char)(128 + (char)WTERMSIG(*status));
 		}
-		*status = WEXITSTATUS(*status);
+		else
+			*status = WEXITSTATUS(*status);
 		n_dead++;
 	}
 	if (is_quit_printed == TRUE)

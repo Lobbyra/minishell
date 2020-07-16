@@ -3,12 +3,13 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+         #
+#    By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/15 13:51:51 by jecaudal          #+#    #+#              #
-#    Updated: 2020/07/16 18:05:40 by jereligi         ###   ########.fr        #
+#    Updated: 2020/07/16 18:08:25 by jecaudal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
 
 NAME			=	minishell
 
@@ -77,7 +78,7 @@ SRCS			=	./srcs/main.c									\
 					./srcs/init_stock.c								\
 					./srcs/free_t_stock.c							\
 					./srcs/print_prompt.c							\
-					./srcs/error_printer.c							\
+					./srcs/error_manager.c							\
 					./srcs/wait_instruction.c						\
 					./srcs/wait_instruction_utils.c					\
 					./srcs/parsing/env_var.c						\
