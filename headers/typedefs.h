@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   typedefs.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 11:48:04 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/10 14:14:16 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/16 16:00:55 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ typedef struct	s_stock
 	char		*error_strings;
 	t_bool		is_debug;
 	t_bool		is_cmd_closed;
+	t_bool		is_exec_abort;
+	int			*list_exec_abort;
+	int			size_list;
 }				t_stock;
 
 #endif

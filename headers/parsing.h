@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 16:29:39 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/15 18:11:00 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/16 16:52:12 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ int		verif_metacharacter(t_stock *s, char **command);
 int		is_metacharacter(char c);
 int		verif_files(t_stock *s);
 int		is_escape(int i, char *user_input);
+int		verif_redirection_env_var(t_stock *s);
+
+int		*ft_intarradd(int *tab, int *size, int n);
 
 char	*env_var(t_stock *s);
 char	*remove_and_replace(char *user_input, char **tab, char **value);
@@ -48,5 +51,6 @@ char	**get_path(char **envp);
 char	**split_command(char *cmd);
 char	**split_cmd(char *user_input);
 char	**pre_malloc_arrstring(int nb_env_var);
+char	**get_env_var(char *user_input, int nb_env_var, t_bool is_debug);
 
 #endif

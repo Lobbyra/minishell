@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 14:12:46 by Jeanxavier        #+#    #+#             */
-/*   Updated: 2020/07/15 18:32:58 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/15 18:40:54 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,8 @@ static int		check_file(t_stock *s, int i, int n)
 
 static void		redirection_null(t_stock *s, int n, int i, int *status)
 {
-	ft_putstr("no redirection\n\n");
+	if (s->is_debug == TRUE)
+		ft_putstr("no redirection\n\n");
 	s->error_strings = ft_strjoindel(s->error_strings, ERR_REDICTION, 1);
 	*status = 0;
 	if (n > 0)

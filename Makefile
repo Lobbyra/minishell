@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+         #
+#    By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/15 13:51:51 by jecaudal          #+#    #+#              #
-#    Updated: 2020/07/14 18:12:47 by jecaudal         ###   ########.fr        #
+#    Updated: 2020/07/16 16:51:43 by jereligi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,6 +88,7 @@ SRCS			=	./srcs/main.c									\
 					./srcs/parsing/verif_exec.c						\
 					./srcs/parsing/verif_files.c					\
 					./srcs/parsing/check_quote.c					\
+					./srcs/parsing/ft_intarradd.c					\
 					./srcs/parsing/env_var_utils.c					\
 					./srcs/parsing/command_to_jobs.c				\
 					./srcs/parsing/remplace_env_var.c				\
@@ -97,6 +98,7 @@ SRCS			=	./srcs/main.c									\
 					./srcs/parsing/check_end_backslash.c			\
 					./srcs/parsing/command_to_jobs_utils.c			\
 					./srcs/parsing/remove_and_replace_utils.c		\
+					./srcs/parsing/verif_redirection_env_var.c		\
 					./srcs/parsing/split_cmd/pass_word.c			\
 					./srcs/parsing/split_cmd/split_cmd.c			\
 					./srcs/parsing/split_cmd/is_escaped.c			\

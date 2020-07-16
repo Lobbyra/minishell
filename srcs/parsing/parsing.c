@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 16:02:38 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/15 16:32:55 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/15 18:52:32 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static int	debug_parsing(t_stock *stock)
 	printf("\033[32mcheck end_backslash [ok]\033[37m\n");
 	if (check_double_pipe(stock->user_input) != 0)
 		return (ERR_SYNTAX);
+	verif_redirection_env_var(stock);
 	env_var(stock);
 	tmp = split_cmd(stock->user_input);
 	if (verif_metacharacter(stock, tmp) == 0)

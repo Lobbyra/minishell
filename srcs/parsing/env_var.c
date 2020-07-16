@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/23 14:33:48 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/15 16:43:17 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/16 14:42:03 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ char		**get_env_var(char *user_input, int nb_env_var, t_bool is_debug)
 	return (tab_env_var);
 }
 
-char		**if_exist(char **tab_env_var, int nb_env_var, char **envp, t_stock *s)
+static char		**if_exist(char **tab_env_var, int nb_env_var, char **envp, t_stock *s)
 {
 	int		i;
 	int		n;

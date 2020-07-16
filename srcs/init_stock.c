@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_stock.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/15 13:26:06 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/15 18:53:41 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/16 16:03:34 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,6 @@ t_stock			*init_stock(char **envp)
 	new->exit_status = 0;
 	new->user_input = NULL;
 	new->buf_user_input = NULL;
+	new->list_exec_abort = NULL;
 	return (new);
 }
