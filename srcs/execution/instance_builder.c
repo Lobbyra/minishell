@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 16:29:13 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/16 18:33:54 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/16 18:38:11 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ void	print_exec_err(char *path)
 	struct stat	path_stat;
 	
 	stat(path, &path_stat);
-	l_printf("minishell: %s: ", path);
+	ft_putstr_fd("minishell: ", STDERR);
+	ft_putstr_fd(path, STDERR);
+	ft_putstr_fd(": ", STDERR);
 	if (ft_c_finder('/', path) == FALSE)
 		ft_putstr_fd("command not found\n", STDERR);
 	else if (S_ISDIR(path_stat.st_mode) == TRUE)
