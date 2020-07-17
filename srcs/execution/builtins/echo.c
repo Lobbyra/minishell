@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/23 18:03:21 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/04 14:08:37 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/17 16:27:20 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	protected_putarrstr_fd(char **argv, char *sep, int fd)
 {
 	if (argv && fd > 0)
 	{
-		while (*(argv + 1))
+		while (*argv && *(argv + 1))
 		{
 			if (write(fd, *argv, ft_strlen(*argv)) == -1 ||
 				write(fd, sep, ft_strlen(sep)) == -1)
@@ -42,14 +42,40 @@ static int	protected_putarrstr_fd(char **argv, char *sep, int fd)
 	return (0);
 }
 
+static t_bool	is_option(char *arg)
+{
+	if (arg && *arg == '-')
+	{
+		while (*arg == 'n')
+			arg++;
+	}
+	if (arg && *arg == '\0')
+		return (TRUE);
+	return (FALSE);
+}
+
+static int		n_options(char **job)
+{
+	int count;
+
+	job += 2;
+	count = 0;
+	while (job && is_option(*job) == TRUE)
+	{
+		job++;
+		count++;
+	}
+	return (count);
+}
+
 int			echo(char **job, int fd)
 {
 	errno = 0;
 	if (ft_strarrlen(job) > 1)
 	{
-		if (ft_strcmp(job[1], "-n") == 0)
+		if (ft_strncmp(job[1], "-n", 2) == 0)
 		{
-			if (protected_putarrstr_fd(job + 2, " ", fd) > 0)
+			if (protected_putarrstr_fd(job + 2 + n_options(job), " ", fd) > 0)
 				return (1);
 		}
 		else
