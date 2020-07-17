@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 12:45:58 by Jeanxavier        #+#    #+#             */
-/*   Updated: 2020/07/15 17:56:35 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/16 18:47:13 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ static int	is_builtins(char *jobs)
 	return (0);
 }
 
-static int	free_alloc(char *exec, char **path, t_stock *s, int n)
+static int	free_alloc(char *exec, char **path, char *jobs)
 {
 	free(exec);
-	free(s->jobs[n][0]);
+	free(jobs);
 	ft_strarrfree(path);
 	return (0);
 }
@@ -39,13 +39,21 @@ static int	free_alloc(char *exec, char **path, t_stock *s, int n)
 static int	check_all_path(t_stock *s, int n, t_bool is_debug)
 {
 	int			i;
+	int			status;
 	char		*exec;
 	char		*tmp;
 	char		**path;
 	struct stat	buf;
 
 	i = 0;
-	exec = ft_strjoin("/", s->jobs[n][0]);
+	status = 0;
+	if (is_metacharacter(s->jobs[n][0][0]))
+	{
+		exec = ft_strjoin("/", s->jobs[n][2]);
+		status = 1;
+	}
+	else
+		exec = ft_strjoin("/", s->jobs[n][0]);
 	path = get_path(s->envp);
 	if (path == NULL)
 		return (-1);
@@ -56,8 +64,16 @@ static int	check_all_path(t_stock *s, int n, t_bool is_debug)
 		stat(tmp, &buf);
 		if (errno == 0)
 		{
-			free_alloc(exec, path, s, n);
-			s->jobs[n][0] = tmp;
+			if (status == 0)
+			{
+				free_alloc(exec, path, s->jobs[n][0]);
+				s->jobs[n][0] = tmp;
+			}
+			else
+			{
+				free_alloc(exec, path, s->jobs[n][2]);
+				s->jobs[n][2] = tmp;
+			}
 			if (is_debug == TRUE)
 				l_printf("exec: %s\n", tmp);
 			return (1);
