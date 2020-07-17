@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/14 14:18:59 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/14 18:51:38 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/16 18:45:32 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 static char	*add_nquote(char *new, char *arg, int i)
 {
 	char *buf;
-	
+
 	if (!(buf = ft_strdup_n(arg + i, part_len_nquote(arg, i))))
 		return (NULL);
 	escaper_nquote(buf);
@@ -30,7 +30,7 @@ static char	*add_nquote(char *new, char *arg, int i)
 static char	*add_quote(char *new, char *arg, int i)
 {
 	char *buf;
-	
+
 	if (!(buf = ft_strdup_n(arg + i + 1, part_len_quote(arg, i) - 2)))
 		return (NULL);
 	return (ft_strjoindel(new, buf, 3));
@@ -39,14 +39,14 @@ static char	*add_quote(char *new, char *arg, int i)
 static char	*add_dquote(char *new, char *arg, int i)
 {
 	char *buf;
-	
+
 	if (!(buf = ft_strdup_n(arg + i + 1, part_len_dquote(arg, i) - 2)))
 		return (NULL);
 	escaper_dquote(buf);
 	return (ft_strjoindel(new, buf, 3));
 }
 
-char	*arg_cleaner(char *arg)
+char		*arg_cleaner(char *arg)
 {
 	int		i;
 	char	*new;

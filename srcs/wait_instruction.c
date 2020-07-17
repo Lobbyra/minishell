@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 15:36:34 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/15 17:40:40 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/16 18:48:02 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 **	Will return a duplication of cmd without the first command.
 */
 
-static char *cut_cmd(char *cmd)
+static char	*cut_cmd(char *cmd)
 {
 	int		i;
 	char	*new;
@@ -47,7 +47,7 @@ static char *cut_cmd(char *cmd)
 **	Commands are separated by non-quoted char ';'.
 */
 
-char *get_cmd(char *user_input)
+char		*get_cmd(char *user_input)
 {
 	int		i;
 	char	*new;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 16:02:38 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/16 18:23:16 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/16 19:02:06 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int			parsing(t_stock *stock)
 	if (check_quote(stock) == 3)
 		return (ERR_SYNTAX);
 	if (check_pipe(stock) != 0)
-		return (-1);
+		return (6);
 	check_end_backslash(stock);
 	if (check_double_pipe(stock->user_input) != 0)
 		return (ERR_SYNTAX);

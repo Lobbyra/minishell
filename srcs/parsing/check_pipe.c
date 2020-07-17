@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_pipe.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/20 13:51:24 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/16 18:22:36 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/16 19:02:40 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int				check_pipe(t_stock *s)
 			{
 				s->error_strings = ft_strjoindel(s->error_strings, ERR_PIPE3, 1);
 				s->is_exec_abort = TRUE;
-				return (0);
+				return (-1);
 			}
 			else if (s->user_input[i] == '\0')
 			{

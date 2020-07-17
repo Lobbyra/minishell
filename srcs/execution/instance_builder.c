@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 16:29:13 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/16 18:38:11 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/16 18:55:41 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 **	This function will call redirection piping and execute binaries in child.
 */
 
-void	print_exec_err(char *path)
+void		print_exec_err(char *path)
 {
 	struct stat	path_stat;
-	
+
 	stat(path, &path_stat);
 	ft_putstr_fd("minishell: ", STDERR);
 	ft_putstr_fd(path, STDERR);
@@ -104,7 +104,7 @@ int			instance_builder(t_stock *s, int jobpos, int *pipes, t_bool is_pipe)
 		close_pipes(pipes, s->n_jobs * 2 - 2);
 		if (err == 0 && is_builtin(path) == TRUE)
 			builtin_call_child(s->jobs[jobpos], &(s->exit_status), &(s->envp));
-		else if (err == 0 && is_aborted(s, jobpos) == FALSE && (!ft_c_finder('/', path) ||
+		else if (err == 0 && is_aborted(s, jobpos) == FALSE && s->is_exec_abort == FALSE && (!ft_c_finder('/', path) ||
 				execve(path, s->jobs[jobpos], s->envp) == -1))
 			print_exec_err(path);
 		exit(1);

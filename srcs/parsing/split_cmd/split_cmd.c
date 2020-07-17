@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/13 13:45:38 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/15 13:12:12 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/16 18:47:17 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 #include "minishell.h"
 
-int word_counter(char *ui)
+int			word_counter(char *ui)
 {
 	int i;
 	int i_temp;
@@ -51,7 +51,7 @@ int word_counter(char *ui)
 	return (count);
 }
 
-static void meta_cpy(char ***i_new, char *ui, int *i)
+static void	meta_cpy(char ***i_new, char *ui, int *i)
 {
 	if (ft_strncmp(ui + *i, ">>", 2) == 0)
 	{
@@ -63,12 +63,12 @@ static void meta_cpy(char ***i_new, char *ui, int *i)
 	(*i_new)++;
 }
 
-char **split_cmd(char *ui)
+char		**split_cmd(char *ui)
 {
-	int i;
-	int i_temp;
-	char **new;
-	char **i_new;
+	int		i;
+	int		i_temp;
+	char	**new;
+	char	**i_new;
 
 	if (!(new = (char **)malloc(sizeof(char *) * (word_counter(ui) + 1))))
 		return (NULL);
