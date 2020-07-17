@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 16:02:38 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/16 19:02:06 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/17 14:27:23 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static int	debug_parsing(t_stock *stock)
 {
 	int		i;
+	int		err;
 	char	**tmp;
 
 	i = 0;
@@ -22,8 +23,8 @@ static int	debug_parsing(t_stock *stock)
 	if (check_quote(stock) == 3)
 		return (ERR_SYNTAX);
 	printf("\033[32mcheck quote [ok]\033[37m\n");
-	if (check_pipe(stock) != 0)
-		return (-1);
+	if ((err = check_pipe(stock)) != 0)
+		return (err);
 	printf("\033[32mcheck pipe [ok]\033[37m\n");
 	check_end_backslash(stock);
 	printf("\033[32mcheck end_backslash [ok]\033[37m\n");
@@ -45,6 +46,7 @@ static int	debug_parsing(t_stock *stock)
 int			parsing(t_stock *stock)
 {
 	int		i;
+	int		err;
 	char	**tmp;
 
 	i = 0;
@@ -53,8 +55,8 @@ int			parsing(t_stock *stock)
 		return (debug_parsing(stock));
 	if (check_quote(stock) == 3)
 		return (ERR_SYNTAX);
-	if (check_pipe(stock) != 0)
-		return (6);
+	if ((err = check_pipe(stock)) != 0)
+		return (err);
 	check_end_backslash(stock);
 	if (check_double_pipe(stock->user_input) != 0)
 		return (ERR_SYNTAX);

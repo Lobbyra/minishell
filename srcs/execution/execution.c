@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/16 14:02:43 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/14 18:03:55 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/17 14:12:03 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int			execution(t_stock *s)
 			err = redirector_file_out(s, 0);
 		s->jobs[0] = rm_redir(s->jobs[0]);
 		jobs_cleaner(s->jobs);
-		if (err == 0)
+		if (err == 0 && is_aborted(s, 0) == FALSE && s->is_exec_abort == FALSE)
 			builtin_call_parent(s->jobs[0], &s->exit_status, 1, &(s->envp));
 		dup2(save_stdout, 1);
 		close(save_stdout);

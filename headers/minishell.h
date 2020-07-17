@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/15 13:22:38 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/16 14:05:33 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/17 14:19:20 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define ERR_SYNTAX 3
 # define ERR_EXIT 4
 # define ERR_CMD_VOID 5
+# define ERR_CRITIC 6
 
 # include <stdio.h>
 # include <stdlib.h>

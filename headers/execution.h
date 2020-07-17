@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 15:10:39 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/16 16:05:22 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/17 14:05:02 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ char	**rm_redir(char **job);
 
 t_bool	is_in_redir(char **job);
 t_bool	is_out_redir(char **job);
+t_bool	is_aborted(t_stock *s, int jobpos);
 
 int		redirector_file_in(char **job);
 int		redirector_file_out(t_stock *s, int jobpos);
