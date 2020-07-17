@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 16:02:38 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/17 16:08:42 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/17 16:35:28 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	debug_parsing(t_stock *stock)
 	printf("\033[32mcheck pipe [ok]\033[37m\n");
 	check_end_backslash(stock);
 	printf("\033[32mcheck end_backslash [ok]\033[37m\n");
-	if (check_double_pipe(stock->user_input) != 0)
+	if (check_double_pipe(stock->user_input, stock) != 0)
 		return (ERR_SYNTAX);
 	verif_redirection_env_var(stock);
 	env_var(stock);
@@ -58,7 +58,7 @@ int			parsing(t_stock *stock)
 	if ((err = check_pipe(stock)) != 0)
 		return (err);
 	check_end_backslash(stock);
-	if (check_double_pipe(stock->user_input) != 0)
+	if (check_double_pipe(stock->user_input, stock) != 0)
 		return (ERR_SYNTAX);
 	verif_redirection_env_var(stock);
 	env_var(stock);
