@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/02 18:04:07 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/17 15:35:23 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/17 15:38:30 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ int			redirector_file_in(char **job)
 		{
 			path = arg_cleaner(ft_strdup(*(job + 1)));
 			fd = open(path, O_RDONLY);
-			l_printf("Debug redirector_file_in path = [%s]\n", path);
 			if (fd == -1)
 				break ;
 			job += 2;
