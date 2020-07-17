@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/15 18:42:30 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/16 18:28:50 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/17 17:05:25 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,7 @@ char			*is_env_var(char *str)
 		return (NULL);
 	x = 0;
 	while (x < n)
-	{
-		tmp[x] = str[i];
-		i++;
-		x++;
-	}
+		tmp[x++] = str[i++];
 	tmp[n] = '\0';
 	return (tmp);
 }
@@ -83,8 +79,6 @@ char			*remove_incorrect_input(t_stock *s, int i)
 		}
 	}
 	tmp[n] = '\0';
-	if (s->is_debug == TRUE)
-		l_printf("tmp [%s]\n", tmp);
 	return (tmp);
 }
 

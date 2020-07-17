@@ -3,25 +3,55 @@
 /*                                                        :::      ::::::::   */
 /*   remplace_env_var.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Jeanxavier <Jeanxavier@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/23 17:17:46 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/07 17:26:26 by Jeanxavier       ###   ########.fr       */
+/*   Updated: 2020/07/17 16:19:36 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int		remplace_env_var(char *new, char *value)
+char		*escape_env_var(char *new, char *value, int *i, int *n)
 {
-	int i;
+	int x;
+
+	x = 0;
+	while (value[*i + x] != '\0' && value[*i + x] == '\\')
+		x++;
+	if ((is_metacharacter(value[*i + x])) == 1 || value[*i + x] == '|')
+	{
+		new[(*n)++] = '\'';
+		new[(*n)++] = value[(*i)++];
+		while (value[*i] != '\0' && value[*i] == '\\')
+			new[(*n)++] = value[(*i)++];
+		new[(*n)++] = value[(*i)++];
+		new[(*n)++] = '\'';
+	}
+	return (new);
+}
+
+int			remplace_env_var(char *new, char *value)
+{
+	int	i;
+	int	n;
 
 	i = 0;
+	n = 0;
 	while (value[i])
 	{
-		new[i] = value[i];
-		i++;
+		if (value[i] == '\\')
+			new = escape_env_var(new, value, &i, &n);
+		if ((is_metacharacter(value[i]) || value[i] == '|') && \
+		!is_escaped(value, i))
+		{
+			new[n++] = '\'';
+			new[n++] = value[i++];
+			new[n++] = '\'';
+		}
+		else
+			new[n++] = value[i++];
 	}
-	new[i] = '\0';
-	return (i);
+	new[n] = '\0';
+	return (n);
 }

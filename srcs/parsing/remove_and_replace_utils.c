@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/07 14:47:13 by Jeanxavier        #+#    #+#             */
-/*   Updated: 2020/07/15 15:05:54 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/17 17:01:49 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,31 +40,30 @@ void	word_between_simple_quote(int *i, char *user_input, int *quote)
 		*quote = 0;
 }
 
-char	*remove_and_replace_utils(char *user_input, char *new, char **value)
+char	*remove_and_replace_utils(char *input, char *new, char **value)
 {
 	int		i;
 	int		n;
 	int		x;
-	int		quote;
+	int		quot;
 
 	i = 0;
 	n = 0;
 	x = 0;
-	quote = 0;
-	while (user_input[i])
+	quot = 0;
+	while (input[i])
 	{
-		if (user_input[i] == '\'' || user_input[i] == '"')
-			word_between_simple_quote(&i, user_input, &quote);
-		if (user_input[i] == '$' && user_input[i - 1] != '\\' && (quote == 0 || quote == 2))
+		if (input[i] == '\'' || input[i] == '"')
+			word_between_simple_quote(&i, input, &quot);
+		if (input[i] == '$' && input[i - 1] != '\\' && (quot == 0 || quot == 2))
 		{
 			i++;
-			while (user_input[i] && (ft_isalnum(user_input[i]) || user_input[i] == '?'))
+			while (input[i] && (ft_isalnum(input[i]) || input[i] == '?'))
 				i++;
-			n = n + remplace_env_var(new + n, value[x]);
-			x++;
+			n = n + remplace_env_var(new + n, value[x++]);
 		}
 		else
-			new[n++] = user_input[i++];
+			new[n++] = input[i++];
 	}
 	new[n] = '\0';
 	return (new);

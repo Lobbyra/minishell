@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 16:29:39 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/16 18:04:27 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/17 16:34:37 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		check_pipe(t_stock *stock);
 int		check_quote(t_stock *stock);
 int		check_end_backslash(t_stock *s);
 int		number_env_var(char *user_input);
-int		check_double_pipe(char *user_input);
+int		check_double_pipe(char *user_input, t_stock *s);
 int		remplace_env_var(char *new, char *value);
 int		verif_exec(t_stock *stock);
 int		management_check_all_path(t_stock *s, int n, t_bool is_debug);

@@ -6,13 +6,13 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/23 14:33:48 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/16 14:42:03 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/17 17:09:23 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char		*get_name(char *env_var)
+char			*get_name(char *env_var)
 {
 	int		i;
 	int		n;
@@ -30,7 +30,7 @@ char		*get_name(char *env_var)
 	{
 		if (env_var[0] == ' ')
 			tmp[n] = '$';
-		else 
+		else
 			tmp[n] = env_var[n];
 		n++;
 	}
@@ -38,7 +38,7 @@ char		*get_name(char *env_var)
 	return (tmp);
 }
 
-char		*get_value(char *user_input)
+char			*get_value(char *user_input)
 {
 	int		i;
 	int		n;
@@ -65,7 +65,7 @@ char		*get_value(char *user_input)
 	return (tmp);
 }
 
-char		**get_env_var(char *user_input, int nb_env_var, t_bool is_debug)
+char			**get_env_var(char *user_input, int nb_env_var, t_bool is_debug)
 {
 	int		i;
 	int		n;
@@ -102,7 +102,8 @@ char		**get_env_var(char *user_input, int nb_env_var, t_bool is_debug)
 	return (tab_env_var);
 }
 
-static char		**if_exist(char **tab_env_var, int nb_env_var, char **envp, t_stock *s)
+static char		**if_exist(char **tab_env_var, int nb_env_var, char **envp, \
+t_stock *s)
 {
 	int		i;
 	int		n;
@@ -143,7 +144,7 @@ static char		**if_exist(char **tab_env_var, int nb_env_var, char **envp, t_stock
 	return (value);
 }
 
-char		*env_var(t_stock *s)
+char			*env_var(t_stock *s)
 {
 	int		nb_env_var;
 	char	**tab_env_var;
