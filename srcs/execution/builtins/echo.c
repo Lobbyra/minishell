@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/23 18:03:21 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/17 16:27:20 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/20 14:26:15 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ static t_bool	is_option(char *arg)
 {
 	if (arg && *arg == '-')
 	{
+		arg++;
 		while (*arg == 'n')
 			arg++;
 	}
@@ -58,7 +59,7 @@ static int		n_options(char **job)
 {
 	int count;
 
-	job += 2;
+	job += 1;
 	count = 0;
 	while (job && is_option(*job) == TRUE)
 	{
@@ -75,7 +76,7 @@ int			echo(char **job, int fd)
 	{
 		if (ft_strncmp(job[1], "-n", 2) == 0)
 		{
-			if (protected_putarrstr_fd(job + 2 + n_options(job), " ", fd) > 0)
+			if (protected_putarrstr_fd(job + 1 + n_options(job), " ", fd) > 0)
 				return (1);
 		}
 		else
