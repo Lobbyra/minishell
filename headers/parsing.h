@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 16:29:39 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/17 16:34:37 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/20 16:43:11 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ char	*env_var(t_stock *s);
 char	*remove_and_replace(char *user_input, char **tab, char **value);
 char	*remove_and_replace_utils(char *user_input, char *new, char **value);
 char	*ft_itoa(int n);
+char	*get_value(char *user_input);
 
 char	**get_path(char **envp);
 char	**split_command(char *cmd);
