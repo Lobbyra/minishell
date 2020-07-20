@@ -6,11 +6,21 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 15:36:34 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/16 18:48:02 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/20 15:30:33 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int			panic_wait_instruction(char **to_free, int err)
+{
+	if (*to_free != NULL)
+	{
+		free(*to_free);
+		*to_free = NULL;
+	}
+	return (err);
+}
 
 /*
 **	Will return a duplication of cmd without the first command.

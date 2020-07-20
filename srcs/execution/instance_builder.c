@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 16:29:13 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/16 18:55:41 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/20 17:27:23 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ static int	init_ib(char **path, char **exec_name, char **job)
 	*path = ft_strdup(find_exec(job)[0]);
 	if (!path)
 		return (ERR_MALLOC);
+	*path = arg_cleaner(*path);
 	*exec_name = ft_basename(find_exec(job)[0]);
 	if (!exec_name)
 	{

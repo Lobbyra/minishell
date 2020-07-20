@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/15 13:22:38 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/17 14:19:20 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/20 16:46:51 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void			free_t_stock(t_stock *stock);
 */
 int				check_user_input(char *user_input);
 int				panic_wait_instruction(char **to_free, int err);
+int				check_entire_ui(char *ui);
 
 /*
 **	Debug functions.

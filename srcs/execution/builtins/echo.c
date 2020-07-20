@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/23 18:03:21 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/20 14:26:15 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/20 17:19:50 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,7 @@ int			echo(char **job, int fd)
 				return (errno_exit());
 		}
 	}
+	else
+		write(1, "\n", 1);
 	return (0);
 }

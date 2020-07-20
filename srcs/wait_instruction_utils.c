@@ -6,11 +6,56 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 18:05:40 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/04 11:21:07 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/20 17:18:32 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+/*
+**	### IS_NOTHIN_N_PIPED ###
+**	Static function of CHECK_ENTIRE_UI
+**	It check if there is nothing between non-quoted ; and |.
+*/
+t_bool		is_nothing_n_piped(char *ui, int i)
+{
+	i++;
+	i = pass_spaces(ui, i);
+	if (ui[i] == '|')
+		return (TRUE);
+	return (FALSE);
+}
+
+/*
+**	### CHECK_ENTIRE_UI ###
+**	Function that check case of echo bonjour ; | echo salut.
+**	ui mean user_input
+*/
+int			check_entire_ui(char *ui)
+{
+	int i;
+
+	i = 0;
+	while (ui[i])
+	{
+		i = pass_spaces(ui, i);
+		if (ui[i] == ';')
+		{
+			if (is_nothing_n_piped(ui, i) == TRUE)
+			{
+				ft_putstr_fd(ERR_CRIT_MSG, STDERR);
+				return (ERR_CRITIC);
+			}
+			else
+				i++;
+		}
+		else if (is_sep_char(ui, i) == TRUE)
+			i++;
+		else
+			i = pass_word(ui, i);
+	}
+	return (0);
+}
 
 /*
 **	Static function of check_user_input.
@@ -19,7 +64,7 @@
 static int	print_error(void)
 {
 	ft_putstr_fd("minishell: ", 2);
-	ft_putstr_fd("syntax error near unexpected token `;'\n", 2);
+	ft_putstr_fd("syntax error near unexpected token `;'\n", STDERR);
 	return (ERR_CMD_VOID);
 }
 
@@ -66,15 +111,8 @@ int			check_user_input(char *user_input)
 			skip_cmd(&i_ui);
 		i_ui++;
 	}
+	if (check_entire_ui(user_input) == ERR_CRITIC)
+		return (ERR_CRITIC);
 	return (0);
 }
 
-int			panic_wait_instruction(char **to_free, int err)
-{
-	if (*to_free != NULL)
-	{
-		free(*to_free);
-		*to_free = NULL;
-	}
-	return (err);
-}
