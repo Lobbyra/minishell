@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/23 14:33:48 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/20 15:12:01 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/20 15:28:14 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ char			*get_name(char *env_var)
 	char	*tmp;
 
 	i = 0;
-	l_printf("env_bar [%s]\n", env_var);
 	while (ft_isalnum(env_var[i]) && env_var[i])
 		i++;
 	if (i == 0 && (env_var[0] == '?' || env_var[0] == ' ' || env_var[0] == '\0'))
@@ -117,7 +116,6 @@ t_stock *s)
 	{
 		n = 0;
 		len_var = ft_strlen(tab_env_var[i]);
-		l_printf("len: %d tab[%s]", len_var, tab_env_var[i]);
 		if (len_var == 1 && tab_env_var[i][0] == '$')
 		{
 			free(value[i]);

@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 14:15:46 by Jeanxavier        #+#    #+#             */
-/*   Updated: 2020/07/16 17:49:56 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/20 15:15:56 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,11 @@ int				verif_metacharacter(t_stock *s, char **cmd)
 			"minishell: syntax error near unexpected token `", 1);
 			s->error_strings = ft_strjoindel(s->error_strings, \
 			ft_strjoin(cmd[i + 1], "'\n"), 3);
+			return (0);
+		}
+		if (is_metacharacter(cmd[i][0]) && cmd[i + 1][0] == '|')
+		{
+			s->error_strings = ft_strjoindel(s->error_strings, ERR_PIPE2, 1);
 			return (0);
 		}
 		i++;
