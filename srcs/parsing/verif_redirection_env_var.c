@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/15 18:42:30 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/17 17:05:25 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/20 16:48:29 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,25 @@ static int		if_exist(t_stock *s, char *str)
 {
 	int		len_var;
 	int		n;
+	int		i;
+	char	*tmp;
 
 	n = 0;
 	while (s->envp[n])
 	{
 		len_var = ft_strlen_c(s->envp[n], '=');
 		if (ft_strncmp(str, s->envp[n], len_var) == 0)
-			return (1);
+		{
+			tmp = get_value(s->envp[n]);
+			i = 0;
+			while (tmp[i] && tmp[i] != ' ')
+				i++;
+			if (tmp[i] == '\0')
+			{
+				free(tmp);
+				return (1);
+			}
+		}
 		n++;
 	}
 	return (0);
