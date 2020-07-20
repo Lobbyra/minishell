@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 14:42:06 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/04 11:23:44 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/20 17:56:07 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static t_bool	is_correct_name(char *arg)
 		if (!(*arg >= 'a' && *arg <= 'z') && !(*arg >= '0' && *arg <= '9')
 			&& !(*arg >= 'A' && *arg <= 'Z') && *arg != '_')
 			return (FALSE);
-		if ((*arg >= 'a' && *arg <= 'z') || (*arg >= 'a' && *arg <= 'z'))
+		if ((*arg >= 'a' && *arg <= 'z') || (*arg >= 'A' && *arg <= 'Z'))
 			letter_saw = TRUE;
 		if (*arg >= '0' && *arg <= '9' && letter_saw == FALSE)
 			return (FALSE);
@@ -74,7 +74,9 @@ static char		**var_deletion(char **save_envp, char **envp, char *var)
 		envp++;
 	}
 	*i_new = NULL;
+	l_printf("CP1\n");
 	ft_freestrs(save_envp);
+	l_printf("CP2\n");
 	return (new);
 }
 
@@ -82,10 +84,10 @@ int				unset(char ***envp, char **job)
 {
 	int i;
 
-	i = 0;
+	i = 1;
 	while (job[i])
 	{
-		if (is_correct_name(job[i]) == FALSE)
+		if (is_correct_name(job[i]) == FALSE || ft_strcmp("", job[i]) == 0)
 			print_unset_err(job[i]);
 		else if (!(*envp = var_deletion(*envp, *envp, job[i])))
 			return (ERR_MALLOC);

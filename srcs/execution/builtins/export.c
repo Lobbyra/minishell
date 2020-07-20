@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 14:49:08 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/04 11:22:11 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/20 17:37:11 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int				export(char ***envp, char **job, int fd)
 		print_envp_export(*envp, fd);
 	while (job[i])
 	{
-		if (is_correct_name(job[i]) == FALSE)
+		if (is_correct_name(job[i]) == FALSE || ft_strcmp("", job[i]) == 0)
 			err = print_export_err(job[i]);
 		else if (is_an_egual(job[i]) == TRUE)
 		{
