@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/20 13:51:24 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/17 16:28:20 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/20 16:59:37 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,26 @@ static int		additional_read_pipe(t_stock *s)
 	return (check_quote(s));
 }
 
+int				check_pipe_utils(t_stock *s, int *i)
+{
+	(*i)++;
+	while (ft_isprint(s->user_input[*i]) == 0 && s->user_input[*i])
+		(*i)++;
+	if (s->user_input[*i] == '\0' && s->is_cmd_closed == 1)
+	{
+		s->error_strings = ft_strjoindel(s->error_strings, ERR_PIPE3, 1);
+		s->is_exec_abort = TRUE;
+		return (ERR_CRITIC);
+	}
+	else if (s->user_input[*i] == '\0')
+	{
+		if (additional_read_pipe(s) == ERR_SYNTAX)
+			return (ERR_SYNTAX);
+		*i = 0;
+	}
+	return (0);
+}
+
 int				check_pipe(t_stock *s)
 {
 	int i;
@@ -58,23 +78,7 @@ int				check_pipe(t_stock *s)
 			return (ERR_SYNTAX);
 		}
 		else if (s->user_input[i] == '|' && s->user_input[i - 1] != '\\')
-		{
-			i++;
-			while (ft_isprint(s->user_input[i]) == 0 && s->user_input[i])
-				i++;
-			if (s->user_input[i] == '\0' && s->is_cmd_closed == 1)
-			{
-				s->error_strings = ft_strjoindel(s->error_strings, ERR_PIPE3, 1);
-				s->is_exec_abort = TRUE;
-				return (ERR_CRITIC);
-			}
-			else if (s->user_input[i] == '\0')
-			{
-				if (additional_read_pipe(s) == ERR_SYNTAX)
-					return (ERR_SYNTAX);
-				i = 0;
-			}
-		}
+			check_pipe_utils(s, &i);
 		i++;
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 12:45:58 by Jeanxavier        #+#    #+#             */
-/*   Updated: 2020/07/17 16:17:27 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/20 18:49:16 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	is_builtins(char *jobs)
 	return (0);
 }
 
-static int	free_alloc(char *exec, char **path, char *jobs)
+int			free_alloc(char *exec, char **path, char *jobs)
 {
 	free(exec);
 	free(jobs);
@@ -36,16 +36,39 @@ static int	free_alloc(char *exec, char **path, char *jobs)
 	return (0);
 }
 
-static int	check_all_path(t_stock *s, int n, t_bool is_debug)
+int			check_all_path_utils(char **jobs, char **path, char *exec,
+int status)
 {
 	int			i;
-	int			status;
-	char		*exec;
 	char		*tmp;
-	char		**path;
 	struct stat	buf;
 
 	i = 0;
+	while (path[i])
+	{
+		tmp = ft_strjoin(path[i], exec);
+		errno = 0;
+		stat(tmp, &buf);
+		if (errno == 0)
+		{
+			if (status == 0)
+				free_get_path_exec_one(path, exec, jobs, tmp);
+			else
+				free_get_path_exec_two(path, exec, jobs, tmp);
+			return (1);
+		}
+		free(tmp);
+		i++;
+	}
+	return (0);
+}
+
+static int	check_all_path(t_stock *s, int n)
+{
+	int			status;
+	char		*exec;
+	char		**path;
+
 	status = 0;
 	if (is_metacharacter(s->jobs[n][0][0]))
 	{
@@ -57,38 +80,16 @@ static int	check_all_path(t_stock *s, int n, t_bool is_debug)
 	path = get_path(s->envp);
 	if (path == NULL)
 		return (-1);
-	while (path[i])
-	{
-		tmp = ft_strjoin(path[i], exec);
-		errno = 0;
-		stat(tmp, &buf);
-		if (errno == 0)
-		{
-			if (status == 0)
-			{
-				free_alloc(exec, path, s->jobs[n][0]);
-				s->jobs[n][0] = tmp;
-			}
-			else
-			{
-				free_alloc(exec, path, s->jobs[n][2]);
-				s->jobs[n][2] = tmp;
-			}
-			if (is_debug == TRUE)
-				l_printf("exec: %s\n", tmp);
-			return (1);
-		}
-		free(tmp);
-		i++;
-	}
+	if ((check_all_path_utils(s->jobs[n], path, exec, status)) == 1)
+		return (1);
 	free(exec);
 	ft_strarrfree(path);
 	return (0);
 }
 
-int			management_check_all_path(t_stock *s, int n, t_bool is_debug)
+int			management_check_all_path(t_stock *s, int n)
 {
-	if (check_all_path(s, n, is_debug) == 1)
+	if (check_all_path(s, n) == 1)
 		return (1);
 	if (is_builtins(s->jobs[n][0]))
 		return (1);

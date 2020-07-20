@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/23 14:33:48 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/20 15:28:14 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/20 17:17:44 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ char			*get_name(char *env_var)
 	i = 0;
 	while (ft_isalnum(env_var[i]) && env_var[i])
 		i++;
-	if (i == 0 && (env_var[0] == '?' || env_var[0] == ' ' || env_var[0] == '\0'))
+	if (i == 0 && (env_var[0] == '?' || env_var[0] == ' ' ||
+	env_var[0] == '\0'))
 		i = 1;
 	if (!(tmp = (char *)malloc(sizeof(char) * (i + 1))))
 		return (NULL);
@@ -65,7 +66,7 @@ char			*get_value(char *user_input)
 	return (tmp);
 }
 
-char			**get_env_var(char *user_input, int nb_env_var, t_bool is_debug)
+char			**get_env_var(char *user_input, int nb_env_var)
 {
 	int		i;
 	int		n;
@@ -75,8 +76,6 @@ char			**get_env_var(char *user_input, int nb_env_var, t_bool is_debug)
 	i = 0;
 	n = 0;
 	quote = 0;
-	if (is_debug == TRUE)
-		l_printf("nb_var = %d\n", nb_env_var);
 	tab_env_var = pre_malloc_arrstring(nb_env_var);
 	while (user_input[i])
 	{
@@ -85,18 +84,12 @@ char			**get_env_var(char *user_input, int nb_env_var, t_bool is_debug)
 			word_between_simple_quote(&i, user_input, &quote);
 			i++;
 		}
-		if (user_input[i] == '$' && (!is_escape(i, user_input)) && (quote == 0 || quote == 2))
+		if (user_input[i] == '$' && (!is_escape(i, user_input)) &&
+		(quote == 0 || quote == 2))
 		{
 			free(tab_env_var[n]);
-			tab_env_var[n] = get_name(&user_input[i + 1]);
-			n++;
+			tab_env_var[n++] = get_name(&user_input[i + 1]);
 		}
-		i++;
-	}
-	i = 0;
-	while (i < nb_env_var && is_debug == TRUE)
-	{
-		printf("env_var[%d]:%s\n", i, tab_env_var[i]);
 		i++;
 	}
 	return (tab_env_var);
@@ -106,7 +99,6 @@ static char		**if_exist(char **tab_env_var, int nb_env_var, char **envp, \
 t_stock *s)
 {
 	int		i;
-	int		n;
 	int		len_var;
 	char	**value;
 
@@ -114,7 +106,6 @@ t_stock *s)
 	value = pre_malloc_arrstring(nb_env_var);
 	while (tab_env_var[i])
 	{
-		n = 0;
 		len_var = ft_strlen(tab_env_var[i]);
 		if (len_var == 1 && tab_env_var[i][0] == '$')
 		{
@@ -123,24 +114,11 @@ t_stock *s)
 		}
 		else
 		{
-			while (envp[n])
-			{
-				len_var = ft_strlen_c(envp[n], '=');
-				if (ft_strncmp(tab_env_var[i], envp[n], len_var) == 0)
-				{
-					free(value[i]);
-					value[i] = get_value(envp[n]);
-					break ;
-				}
-				n++;
-			}
+			find_env_var(tab_env_var, envp, value, i);
 			is_env_exit_status(tab_env_var[i], value, i, s);
 		}
 		i++;
 	}
-	i = 0;
-	while (value[i] && s->is_debug == TRUE)
-		printf("value: %s\n", value[i++]);
 	return (value);
 }
 
@@ -152,7 +130,7 @@ char			*env_var(t_stock *s)
 	char	*new;
 
 	if ((nb_env_var = number_env_var(s->user_input)) != 0)
-		tab_env_var = get_env_var(s->user_input, nb_env_var, s->is_debug);
+		tab_env_var = get_env_var(s->user_input, nb_env_var);
 	if (nb_env_var > 0)
 	{
 		value = if_exist(tab_env_var, nb_env_var, s->envp, s);

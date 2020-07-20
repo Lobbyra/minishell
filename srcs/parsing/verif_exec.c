@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 18:08:03 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/15 14:24:39 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/20 17:42:16 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int			verif_exec(t_stock *s)
 			ft_strjoindel("/", s->jobs[i][0], 2), 3);
 		}
 		else if (status == 0)
-			management_check_all_path(s, i, s->is_debug);
+			management_check_all_path(s, i);
 		i++;
 	}
 	return (0);

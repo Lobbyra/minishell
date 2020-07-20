@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 15:54:35 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/17 17:15:59 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/20 17:02:13 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ int				check_quote(t_stock *s)
 		else if ((s->user_input[i] == '\'' && quote == '0')
 		&& (!is_escaped(s->user_input, i)))
 			quote = '\'';
-		else if (((quote == s->user_input[i]) && (!is_escaped(s->user_input, i)))
-		|| (quote == '\'' && quote == s->user_input[i] && 
+		else if (((quote == s->user_input[i]) && (!is_escaped(
+		s->user_input, i))) || (quote == '\'' && quote == s->user_input[i] &&
 		is_escaped(s->user_input, i)))
 			quote = '0';
 		i++;
