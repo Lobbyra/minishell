@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 14:42:06 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/20 17:56:07 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/20 18:34:33 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,7 @@ static char		**var_deletion(char **save_envp, char **envp, char *var)
 		envp++;
 	}
 	*i_new = NULL;
-	l_printf("CP1\n");
 	ft_freestrs(save_envp);
-	l_printf("CP2\n");
 	return (new);
 }
 
