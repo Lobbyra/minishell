@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/20 13:51:24 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/20 16:59:37 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/21 14:45:16 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int				check_pipe(t_stock *s)
 			return (ERR_SYNTAX);
 		}
 		else if (s->user_input[i] == '|' && s->user_input[i - 1] != '\\')
-			check_pipe_utils(s, &i);
+			return (check_pipe_utils(s, &i));
 		i++;
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 15:54:35 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/20 17:02:13 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/21 14:42:13 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ static int		additional_read_quote(char quote, t_stock *s)
 		{
 			s->error_strings = ft_strjoin(ERR_QUOTE1, &quote);
 			s->error_strings = ft_strjoindel(s->error_strings, ERR_QUOTE2, 1);
-			l_printf("%s\n", s->error_strings);
 			return (ERR_SYNTAX);
 		}
 	}
