@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 18:18:48 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/16 16:51:22 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/21 18:47:33 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	builtin_call_parent(char **job, unsigned char *ex, int fd, char ***envp)
 	else if (ft_strcmp(exec_name, "echo") == 0)
 		*ex = echo(job, fd);
 	else if (ft_strcmp(exec_name, "env") == 0)
-		*ex = env(*envp, fd);
+		*ex = env(job, *envp, fd);
 	else if (ft_strcmp(exec_name, "export") == 0)
 		*ex = export(envp, job, fd);
 	else if (ft_strcmp(exec_name, "exit") == 0)
@@ -44,7 +44,7 @@ void	builtin_call_child(char **job, unsigned char *exit_stat, char ***envp)
 	else if (ft_strcmp(exec_name, "echo") == 0)
 		*exit_stat = echo(job, 1);
 	else if (ft_strcmp(exec_name, "env") == 0)
-		*exit_stat = env(*envp, 1);
+		*exit_stat = env(job, *envp, 1);
 	else if (ft_strcmp(exec_name, "export") == 0)
 		*exit_stat = export(envp, job, 1);
 	else if (ft_strcmp(exec_name, "exit") == 0)
