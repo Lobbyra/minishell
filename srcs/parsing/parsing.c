@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 16:02:38 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/21 14:21:07 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/21 16:28:34 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,10 @@ static int	debug_parsing_utils(t_stock *stock, char **tmp)
 static int	debug_parsing(t_stock *stock)
 {
 	int		i;
-	int		err;
 	char	**tmp;
 
 	i = 0;
 	l_printf("cmd user: |%s|\n\n", stock->user_input);
-	if (check_quote(stock) == 3)
-		return (ERR_SYNTAX);
-	l_printf("\033[32mcheck quote [ok]\033[37m\n");
-	if ((err = check_pipe(stock)) != 0)
-		return (err);
-	l_printf("\033[32mcheck pipe [ok]\033[37m\n");
 	check_end_backslash(stock);
 	l_printf("\033[32mcheck end_backslash [ok]\033[37m\n");
 	if (check_double_pipe(stock->user_input, stock) != 0)
@@ -51,17 +44,12 @@ static int	debug_parsing(t_stock *stock)
 int			parsing(t_stock *stock)
 {
 	int		i;
-	int		err;
 	char	**tmp;
 
 	i = 0;
 	stock->is_exec_abort = FALSE;
 	if (stock->is_debug == TRUE)
 		return (debug_parsing(stock));
-	if (check_quote(stock) == 3)
-		return (ERR_SYNTAX);
-	if ((err = check_pipe(stock)) != 0)
-		return (err);
 	check_end_backslash(stock);
 	if (check_double_pipe(stock->user_input, stock) != 0)
 		return (ERR_SYNTAX);

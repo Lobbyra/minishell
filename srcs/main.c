@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 16:47:17 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/17 16:14:06 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/21 16:58:39 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int				main(int argc, char **argv, char **envp)
 	while (1)
 	{
 		err = 0;
-		if ((err = wait_instruction(stock)) == ERR_ERRNO)
+		if ((err = wait_instruction(stock)) != 0)
 			error_manager(stock, err);
 		if (err == SIG_CTRLD)
 			break ;

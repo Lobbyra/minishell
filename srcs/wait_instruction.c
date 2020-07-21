@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wait_instruction.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 15:36:34 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/21 16:21:54 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/21 17:02:23 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ static int	read_ui(t_stock *s)
 	{
 		pwd = getcwd(NULL, MAX_PATH_LEN);
 		if (g_is_ctrlc == FALSE)
-			l_printf("minishell[%s]$>", pwd);
+			l_printf("\033[32mminishell\033[37m[%s]$>", pwd);
 		status = get_next_line(0, &(s->buf_user_input));
 		if (status == -1)
 			return (panic_wait_instruction(&(s->buf_user_input), ERR_ERRNO));
@@ -114,9 +114,18 @@ int			wait_instruction(t_stock *s)
 
 	if ((err = read_ui(s)) != 0)
 		return (err);
-	/*
-	**	Tes checks a mettre ici et return ERR_CRITIC si tu as une erreur.
-	*/
+	if ((err = check_quote(s)) != 0)
+	{
+		if (s->is_debug == TRUE)
+			l_printf("\033[32mcheck quote [ok]\033[37m\n");
+		return (err);
+	}
+	if ((err = check_pipe(s)) != 0)
+	{
+		if (s->is_debug == TRUE)
+			l_printf("\033[32mcheck pipe [ok]\033[37m\n");
+		return (err);
+	}
 	s->user_input = get_cmd(s->buf_user_input);
 	s->buf_user_input = cut_cmd(s->buf_user_input);
 	s->is_cmd_closed = (s->buf_user_input != NULL);

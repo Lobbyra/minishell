@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 15:54:35 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/21 16:19:20 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/21 16:50:38 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int				is_escape(int i, char *user_input)
 	return (0);
 }
 
+extern t_bool g_is_ctrlc;
+
 static int		additional_read_quote(char quote, t_stock *s)
 {
 	int		status;
@@ -33,6 +35,8 @@ static int		additional_read_quote(char quote, t_stock *s)
 	{
 		l_printf("quote> ");
 		status = get_next_line(0, &tmp);
+		if (g_is_ctrlc == TRUE)
+			return (ERR_CRITIC);
 		if (status == GNL_LINE_READED || status == GNL_EOF)
 		{
 			tmp = ft_strjoindel("\n", tmp, 2);
@@ -42,12 +46,10 @@ static int		additional_read_quote(char quote, t_stock *s)
 		{
 			s->error_strings = ft_strjoin(ERR_QUOTE1, &quote);
 			s->error_strings = ft_strjoindel(s->error_strings, ERR_QUOTE2, 1);
-			return (ERR_SYNTAX);
+			return (ERR_CRITIC);
 		}
 	}
-	else
-		return (1);
-	return (0);
+	return (1);
 }
 
 int				check_quote(t_stock *s)
@@ -62,8 +64,8 @@ int				check_quote(t_stock *s)
 	while (valid_quote == 0)
 	{
 		if (s->buf_user_input[i] == '\0')
-			if ((valid_quote = additional_read_quote(quote, s)) == 3)
-				return (ERR_SYNTAX);
+			if ((valid_quote = additional_read_quote(quote, s)) == ERR_CRITIC)
+				return (ERR_CRITIC);
 		if ((s->buf_user_input[i] == '"' && quote == '0')
 		&& (!is_escaped(s->buf_user_input, i)))
 			quote = '\"';

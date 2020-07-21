@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/20 13:51:24 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/21 16:19:46 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/21 16:59:53 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,7 @@ static int		additional_read_pipe(t_stock *s)
 	else if (status == GNL_CTRLD)
 	{
 		s->error_strings = ft_strjoindel(s->error_strings, ERR_PIPE1, 1);
-		l_printf("%s\n", s->error_strings);
-		return (ERR_SYNTAX);
+		return (ERR_CRITIC);
 	}
 	if (s->is_debug == TRUE)
 		l_printf("|%s|\n", s->buf_user_input);
@@ -54,8 +53,8 @@ int				check_pipe_utils(t_stock *s, int *i)
 	}
 	else if (s->buf_user_input[*i] == '\0')
 	{
-		if (additional_read_pipe(s) == ERR_SYNTAX)
-			return (ERR_SYNTAX);
+		if (additional_read_pipe(s) == ERR_CRITIC)
+			return (ERR_CRITIC);
 		*i = 0;
 	}
 	return (0);
