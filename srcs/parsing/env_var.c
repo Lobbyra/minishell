@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/23 14:33:48 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/20 17:17:44 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/21 13:46:10 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ char			*get_name(char *env_var)
 	char	*tmp;
 
 	i = 0;
-	while (ft_isalnum(env_var[i]) && env_var[i])
+	while ((ft_isalnum(env_var[i]) && (env_var[i] || env_var[i] == '$')))
 		i++;
 	if (i == 0 && (env_var[0] == '?' || env_var[0] == ' ' ||
-	env_var[0] == '\0'))
-		i = 1;
+	env_var[0] == '\0' || env_var[0] == '$'))
+		i++;
 	if (!(tmp = (char *)malloc(sizeof(char) * (i + 1))))
 		return (NULL);
 	n = 0;
