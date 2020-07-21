@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 14:49:08 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/20 17:37:11 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/21 18:54:29 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ static t_bool	is_correct_name(char *arg)
 	t_bool letter_saw;
 
 	letter_saw = FALSE;
+	if (*arg == '=')
+		return (FALSE);
 	while (*arg && *arg != '=')
 	{
 		if (!(*arg >= 'a' && *arg <= 'z') && !(*arg >= '0' && *arg <= '9')
