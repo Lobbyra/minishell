@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/15 16:15:44 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/17 13:29:16 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/21 16:03:45 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@
 
 void	error_manager(t_stock *stock, int err)
 {
+	stock->exit_status = 2;
 	if (err == ERR_MALLOC)
 		ft_putstr_fd(ERR_MALLOC_MSG, STDERR);
-	if (err == 6)
+	if (err == ERR_CRITIC)
 	{
 		if (stock->buf_user_input)
 			free(stock->buf_user_input);
