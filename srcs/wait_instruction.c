@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wait_instruction.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 15:36:34 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/21 17:02:23 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/21 17:49:00 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,13 +118,13 @@ int			wait_instruction(t_stock *s)
 	{
 		if (s->is_debug == TRUE)
 			l_printf("\033[32mcheck quote [ok]\033[37m\n");
-		return (err);
+		return (ERR_CRITIC);
 	}
 	if ((err = check_pipe(s)) != 0)
 	{
 		if (s->is_debug == TRUE)
 			l_printf("\033[32mcheck pipe [ok]\033[37m\n");
-		return (err);
+		return (ERR_CRITIC);
 	}
 	s->user_input = get_cmd(s->buf_user_input);
 	s->buf_user_input = cut_cmd(s->buf_user_input);
