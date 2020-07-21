@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/16 18:03:53 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/21 14:28:25 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/21 18:46:25 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static void		redirection_null(t_stock *s, int n, int i, int *status)
 		ft_strarrfree(s->jobs[i]);
 		s->jobs[i - 1] = NULL;
 	}
+	s->exit_status = 2;
 }
 
 int				check_redirection_null(t_stock *s)
