@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 15:54:35 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/21 14:42:13 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/21 16:19:20 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int		additional_read_quote(char quote, t_stock *s)
 		if (status == GNL_LINE_READED || status == GNL_EOF)
 		{
 			tmp = ft_strjoindel("\n", tmp, 2);
-			s->user_input = ft_strjoindel(s->user_input, tmp, 3);
+			s->buf_user_input = ft_strjoindel(s->buf_user_input, tmp, 3);
 		}
 		else if (status == GNL_CTRLD)
 		{
@@ -61,18 +61,18 @@ int				check_quote(t_stock *s)
 	quote = '0';
 	while (valid_quote == 0)
 	{
-		if (s->user_input[i] == '\0')
+		if (s->buf_user_input[i] == '\0')
 			if ((valid_quote = additional_read_quote(quote, s)) == 3)
 				return (ERR_SYNTAX);
-		if ((s->user_input[i] == '"' && quote == '0')
-		&& (!is_escaped(s->user_input, i)))
+		if ((s->buf_user_input[i] == '"' && quote == '0')
+		&& (!is_escaped(s->buf_user_input, i)))
 			quote = '\"';
-		else if ((s->user_input[i] == '\'' && quote == '0')
-		&& (!is_escaped(s->user_input, i)))
+		else if ((s->buf_user_input[i] == '\'' && quote == '0')
+		&& (!is_escaped(s->buf_user_input, i)))
 			quote = '\'';
-		else if (((quote == s->user_input[i]) && (!is_escaped(
-		s->user_input, i))) || (quote == '\'' && quote == s->user_input[i] &&
-		is_escaped(s->user_input, i)))
+		else if (((quote == s->buf_user_input[i]) && (!is_escaped(
+		s->buf_user_input, i))) || (quote == '\'' && quote ==
+		s->buf_user_input[i] && is_escaped(s->buf_user_input, i)))
 			quote = '0';
 		i++;
 	}
