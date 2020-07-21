@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 16:29:39 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/20 18:49:43 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/21 14:37:07 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int		is_escape(int i, char *user_input);
 int		verif_redirection_env_var(t_stock *s);
 int		check_redirection_null(t_stock *s);
 int		free_alloc(char *exec, char **path, char *jobs);
+int		check_exec_after_redirection(t_stock *s, int n, int *status,
+char *exec);
 
 int		*ft_intarradd(int *tab, int *size, int n);
 

@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 12:45:58 by Jeanxavier        #+#    #+#             */
-/*   Updated: 2020/07/20 18:49:16 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/21 14:37:37 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,9 @@ static int	check_all_path(t_stock *s, int n)
 	status = 0;
 	if (is_metacharacter(s->jobs[n][0][0]))
 	{
-		exec = ft_strjoin("/", s->jobs[n][2]);
-		status = 1;
+		exec = NULL;
+		if ((check_exec_after_redirection(s, n, &status, exec)) == 0)
+			return (0);
 	}
 	else
 		exec = ft_strjoin("/", s->jobs[n][0]);

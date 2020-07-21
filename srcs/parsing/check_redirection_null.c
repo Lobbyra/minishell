@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/16 18:03:53 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/17 17:10:08 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/21 14:28:25 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 static void		redirection_null(t_stock *s, int n, int i, int *status)
 {
-	s->error_strings = ft_strjoindel(s->error_strings, ERR_REDICTION, 1);
+	if (s->is_cmd_closed == TRUE)
+		s->error_strings = ft_strjoindel(s->error_strings, ERR_PIPE3, 1);
+	else
+		s->error_strings = ft_strjoindel(s->error_strings, ERR_REDICTION, 1);
 	*status = 0;
 	if (n > 0)
 	{

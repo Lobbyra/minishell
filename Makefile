@@ -6,7 +6,7 @@
 #    By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/15 13:51:51 by jecaudal          #+#    #+#              #
-#    Updated: 2020/07/20 18:37:57 by jereligi         ###   ########.fr        #
+#    Updated: 2020/07/21 14:35:45 by jereligi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -102,6 +102,7 @@ SRCS			=	./srcs/main.c									\
 					./srcs/parsing/check_redirection_null.c			\
 					./srcs/parsing/remove_and_replace_utils.c		\
 					./srcs/parsing/verif_redirection_env_var.c		\
+					./srcs/parsing/check_exec_after_redirection.c	\
 					./srcs/parsing/split_cmd/pass_word.c			\
 					./srcs/parsing/split_cmd/split_cmd.c			\
 					./srcs/parsing/split_cmd/is_escaped.c			\

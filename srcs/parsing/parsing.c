@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 16:02:38 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/21 13:51:12 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/21 14:21:07 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,7 @@ static int	debug_parsing(t_stock *stock)
 	verif_redirection_env_var(stock);
 	env_var(stock);
 	tmp = split_cmd(stock->user_input);
-	debug_parsing_utils(stock, tmp);
-	return (0);
+	return (debug_parsing_utils(stock, tmp));
 }
 
 int			parsing(t_stock *stock)
