@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 15:36:34 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/21 17:49:00 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/22 13:47:20 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,14 @@ static char	*cut_cmd(char *cmd)
 	{
 		if (cmd[i] == '\"' && is_escaped(cmd, i) == FALSE)
 			i = pass_dquote(cmd, i);
-		if (cmd[i] == '\'' && is_escaped(cmd, i) == FALSE)
+		else if (cmd[i] == '\'' && is_escaped(cmd, i) == FALSE)
 			i = pass_quote(cmd, i);
-		if (cmd[i] == ';' && is_escaped(cmd, i) == FALSE)
+		else if (cmd[i] == ';' && is_escaped(cmd, i) == FALSE)
+		{
 			break ;
-		i++;
+		}
+		else
+			i++;
 	}
 	if (cmd[i++] == ';' && !(new = ft_strdup(cmd + i)))
 		free(cmd);
@@ -67,11 +70,14 @@ char		*get_cmd(char *user_input)
 	{
 		if (user_input[i] == '\"' && is_escaped(user_input, i) == FALSE)
 			i = pass_dquote(user_input, i);
-		if (user_input[i] == '\'' && is_escaped(user_input, i) == FALSE)
+		else if (user_input[i] == '\'' && is_escaped(user_input, i) == FALSE)
 			i = pass_quote(user_input, i);
-		if (user_input[i] == ';' && is_escaped(user_input, i) == FALSE)
+		else if (user_input[i] == ';' && is_escaped(user_input, i) == FALSE)
+		{
 			break ;
-		i++;
+		}
+		else
+			i++;
 	}
 	if (!(new = ft_strdup_n(user_input, i)))
 	{
