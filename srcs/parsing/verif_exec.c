@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 18:08:03 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/20 17:42:16 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/22 18:50:51 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	check_is_slash(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (i == 0 && str[i] == '/')
+		if (i == 0 && (str[i] == '/' || str[i] == '\'' || str[i] == '\"'))
 			return (1);
 		else if (str[i] == '/')
 			return (2);
