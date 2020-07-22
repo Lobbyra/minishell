@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 12:45:58 by Jeanxavier        #+#    #+#             */
-/*   Updated: 2020/07/22 17:06:22 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/22 18:37:41 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int status)
 	i = 0;
 	while (path[i])
 	{
-		tmp = ft_strjoin(path[i], exec);
+		tmp = ft_strjoindel(path[i], exec, 0);
 		errno = 0;
 		stat(tmp, &buf);
 		if (errno == 0)
@@ -71,6 +71,7 @@ static int	check_all_path(t_stock *s, int n)
 	if (is_metacharacter(s->jobs[n][0][0]))
 	{
 		exec = NULL;
+		l_printf("check meta\n");
 		if ((check_exec_after_redirection(s, n, &status, exec)) == 0)
 			return (0);
 	}
@@ -79,6 +80,7 @@ static int	check_all_path(t_stock *s, int n)
 	path = get_path(s->envp);
 	if (path == NULL)
 		return (-1);
+	l_printf("check path\n");
 	if ((check_all_path_utils(s->jobs[n], path, exec, status)) == 1)
 		return (1);
 	free(exec);
