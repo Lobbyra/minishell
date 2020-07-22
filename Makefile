@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+         #
+#    By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/15 13:51:51 by jecaudal          #+#    #+#              #
-#    Updated: 2020/07/22 14:52:19 by jecaudal         ###   ########.fr        #
+#    Updated: 2020/07/22 18:14:13 by jereligi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,41 @@ HEADER			=	headers/
 CFLAGS			+=	-Werror -Wall -Wextra -I ./headers/ 
 
 CC				=	gcc
+
+SRCS_L_PRINTF	=	./srcs/lib/simplified_printf/srcs/l_printf.c		\
+					./srcs/lib/simplified_printf/srcs/pnf_apply_field.c	\
+					./srcs/lib/simplified_printf/srcs/pnf_apply_prec.c	\
+					./srcs/lib/simplified_printf/srcs/pnf_get_flags.c	\
+					./srcs/lib/simplified_printf/srcs/pnf_get_info.c	\
+					./srcs/lib/simplified_printf/srcs/pnf_get_raw.c		\
+					./srcs/lib/simplified_printf/srcs/pnf_get_type.c	\
+					./srcs/lib/simplified_printf/srcs/pnf_pass.c		\
+					./srcs/lib/simplified_printf/additionnal_functions/l_atoi.c		\
+					./srcs/lib/simplified_printf/additionnal_functions/l_ctostr.c	\
+					./srcs/lib/simplified_printf/additionnal_functions/l_free.c		\
+					./srcs/lib/simplified_printf/additionnal_functions/l_isnum.c	\
+					./srcs/lib/simplified_printf/additionnal_functions/l_ispos.c	\
+					./srcs/lib/simplified_printf/additionnal_functions/l_isspace.c	\
+					./srcs/lib/simplified_printf/additionnal_functions/l_itoa.c		\
+					./srcs/lib/simplified_printf/additionnal_functions/l_itox.c		\
+					./srcs/lib/simplified_printf/additionnal_functions/l_memcpy_n.c	\
+					./srcs/lib/simplified_printf/additionnal_functions/l_numlen.c	\
+					./srcs/lib/simplified_printf/additionnal_functions/l_ptox.c		\
+					./srcs/lib/simplified_printf/additionnal_functions/l_putstr.c	\
+					./srcs/lib/simplified_printf/additionnal_functions/l_strcmp.c	\
+					./srcs/lib/simplified_printf/additionnal_functions/l_strdup.c	\
+					./srcs/lib/simplified_printf/additionnal_functions/l_strdup_n.c	\
+					./srcs/lib/simplified_printf/additionnal_functions/l_strgen.c	\
+					./srcs/lib/simplified_printf/additionnal_functions/l_strinject.c	\
+					./srcs/lib/simplified_printf/additionnal_functions/l_strjoindel.c	\
+					./srcs/lib/simplified_printf/additionnal_functions/l_strlen.c		\
+					./srcs/lib/simplified_printf/additionnal_functions/l_strlen_n.c		\
+					./srcs/lib/simplified_printf/additionnal_functions/l_strrev.c 		\
+					./srcs/lib/simplified_printf/additionnal_functions/l_ultoa_base.c	\
+					./srcs/lib/simplified_printf/additionnal_functions/l_utoa.c			\
+
+
+OBJS_L_PRINTF	=	$(SRCS_L_PRINTF:.c=.o)
 
 SRCS_LIB		=	./srcs/print_jobs.c						\
 					./srcs/lib/ft_skip.c					\
@@ -152,13 +187,13 @@ make_l_printf	:
 					@make -C $(PATH_L_PRINTF)
 
 $(NAME)			:	make_l_printf $(OBJS_LIB) $(OBJS)
-					$(CC) -o $(NAME) $(L_PRINTF) $(OBJS_LIB) $(OBJS)
+					$(CC) -o $(NAME) $(OBJS_L_PRINTF) $(OBJS_LIB) $(OBJS)
 
 f				:	make_l_printf $(OBJS_LIB) $(OBJS)
-					$(CC) -o $(NAME) $(L_PRINTF) -fsanitize=address $(OBJS_LIB) $(OBJS)
+					$(CC) -o $(NAME) $(OBJS_L_PRINTF) -fsanitize=address $(OBJS_LIB) $(OBJS)
 
 clean		:
-					rm -f $(OBJS_LIB) $(OBJS)
+					rm -f $(OBJS_LIB) $(OBJS_L_PRINTF) $(OBJS)
 
 fclean		:		clean
 					rm -f $(NAME)
