@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/23 14:33:48 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/21 13:46:10 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/22 16:06:03 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,7 @@ char			*env_var(t_stock *s)
 	if (nb_env_var > 0)
 	{
 		value = if_exist(tab_env_var, nb_env_var, s->envp, s);
-		new = remove_and_replace(s->user_input, tab_env_var, value);
+		new = remove_and_replace(s->user_input, value);
 		free(s->user_input);
 		s->user_input = new;
 		free_env_var_data(tab_env_var, value);
