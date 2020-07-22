@@ -55,10 +55,10 @@ static int		jobs_alloc(char ***jobs, char **command)
 	status = 0;
 	while (command[i])
 	{
-		if (command[i][0] == '|' || command[i + 1] == '\0')
+		if (command[i][0] == '|' || command[i + 1] == NULL)
 		{
 			status = 1;
-			if (nopipe(command) == 0 || command[i + 1] == '\0')
+			if (nopipe(command) == 0 || command[i + 1] == NULL)
 				len++;
 		}
 		if (status != 0)
