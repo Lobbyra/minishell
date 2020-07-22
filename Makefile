@@ -15,9 +15,9 @@ NAME			=	minishell
 
 HEADER			=	headers/
 
-CFLAGS			+=	-Werror -Wall -Wextra -I ./headers/
+CFLAGS			+=	-Werror -Wall -Wextra -I ./headers/ 
 
-CC				=	clang
+CC				=	gcc
 
 SRCS_LIB		=	./srcs/print_jobs.c						\
 					./srcs/lib/ft_skip.c					\

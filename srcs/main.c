@@ -28,15 +28,19 @@ t_bool g_is_ctrlc = FALSE;
 static void		handler(int nothing)
 {
 	nothing = 0;
-	l_printf("\r");
-	print_prompt();
-	g_is_ctrlc = TRUE;
+	if (nothing == 0)
+	{
+		l_printf("\r");
+		print_prompt();
+		g_is_ctrlc = TRUE;
+	}
 }
 
 static void		quithandler(int nothing)
 {
 	nothing = 0;
-	g_is_ctrlc = TRUE;
+	if (nothing == 0)
+		g_is_ctrlc = TRUE;
 }
 
 int				main(int argc, char **argv, char **envp)

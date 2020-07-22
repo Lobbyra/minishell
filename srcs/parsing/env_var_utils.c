@@ -100,11 +100,10 @@ int		count_len_new_str(char *user_input, char **value)
 	return (n + ft_full_len_arrstr(value));
 }
 
-char	*remove_and_replace(char *user_input, char **tab, char **value)
+char	*remove_and_replace(char *user_input, char **value)
 {
 	char	*new;
 
-	tab = NULL;
 	if (!(new = (char *)malloc(sizeof(char) * \
 	(count_len_new_str(user_input, value) + 1))))
 		return (NULL);

@@ -46,6 +46,8 @@
 # include "error_messages.h"
 # include "split_command.h"
 # include "split_cmd.h"
+# include "../srcs/lib/simplified_printf/headers/l_printf.h"
+
 
 void			print_prompt(void);
 void			reset(t_stock *stock);

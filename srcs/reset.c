@@ -28,9 +28,6 @@ static void	free_jobs(char ***jobs)
 
 void		reset(t_stock *stock)
 {
-	int i_jobs;
-
-	i_jobs = 0;
 	if (stock->jobs)
 	{
 		free_jobs(stock->jobs);

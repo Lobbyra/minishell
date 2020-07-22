@@ -51,7 +51,7 @@ char *exec);
 int		*ft_intarradd(int *tab, int *size, int n);
 
 char	*env_var(t_stock *s);
-char	*remove_and_replace(char *user_input, char **tab, char **value);
+char	*remove_and_replace(char *user_input, char **value);
 char	*remove_and_replace_utils(char *user_input, char *new, char **value);
 char	*ft_itoa(int n);
 char	*get_value(char *user_input);

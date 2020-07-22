@@ -14,10 +14,8 @@
 
 static int	is_builtins(char *jobs)
 {
-	int		i;
 	int		len;
 
-	i = 0;
 	len = ft_strlen(jobs);
 	if (ft_strncmp(jobs, "export", len) == 0)
 		return (1);

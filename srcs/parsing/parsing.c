@@ -26,10 +26,8 @@ static int	debug_parsing_utils(t_stock *stock, char **tmp)
 
 static int	debug_parsing(t_stock *stock)
 {
-	int		i;
 	char	**tmp;
 
-	i = 0;
 	l_printf("cmd user: |%s|\n\n", stock->user_input);
 	check_end_backslash(stock);
 	l_printf("\033[32mcheck end_backslash [ok]\033[37m\n");
@@ -43,10 +41,8 @@ static int	debug_parsing(t_stock *stock)
 
 int			parsing(t_stock *stock)
 {
-	int		i;
 	char	**tmp;
 
-	i = 0;
 	stock->is_exec_abort = FALSE;
 	if (stock->is_debug == TRUE)
 		return (debug_parsing(stock));

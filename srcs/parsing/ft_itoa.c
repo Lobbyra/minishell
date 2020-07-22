@@ -12,21 +12,6 @@
 
 #include "minishell.h"
 
-static int	l_numlen(int n)
-{
-	int count;
-
-	count = 0;
-	if (n == 0)
-		return (1);
-	while (n > 0)
-	{
-		n /= 10;
-		count++;
-	}
-	return (count);
-}
-
 static void	*ft_memalloc(size_t size)
 {
 	size_t	i;

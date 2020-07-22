@@ -23,7 +23,7 @@ void			ft_putnbr(int nb);
 void			ft_putstr(char *s);
 void			ft_putchar(char c);
 void			ft_freestrs(char **strs);
-void			l_printf(char *str, ...);
+int			l_printf(char *str, ...);
 void			ft_sort_strs(char **argv);
 void			ft_strarrfree(char **strs);
 void			ft_skip(char **ptr, char c);
