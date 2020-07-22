@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 15:54:35 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/22 15:22:36 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/22 16:58:23 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int		additional_read_quote(char quote, t_stock *s)
 		}
 		else if (status == GNL_CTRLD)
 		{
-			s->error_strings = ft_strjoin(ERR_QUOTE1, &quote);
+			s->error_strings = ft_strjoindel(ERR_QUOTE1, ft_ctostr(quote), 2);
 			s->error_strings = ft_strjoindel(s->error_strings, ERR_QUOTE2, 1);
 			return (ERR_CRITIC);
 		}
