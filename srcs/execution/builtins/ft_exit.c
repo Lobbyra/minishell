@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 13:43:09 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/22 17:54:43 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/22 18:45:34 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 
 static t_bool	is_str_num(char *arg)
 {
+	if (*arg == '+' || *arg == '-')
+		arg++;
 	while (*arg && (*arg >= '0' && *arg <= '9'))
 		arg++;
 	if (*arg == '\0')
@@ -56,6 +58,9 @@ void	ft_exit(char **job)
 			print_err(*(job + 1), 255);
 		else if (job_len > 2)
 			print_err("", 1);
-		exit(ft_atoi(*(job + 1)));
+		if (ft_atoi(*(job + 1)) < 0)
+			exit(0);
+		else
+			exit(ft_atoi(*(job + 1)));
 	}
 }
