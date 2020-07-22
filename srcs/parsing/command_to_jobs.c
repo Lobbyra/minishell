@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 18:32:53 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/15 16:32:11 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/22 15:05:02 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,10 @@ static int		jobs_alloc(char ***jobs, char **command)
 	status = 0;
 	while (command[i])
 	{
-		if (command[i][0] == '|' || command[i + 1][0] == '\0')
+		if (command[i][0] == '|' || command[i + 1] == '\0')
 		{
 			status = 1;
-			if (nopipe(command) == 0 || command[i + 1][0] == '\0')
+			if (nopipe(command) == 0 || command[i + 1] == '\0')
 				len++;
 		}
 		if (status != 0)

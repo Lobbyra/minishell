@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/20 13:51:24 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/21 16:59:53 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/22 15:14:09 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,9 @@ int				check_pipe_utils(t_stock *s, int *i)
 	(*i)++;
 	while (ft_isprint(s->buf_user_input[*i]) == 0 && s->buf_user_input[*i])
 		(*i)++;
-	if (s->buf_user_input[*i] == '\0' && s->is_cmd_closed == 1)
+
+	if ((s->buf_user_input[*i] == '\0' || s->is_cmd_closed == TRUE) && 
+	s->buf_user_input[*i] == ';')
 	{
 		s->error_strings = ft_strjoindel(s->error_strings, ERR_PIPE3, 1);
 		s->is_exec_abort = TRUE;
