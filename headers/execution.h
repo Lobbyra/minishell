@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 15:10:39 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/22 16:30:38 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/22 17:39:17 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	***jobs_cleaner(char ***jobs);
 **	BUILTINS FUNCTIONS
 */
 
-void	ft_exit(int err);
+void	ft_exit(char **job);
 
 int		pwd(int fd);
 int		cd(char *path, char **envp);
