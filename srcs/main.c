@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 16:47:17 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/21 18:10:51 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/22 16:38:08 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,5 @@ int				main(int argc, char **argv, char **envp)
 	}
 	free_t_stock(stock);
 	l_printf("exit\n");
-	return (0);
+	return (stock->exit_status);
 }

@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/15 13:22:38 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/22 14:52:23 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/22 16:44:08 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ t_bool			is_cmd_closed(char *ui);
 /*
 **	Sub functions of wait_instruction
 */
-int				check_user_input(char *user_input);
+int				check_user_input(char *user_input, int *exit_status);
 int				panic_wait_instruction(char **to_free, int err);
 int				check_entire_ui(char *ui);
 

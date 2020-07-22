@@ -6,13 +6,13 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 18:18:48 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/21 18:47:33 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/22 16:30:22 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	builtin_call_parent(char **job, unsigned char *ex, int fd, char ***envp)
+void	builtin_call_parent(char **job, int *ex, int fd, char ***envp)
 {
 	char *exec_name;
 
@@ -34,7 +34,7 @@ void	builtin_call_parent(char **job, unsigned char *ex, int fd, char ***envp)
 	free(exec_name);
 }
 
-void	builtin_call_child(char **job, unsigned char *exit_stat, char ***envp)
+void	builtin_call_child(char **job, int *exit_stat, char ***envp)
 {
 	char *exec_name;
 

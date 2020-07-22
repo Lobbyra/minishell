@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 11:48:04 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/16 17:47:29 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/22 16:19:24 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct		s_stock
 	int				n_jobs;
 	t_bool			is_pipe;
 	int				*pipes;
-	unsigned char	exit_status;
+	int				exit_status;
 	char			*error_strings;
 	t_bool			is_debug;
 	t_bool			is_cmd_closed;

@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 15:36:34 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/22 14:56:54 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/22 16:45:13 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,8 @@ static int	read_ui(t_stock *s)
 			return (panic_wait_instruction(&(s->buf_user_input), ERR_ERRNO));
 		if (status == 2)
 			return (1);
-		if ((status = check_user_input(s->buf_user_input)) != 0)
+		status = check_user_input(s->buf_user_input, &s->exit_status);
+		if (status != 0)
 			return (panic_wait_instruction(&(s->buf_user_input), status));
 	}
 	if (pwd != NULL)

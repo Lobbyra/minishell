@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 18:05:40 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/21 14:55:57 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/22 16:43:22 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,11 @@ int			check_entire_ui(char *ui)
 **	Static function of check_user_input.
 */
 
-static int	print_error(void)
+static int	print_error(int *exit_status)
 {
 	ft_putstr_fd("minishell: ", 2);
 	ft_putstr_fd("syntax error near unexpected token `;'\n", STDERR);
+	*exit_status = 2;
 	return (ERR_CMD_VOID);
 }
 
@@ -97,7 +98,7 @@ static void	skip_cmd(char **str)
 **	contain an empty command.
 */
 
-int			check_user_input(char *user_input)
+int			check_user_input(char *user_input, int *exit_status)
 {
 	char	*i_ui;
 
@@ -107,7 +108,7 @@ int			check_user_input(char *user_input)
 		ft_skip(&i_ui, ' ');
 		if ((*i_ui == ';' && i_ui == user_input) ||
 			(*i_ui == ';' && *(i_ui - 1) != '\\'))
-			return (print_error());
+			return (print_error(exit_status));
 		else
 			skip_cmd(&i_ui);
 		i_ui++;
