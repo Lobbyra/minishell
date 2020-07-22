@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 13:43:09 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/22 18:45:34 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/22 18:56:19 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ static void		print_err(char *arg, int status)
 
 void	ft_exit(char **job)
 {
+	int value;
 	int job_len;
 	
 	job_len = ft_strarrlen(job);
@@ -58,9 +59,9 @@ void	ft_exit(char **job)
 			print_err(*(job + 1), 255);
 		else if (job_len > 2)
 			print_err("", 1);
-		if (ft_atoi(*(job + 1)) < 0)
-			exit(0);
-		else
-			exit(ft_atoi(*(job + 1)));
+		value = ft_atoi(*(job + 1));
+		if (value < -2147483648 || value > 2147483647)
+			exit (0);
+		exit((unsigned char)value);
 	}
 }
