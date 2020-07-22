@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 14:55:00 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/26 16:01:26 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/22 14:00:40 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ void		print_envp_export(char **envp, int fd)
 			write(fd, temp, ft_strlen_c(temp, '=') + 1);
 			ft_skip_until(&temp, '=');
 			temp++;
+			write(fd, "\"", 1);
 			write(fd, temp, ft_strlen(temp));
+			write(fd, "\"", 1);
 			write(fd, "\n", 1);
 		}
 		dup++;
