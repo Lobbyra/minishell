@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/15 13:22:38 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/20 16:46:51 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/22 14:52:23 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ t_stock			*init_stock(char **envp);
 int				execution(t_stock *stock);
 int				wait_instruction(t_stock *s);
 void			free_t_stock(t_stock *stock);
+
+t_bool			is_cmd_closed(char *ui);
 
 /*
 **	Sub functions of wait_instruction
