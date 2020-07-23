@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 13:43:09 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/22 18:56:19 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/23 15:33:07 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ static void		print_err(char *arg, int status)
 
 void	ft_exit(char **job)
 {
-	int value;
-	int job_len;
+	float	value;
+	int		job_len;
 	
 	job_len = ft_strarrlen(job);
 	if (job_len == 1)
