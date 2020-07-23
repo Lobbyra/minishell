@@ -6,7 +6,7 @@
 #    By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/15 13:51:51 by jecaudal          #+#    #+#              #
-#    Updated: 2020/07/23 15:17:25 by jecaudal         ###   ########.fr        #
+#    Updated: 2020/07/23 16:11:32 by jereligi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -130,7 +130,6 @@ SRCS			=	./srcs/main.c									\
 					./srcs/parsing/find_env_var.c					\
 					./srcs/parsing/env_var_utils.c					\
 					./srcs/parsing/command_to_jobs.c				\
-					./srcs/parsing/remplace_env_var.c				\
 					./srcs/parsing/verif_exec_utils.c				\
 					./srcs/parsing/check_double_pipe.c				\
 					./srcs/parsing/free_get_path_exec.c				\

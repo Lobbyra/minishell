@@ -6,9 +6,14 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/07 14:47:13 by Jeanxavier        #+#    #+#             */
-/*   Updated: 2020/07/23 14:01:00 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/23 16:18:29 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/*
+**	This function is the continuation of env_var.c 
+**	(replaces a environment variable by this value)
+*/
 
 #include "minishell.h"
 
@@ -38,6 +43,50 @@ void	word_between_simple_quote(int *i, char *user_input, int *quote)
 	else if ((*quote == 2 && user_input[*i] == '\"') && \
 	(!is_escape(*i, user_input)))
 		*quote = 0;
+}
+
+char		*escape_env_var(char *new, char *value, int *i, int *n)
+{
+	int x;
+
+	x = 0;
+	while (value[*i + x] != '\0' && value[*i + x] == '\\')
+		x++;
+	if ((is_metacharacter(value[*i + x])) == 1 || value[*i + x] == '|')
+	{
+		new[(*n)++] = '\'';
+		new[(*n)++] = value[(*i)++];
+		while (value[*i] != '\0' && value[*i] == '\\')
+			new[(*n)++] = value[(*i)++];
+		new[(*n)++] = value[(*i)++];
+		new[(*n)++] = '\'';
+	}
+	return (new);
+}
+
+int			remplace_env_var(char *new, char *value)
+{
+	int	i;
+	int	n;
+
+	i = 0;
+	n = 0;
+	while (value[i])
+	{
+		if (value[i] == '\\')
+			new = escape_env_var(new, value, &i, &n);
+		if ((is_metacharacter(value[i]) || value[i] == '|') && \
+		!is_escaped(value, i))
+		{
+			new[n++] = '\'';
+			new[n++] = value[i++];
+			new[n++] = '\'';
+		}
+		else
+			new[n++] = value[i++];
+	}
+	new[n] = '\0';
+	return (n);
 }
 
 char	*remove_and_replace_utils(char *ui, char *new, char **value)

@@ -6,9 +6,15 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/20 13:51:24 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/23 14:03:10 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/23 16:15:38 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/*
+**	This function allows you to check that there is no pipe error
+**	If this is the case, the function rereads the input until the command is
+**	valid, otherwise put the error message related to the behavior	
+*/
 
 #include "minishell.h"
 

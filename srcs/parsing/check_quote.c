@@ -6,9 +6,15 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 15:54:35 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/22 16:58:23 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/23 15:55:02 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/*
+**	This function allows you to check that there is no quote error
+**	If this is the case, the function rereads the input until the command is
+**	valid, otherwise put the error message related to the behavior	
+*/
 
 #include "minishell.h"
 

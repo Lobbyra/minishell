@@ -6,9 +6,13 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/23 14:33:48 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/23 14:04:19 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/23 16:07:09 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/*
+** This function replaces the environment variables with their value
+*/
 
 #include "minishell.h"
 

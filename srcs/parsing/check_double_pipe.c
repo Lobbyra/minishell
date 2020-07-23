@@ -6,9 +6,14 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 14:21:11 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/17 16:34:30 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/23 15:57:19 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/*
+**	This function allows you to check that there is no double pipe error
+**	If this is the case, otherwise put the error message related to the behavior	
+*/
 
 #include "minishell.h"
 
