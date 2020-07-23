@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/23 18:40:04 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/04 11:23:28 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/23 15:55:39 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ int		pwd(int fd)
 		return (errno);
 	if (write(fd, path, ft_strlen(path)) == -1 || write(fd, "\n", 1) == -1)
 		return (errno);
+	free(path);
 	return (0);
 }
