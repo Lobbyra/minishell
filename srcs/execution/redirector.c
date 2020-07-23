@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 11:38:23 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/14 18:03:37 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/23 18:50:13 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,5 @@ int			redirector(int *pipes, int jobpos, t_bool is_pipe, t_stock *s)
 	}
 	if (is_in_redir(s->jobs[jobpos]) == FALSE && jobpos > 0)
 		dup2(pipes[(jobpos * 2) - 2], STDIN);
-	s->jobs[jobpos] = rm_redir(s->jobs[jobpos]);
-	jobs_cleaner(s->jobs);
 	return (err);
 }

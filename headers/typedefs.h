@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 11:48:04 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/22 16:19:24 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/23 18:12:21 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,19 @@ typedef struct		s_stock
 	int				*list_exec_abort;
 	int				size_list;
 }					t_stock;
+
+typedef struct		s_child
+{
+	char			**job;
+	char			*path;
+	char			**args;
+	int				jobpos;
+	char			*exec_name;
+	pid_t			pid;
+	int				*pipes;
+	t_bool			is_pipe;
+	t_bool			is_aborted;
+	t_stock			*s;
+}					t_child;
 
 #endif

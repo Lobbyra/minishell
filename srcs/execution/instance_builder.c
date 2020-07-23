@@ -5,70 +5,23 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/29 16:29:13 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/20 17:27:23 by jecaudal         ###   ########.fr       */
+/*   Created: 2020/07/23 17:42:41 by jecaudal          #+#    #+#             */
+/*   Updated: 2020/07/23 19:27:48 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 /*
-**	This function will call redirection piping and execute binaries in child.
+**	### INSTANCE_BUILDER ###
+**	This function will create the child and do redirections within it.
 */
 
-void		print_exec_err(char *path)
-{
-	struct stat	path_stat;
-
-	stat(path, &path_stat);
-	ft_putstr_fd("minishell: ", STDERR);
-	ft_putstr_fd(path, STDERR);
-	ft_putstr_fd(": ", STDERR);
-	if (ft_c_finder('/', path) == FALSE)
-		ft_putstr_fd("command not found\n", STDERR);
-	else if (S_ISDIR(path_stat.st_mode) == TRUE)
-		ft_putstr_fd("is a directory\n", STDERR);
-	else if (S_ISREG(path_stat.st_mode) == TRUE)
-		ft_putstr_fd("Permission denied\n", STDERR);
-	else
-		ft_putstr_fd("No such file or directory\n", STDERR);
-	exit(127);
-}
-
-static void	debug_ib(char *path, char *exec_name, int jobpos)
-{
-	if (path)
-		l_printf("path = %s\n", path);
-	if (exec_name)
-		l_printf("exec_name = %s\n", exec_name);
-	l_printf("jobpos = %d\n", jobpos);
-	write(1, "\n", 1);
-}
-
-static int	panic_ib(char *path, char *exec_name, int err)
-{
-	if (path)
-		free(path);
-	if (exec_name)
-		free(exec_name);
-	return (err);
-}
-
-static int	init_ib(char **path, char **exec_name, char **job)
-{
-	*path = ft_strdup(find_exec(job)[0]);
-	if (!path)
-		return (ERR_MALLOC);
-	*path = arg_cleaner(*path);
-	*exec_name = ft_basename(find_exec(job)[0]);
-	if (!exec_name)
-	{
-		free(path);
-		return (ERR_MALLOC);
-	}
-	return (0);
-}
-
+/*
+**	### IS_ABORTED ###
+**	This function check in the list_exec_abort if the current job will have to
+**	don't execute specified binary.
+*/
 t_bool		is_aborted(t_stock *s, int jobpos)
 {
 	int i;
@@ -85,32 +38,63 @@ t_bool		is_aborted(t_stock *s, int jobpos)
 	return (FALSE);
 }
 
-int			instance_builder(t_stock *s, int jobpos, int *pipes, t_bool is_pipe)
+t_child	init_child(t_stock *s, int jobpos, int *pipes, t_bool is_pipe)
 {
-	int		err;
-	pid_t	child;
-	char	*path;
-	char	*exec_name;
+	t_child	new;
+	char **tmp;
 
-	errno = 0;
-	if ((init_ib(&path, &exec_name, s->jobs[jobpos])))
-		return (ERR_MALLOC);
-	if (s->is_debug == TRUE)
-		debug_ib(path, exec_name, jobpos);
-	if ((child = fork()) == 0)
+	new.job = s->jobs[jobpos];
+	tmp = find_exec(new.job);
+	new.is_aborted = FALSE;
+	if (tmp == NULL)
 	{
-		free(find_exec(s->jobs[jobpos])[0]);
-		find_exec(s->jobs[jobpos])[0] = exec_name;
-		err = redirector(pipes, jobpos, is_pipe, s);
-		close_pipes(pipes, s->n_jobs * 2 - 2);
-		if (err == 0 && is_builtin(path) == TRUE)
-			builtin_call_child(s->jobs[jobpos], &(s->exit_status), &(s->envp));
-		else if (err == 0 && is_aborted(s, jobpos) == FALSE && s->is_exec_abort == FALSE && (!ft_c_finder('/', path) ||
-				execve(path, s->jobs[jobpos], s->envp) == -1))
-			print_exec_err(path);
-		exit(1);
+		new.is_aborted = TRUE;
+		new.path = ft_strdup("");
 	}
-	else if (child == -1)
-		return (panic_ib(path, exec_name, ERR_ERRNO));
-	return (panic_ib(path, exec_name, 0));
+	else
+		new.path = arg_cleaner(ft_strdup(*tmp));
+	new.exec_name = ft_basename(new.path);
+	new.args = ft_strarrdup(new.job);
+	new.args = rm_redir(new.args);
+	job_cleaner(new.args);
+	new.jobpos = jobpos;
+	new.pipes = pipes;
+	new.is_pipe = is_pipe;
+	new.is_aborted += is_aborted(s, jobpos);
+	new.s = s;
+	return (new);
+}
+
+void	child_process(t_child c)
+{
+	int err;
+
+	err = 0;
+	err = redirector(c.pipes, c.jobpos, c.is_pipe, c.s);
+	close_pipes(c.pipes, (c.s->n_jobs * 2) - 2);
+	if (err != 0)
+		exit (1);
+	if (c.is_aborted == FALSE && is_builtin(c.path) == TRUE)
+		builtin_call_child(c.args, &(c.s->exit_status), &(c.s->envp));
+	else if (c.is_aborted == FALSE && c.s->is_exec_abort == FALSE &&
+		(!ft_c_finder('/', c.path) || execve(c.path, c.job, c.s->envp) == -1))
+		print_exec_err(c.path);
+	exit(1);
+}
+
+int		instance_builder(t_stock *s, int jobpos, int *pipes, t_bool is_pipe)
+{
+	t_child child;
+
+	child = init_child(s, jobpos, pipes, is_pipe);
+	if (s->is_debug == TRUE)
+		debug_child(child);
+	if ((child.pid = fork()) == 0)
+	{
+		child_process(child);
+	}
+	else if (child.pid == -1)
+		return (panic_ib(child));
+	free_child(child);
+	return (0);
 }

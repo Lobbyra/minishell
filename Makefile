@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+         #
+#    By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/15 13:51:51 by jecaudal          #+#    #+#              #
-#    Updated: 2020/07/23 18:51:09 by jereligi         ###   ########.fr        #
+#    Updated: 2020/07/23 19:33:09 by jecaudal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,37 +19,37 @@ CFLAGS			+=	-Werror -Wall -Wextra -I ./headers/
 
 CC				=	gcc
 
-SRCS_L_PRINTF	=	./srcs/lib/simplified_printf/srcs/l_printf.c		\
-					./srcs/lib/simplified_printf/srcs/pnf_apply_field.c	\
-					./srcs/lib/simplified_printf/srcs/pnf_apply_prec.c	\
-					./srcs/lib/simplified_printf/srcs/pnf_get_flags.c	\
-					./srcs/lib/simplified_printf/srcs/pnf_get_info.c	\
-					./srcs/lib/simplified_printf/srcs/pnf_get_raw.c		\
-					./srcs/lib/simplified_printf/srcs/pnf_get_type.c	\
-					./srcs/lib/simplified_printf/srcs/pnf_pass.c		\
-					./srcs/lib/simplified_printf/additionnal_functions/l_atoi.c		\
-					./srcs/lib/simplified_printf/additionnal_functions/l_ctostr.c	\
-					./srcs/lib/simplified_printf/additionnal_functions/l_free.c		\
-					./srcs/lib/simplified_printf/additionnal_functions/l_isnum.c	\
-					./srcs/lib/simplified_printf/additionnal_functions/l_ispos.c	\
-					./srcs/lib/simplified_printf/additionnal_functions/l_isspace.c	\
-					./srcs/lib/simplified_printf/additionnal_functions/l_itoa.c		\
-					./srcs/lib/simplified_printf/additionnal_functions/l_itox.c		\
-					./srcs/lib/simplified_printf/additionnal_functions/l_memcpy_n.c	\
-					./srcs/lib/simplified_printf/additionnal_functions/l_numlen.c	\
-					./srcs/lib/simplified_printf/additionnal_functions/l_ptox.c		\
-					./srcs/lib/simplified_printf/additionnal_functions/l_putstr.c	\
-					./srcs/lib/simplified_printf/additionnal_functions/l_strcmp.c	\
-					./srcs/lib/simplified_printf/additionnal_functions/l_strdup.c	\
-					./srcs/lib/simplified_printf/additionnal_functions/l_strdup_n.c	\
-					./srcs/lib/simplified_printf/additionnal_functions/l_strgen.c	\
+SRCS_L_PRINTF	=	./srcs/lib/simplified_printf/srcs/l_printf.c						\
+					./srcs/lib/simplified_printf/srcs/pnf_apply_field.c					\
+					./srcs/lib/simplified_printf/srcs/pnf_apply_prec.c					\
+					./srcs/lib/simplified_printf/srcs/pnf_get_flags.c					\
+					./srcs/lib/simplified_printf/srcs/pnf_get_info.c					\
+					./srcs/lib/simplified_printf/srcs/pnf_get_raw.c						\
+					./srcs/lib/simplified_printf/srcs/pnf_get_type.c					\
+					./srcs/lib/simplified_printf/srcs/pnf_pass.c						\
+					./srcs/lib/simplified_printf/additionnal_functions/l_atoi.c			\
+					./srcs/lib/simplified_printf/additionnal_functions/l_ctostr.c		\
+					./srcs/lib/simplified_printf/additionnal_functions/l_free.c			\
+					./srcs/lib/simplified_printf/additionnal_functions/l_isnum.c		\
+					./srcs/lib/simplified_printf/additionnal_functions/l_ispos.c		\
+					./srcs/lib/simplified_printf/additionnal_functions/l_isspace.c		\
+					./srcs/lib/simplified_printf/additionnal_functions/l_itoa.c			\
+					./srcs/lib/simplified_printf/additionnal_functions/l_itox.c			\
+					./srcs/lib/simplified_printf/additionnal_functions/l_memcpy_n.c		\
+					./srcs/lib/simplified_printf/additionnal_functions/l_numlen.c		\
+					./srcs/lib/simplified_printf/additionnal_functions/l_ptox.c			\
+					./srcs/lib/simplified_printf/additionnal_functions/l_putstr.c		\
+					./srcs/lib/simplified_printf/additionnal_functions/l_strcmp.c		\
+					./srcs/lib/simplified_printf/additionnal_functions/l_strdup.c		\
+					./srcs/lib/simplified_printf/additionnal_functions/l_strdup_n.c		\
+					./srcs/lib/simplified_printf/additionnal_functions/l_strgen.c		\
 					./srcs/lib/simplified_printf/additionnal_functions/l_strinject.c	\
 					./srcs/lib/simplified_printf/additionnal_functions/l_strjoindel.c	\
 					./srcs/lib/simplified_printf/additionnal_functions/l_strlen.c		\
 					./srcs/lib/simplified_printf/additionnal_functions/l_strlen_n.c		\
 					./srcs/lib/simplified_printf/additionnal_functions/l_strrev.c 		\
 					./srcs/lib/simplified_printf/additionnal_functions/l_ultoa_base.c	\
-					./srcs/lib/simplified_printf/additionnal_functions/l_utoa.c			\
+					./srcs/lib/simplified_printf/additionnal_functions/l_utoa.c
 
 
 OBJS_L_PRINTF	=	$(SRCS_L_PRINTF:.c=.o)
@@ -160,6 +160,7 @@ SRCS			=	./srcs/main.c									\
 					./srcs/execution/redirectors_utils.c			\
 					./srcs/execution/redirector_file_out.c			\
 					./srcs/execution/redirector_file_in.c			\
+					./srcs/execution/instance_builder_utils.c		\
 					./srcs/execution/builtins/cd.c					\
 					./srcs/execution/builtins/env.c					\
 					./srcs/execution/builtins/pwd.c					\
@@ -168,14 +169,14 @@ SRCS			=	./srcs/main.c									\
 					./srcs/execution/builtins/export.c				\
 					./srcs/execution/builtins/ft_exit.c				\
 					./srcs/execution/builtins/export_utils.c		\
-					./srcs/execution/jobs_cleaner/pass_part.c		\
-					./srcs/execution/jobs_cleaner/arg_cleaner.c		\
-					./srcs/execution/jobs_cleaner/jobs_cleaner.c	\
-					./srcs/execution/jobs_cleaner/part_len_quote.c	\
-					./srcs/execution/jobs_cleaner/escaper_dquote.c	\
-					./srcs/execution/jobs_cleaner/escaper_nquote.c	\
-					./srcs/execution/jobs_cleaner/part_len_dquote.c	\
-					./srcs/execution/jobs_cleaner/part_len_nquote.c
+					./srcs/execution/job_cleaner/pass_part.c		\
+					./srcs/execution/job_cleaner/arg_cleaner.c		\
+					./srcs/execution/job_cleaner/job_cleaner.c		\
+					./srcs/execution/job_cleaner/part_len_quote.c	\
+					./srcs/execution/job_cleaner/escaper_dquote.c	\
+					./srcs/execution/job_cleaner/escaper_nquote.c	\
+					./srcs/execution/job_cleaner/part_len_dquote.c	\
+					./srcs/execution/job_cleaner/part_len_nquote.c
 
 OBJS			=	$(SRCS:.c=.o)
 

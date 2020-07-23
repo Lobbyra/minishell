@@ -6,32 +6,27 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/13 18:56:18 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/14 18:19:17 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/23 18:43:58 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-**	This function will look through all arg in jobs and clean it.
-**	In clean we mean removing backslash escaper, and, finally removing quotes.
+**	### JOBS_CLEANER ###
+**	This function will clean all strings in a job. It will delete surround
+**	quotes and escape char non-quoted and specific escape in double-quote.
 */
 
 #include "minishell.h"
 
-char	***jobs_cleaner(char ***jobs)
+char	**job_cleaner(char **job)
 {
-	char **i_arg;
-	char ***save_jobs;
+	int i;
 
-	save_jobs = jobs;
-	while (*jobs)
+	i = 0;
+	while (job[i])
 	{
-		i_arg = *jobs;
-		while (*i_arg)
-		{
-			*i_arg = arg_cleaner(*i_arg);
-			i_arg++;
-		}
-		jobs++;
+		job[i] = arg_cleaner(job[i]);
+		i++;
 	}
-	return (save_jobs);
+	return (job);
 }

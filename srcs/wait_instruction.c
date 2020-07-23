@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 15:36:34 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/23 16:23:36 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/23 19:46:03 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,9 @@ static int	read_ui(t_stock *s)
 	int		status;
 
 	pwd = NULL;
-	if (s->buf_user_input == NULL)
+	if (s->buf_user_input)
 	{
+		/*
 		pwd = getcwd(NULL, MAX_PATH_LEN);
 		if (g_is_ctrlc == FALSE)
 			l_printf("\033[32mminishell\033[37m[%s]$>", pwd);
@@ -72,7 +73,7 @@ static int	read_ui(t_stock *s)
 		if (status == -1)
 			return (panic_wait_instruction(&(s->buf_user_input), ERR_ERRNO));
 		if (status == 2)
-			return (1);
+			return (1);*/
 		status = check_user_input(s->buf_user_input, &s->exit_status);
 		if (status != 0)
 			return (panic_wait_instruction(&(s->buf_user_input), status));

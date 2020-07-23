@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 17:44:07 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/22 16:27:30 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/23 19:18:32 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ void		terminator(char ***jobs, int n_jobs, int *status)
 	n_dead = 0;
 	is_quit_printed = FALSE;
 	n_childs = count_non_builtins_jobs(jobs, n_jobs);
-	if (n_childs == 1 && *jobs && is_builtin(find_exec(jobs[0])[0]) == TRUE)
+	if (n_childs == 1 && *jobs && find_exec(jobs[0]) &&
+		is_builtin(find_exec(jobs[0])[0]) == TRUE)
 		return ;
 	while (n_dead < n_childs)
 	{

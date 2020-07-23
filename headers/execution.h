@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 15:10:39 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/22 17:39:17 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/23 18:46:31 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,17 @@ int		init_pipes(int **pipes, int n_jobs);
 int		redirector(int *pipes, int jobpos, t_bool is_pipe, t_stock *s);
 int		instance_builder(t_stock *s, int jobpos, int *pipes, t_bool is_pipe);
 
-char	***jobs_cleaner(char ***jobs);
+char	**job_cleaner(char **job);
+
+/*
+**	### INSTANCE_BUILDER SUB-FONCTIONS ###
+*/
+int		panic_ib(t_child c);
+
+void	free_child(t_child child);
+void	debug_child(t_child child);
+void	print_exec_err(char *path);
+
 
 /*
 **	BUILTINS FUNCTIONS

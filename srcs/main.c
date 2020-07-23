@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 16:47:17 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/23 15:28:47 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/23 19:46:49 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void		quithandler(int nothing)
 		g_is_ctrlc = TRUE;
 }
 
-/*
+
 int				main(int argc, char **argv, char **envp)
 {
 	int		err;
@@ -42,7 +42,7 @@ int				main(int argc, char **argv, char **envp)
 	signal(SIGQUIT, quithandler);
 	if (!(stock = init_stock(envp)))
 		return (1);
-	stock->is_debug = TRUE;
+	// stock->is_debug = TRUE;
 	if (argc == 2)
 		stock->buf_user_input = ft_strdup(argv[1]);
 	while (stock->buf_user_input)
@@ -61,8 +61,9 @@ int				main(int argc, char **argv, char **envp)
 	}
 	free_t_stock(stock);
 	return (stock->exit_status);
-}*/
+}
 
+/*
 static t_bool	debug_arg_detection(int argc, char **argv)
 {
 	if (argc >= 2 && ft_strcmp(argv[1], "--debug") == 0)
@@ -97,3 +98,4 @@ int				main(int argc, char **argv, char **envp)
 	free_t_stock(stock);
 	return (stock->exit_status);
 }
+*/
