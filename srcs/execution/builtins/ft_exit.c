@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 13:43:09 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/23 15:33:07 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/23 15:51:28 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ static t_bool	is_str_num(char *arg)
 static void		print_err(char *arg, int status)
 {
 	ft_putstr_fd("minishell: exit: ", STDERR);
-	if (status == 255)
+	if (status == 2)
 	{
 		ft_putstr_fd(arg, STDERR);
 		ft_putstr_fd(": numeric argument required\n", STDERR);
-		exit(255);
+		exit(2);
 	}
 	else
 	{
@@ -56,7 +56,7 @@ void	ft_exit(char **job)
 	else
 	{
 		if (*(job + 1) && is_str_num(*(job + 1)) == FALSE)
-			print_err(*(job + 1), 255);
+			print_err(*(job + 1), 2);
 		else if (job_len > 2)
 			print_err("", 1);
 		value = ft_atoi(*(job + 1));
