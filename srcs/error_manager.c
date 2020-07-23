@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/15 16:15:44 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/22 16:19:17 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/23 16:00:01 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	error_manager(t_stock *stock, int err)
 			free(stock->user_input);
 		stock->buf_user_input = NULL;
 		stock->user_input = NULL;
-		stock->exit_status = 258;
+		stock->exit_status = 2;
 	}
 	else
 		stock->exit_status = 2;

@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 14:21:24 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/23 15:28:13 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/23 15:59:42 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	cui_print_error(int *exit_status)
 {
 	ft_putstr_fd("minishell: ", 2);
 	ft_putstr_fd("syntax error near unexpected token `;'\n", STDERR);
-	*exit_status = 258;
+	*exit_status = 2;
 	return (ERR_CRITIC);
 }
 
