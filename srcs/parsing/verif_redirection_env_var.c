@@ -6,12 +6,12 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/15 18:42:30 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/23 16:15:20 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/23 18:11:56 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-**	This function checks for ambiguous redirects, it checks the redirection 
+**	This function checks for ambiguous redirects, it checks the redirection
 **	to the environment variable is correct.
 **	if this is not the case it gives the expected error message
 */

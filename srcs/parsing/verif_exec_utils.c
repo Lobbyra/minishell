@@ -6,12 +6,12 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 12:45:58 by Jeanxavier        #+#    #+#             */
-/*   Updated: 2020/07/23 16:50:25 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/23 18:12:10 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-**	This function is the continuation of verif_exec.c 
+**	This function is the continuation of verif_exec.c
 **	(adds the right path to the executable if it exists)
 */
 

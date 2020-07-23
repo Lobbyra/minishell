@@ -6,14 +6,14 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/20 15:22:41 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/23 15:56:08 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/23 18:10:36 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 **	This function allows you to check that there is no end backslash error
 **	If this is the case, the function rereads the input until the command is
-**	valid, otherwise put the error message related to the behavior	
+**	valid, otherwise put the error message related to the behavior
 */
 
 #include "minishell.h"

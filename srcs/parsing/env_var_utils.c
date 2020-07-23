@@ -6,12 +6,12 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/23 14:48:32 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/23 16:09:00 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/23 18:10:14 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-**	This function is the continuation of env_var.c 
+**	This function is the continuation of env_var.c
 **	(replaces a environment variable by this value)
 */
 

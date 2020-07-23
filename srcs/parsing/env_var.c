@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/23 14:33:48 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/23 16:07:09 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/23 19:02:55 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,23 @@ char			*get_name(char *env_var)
 	char	*tmp;
 
 	i = 0;
-	while ((env_var[i] && (ft_isalnum(env_var[i]) || env_var[i] == '$' ||
-	env_var[i] == '_')))
-		i++;
-	if (i == 0 && (env_var[0] == '?' || env_var[0] == ' ' ||
-	env_var[0] == '\0' || env_var[0] == '$'))
+	if (env_var[0] == '$')
+		while (env_var[i] == '$')
+			i++;
+	else
+		while ((env_var[i] && (ft_isalnum(env_var[i]) || env_var[i] == '_')))
+			i++;
+	if (i == 0 && (env_var[0] == '?' || env_var[0] == '\0'))
 		i++;
 	if (!(tmp = (char *)malloc(sizeof(char) * (i + 1))))
 		return (NULL);
-	n = 0;
-	while (n < i)
+	n = -1;
+	while (++n < i)
 	{
 		if (env_var[0] == ' ' || env_var[0] == '\0')
 			tmp[n] = '$';
 		else
 			tmp[n] = env_var[n];
-		n++;
 	}
 	tmp[n] = '\0';
 	return (tmp);
@@ -71,7 +72,7 @@ char			*get_value(char *user_input)
 	return (tmp);
 }
 
-char			**get_env_var(char *user_input, int nb_env_var)
+char			**get_env_var(char *ui, int nb_env_var)
 {
 	int		i;
 	int		n;
@@ -82,18 +83,18 @@ char			**get_env_var(char *user_input, int nb_env_var)
 	n = 0;
 	quote = 0;
 	tab_env_var = pre_malloc_arrstring(nb_env_var);
-	while (user_input[i])
+	while (ui[i])
 	{
-		if (user_input[i] == '\'' || user_input[i] == '\"')
+		if (ui[i] == '\'' || ui[i] == '\"')
 		{
-			word_between_simple_quote(&i, user_input, &quote);
+			word_between_simple_quote(&i, ui, &quote);
 			i++;
 		}
-		if (user_input[i] == '$' && (!is_escape(i, user_input)) &&
-		(quote == 0 || quote == 2))
+		if (ui[i] == '$' && (!is_escape(i, ui)) & (quote == 0 || quote == 2))
 		{
 			free(tab_env_var[n]);
-			tab_env_var[n++] = get_name(&user_input[i + 1]);
+			tab_env_var[n++] = get_name(&ui[i + 1]);
+			spend_if_multiple_dollars(ui, &i);
 		}
 		i++;
 	}
@@ -112,10 +113,10 @@ t_stock *s)
 	while (tab_env_var[i])
 	{
 		len_var = ft_strlen(tab_env_var[i]);
-		if (len_var == 1 && tab_env_var[i][0] == '$')
+		if (tab_env_var[i][0] == '$')
 		{
 			free(value[i]);
-			value[i] = ft_strdup("$");
+			value[i] = ft_strdup(tab_env_var[i]);
 		}
 		else
 		{

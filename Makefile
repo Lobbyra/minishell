@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+         #
+#    By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/15 13:51:51 by jecaudal          #+#    #+#              #
-#    Updated: 2020/07/23 16:11:32 by jereligi         ###   ########.fr        #
+#    Updated: 2020/07/23 18:51:09 by jereligi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -139,6 +139,7 @@ SRCS			=	./srcs/main.c									\
 					./srcs/parsing/check_redirection_null.c			\
 					./srcs/parsing/remove_and_replace_utils.c		\
 					./srcs/parsing/verif_redirection_env_var.c		\
+					./srcs/parsing/spend_if_multiple_dollars.c		\
 					./srcs/parsing/check_exec_after_redirection.c	\
 					./srcs/parsing/split_cmd/pass_word.c			\
 					./srcs/parsing/split_cmd/split_cmd.c			\

@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 18:32:53 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/23 16:32:52 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/23 18:10:50 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 **	This function transforms char ** into char ***
 **	It separates the user's command into jobs
 */
-
 
 #include "minishell.h"
 

@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 16:29:39 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/23 15:39:02 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/23 18:55:14 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	word_between_simple_quote(int *i, char *user_input, int *quote);
 void	find_env_var(char **tab_env_var, char **envp, char **value, int i);
 void	free_get_path_exec_one(char **path, char *exec, char **jobs, char *tmp);
 void	free_get_path_exec_two(char **path, char *exec, char **jobs, char *tmp);
+void	spend_if_multiple_dollars(char *user_input, int *i);
 
 int		check_pipe(t_stock *stock);
 int		check_quote(t_stock *stock);

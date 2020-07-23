@@ -6,12 +6,12 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/07 14:47:13 by Jeanxavier        #+#    #+#             */
-/*   Updated: 2020/07/23 16:18:29 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/23 18:11:49 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-**	This function is the continuation of env_var.c 
+**	This function is the continuation of env_var.c
 **	(replaces a environment variable by this value)
 */
 
@@ -45,7 +45,7 @@ void	word_between_simple_quote(int *i, char *user_input, int *quote)
 		*quote = 0;
 }
 
-char		*escape_env_var(char *new, char *value, int *i, int *n)
+char	*escape_env_var(char *new, char *value, int *i, int *n)
 {
 	int x;
 
@@ -64,7 +64,7 @@ char		*escape_env_var(char *new, char *value, int *i, int *n)
 	return (new);
 }
 
-int			remplace_env_var(char *new, char *value)
+int		remplace_env_var(char *new, char *value)
 {
 	int	i;
 	int	n;
