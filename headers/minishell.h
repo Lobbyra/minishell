@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/15 13:22:38 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/22 16:44:08 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/23 15:20:57 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,12 @@ t_bool			is_cmd_closed(char *ui);
 */
 int				check_user_input(char *user_input, int *exit_status);
 int				panic_wait_instruction(char **to_free, int err);
-int				check_entire_ui(char *ui);
+char			*cut_cmd(char *buf_user_input);
+
+/*
+**	Static functions of check_user_input
+*/
+int				check_semicolon_pipe(char *ui);
 
 /*
 **	Debug functions.

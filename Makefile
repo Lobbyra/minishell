@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+         #
+#    By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/15 13:51:51 by jecaudal          #+#    #+#              #
-#    Updated: 2020/07/22 18:14:13 by jereligi         ###   ########.fr        #
+#    Updated: 2020/07/23 15:17:25 by jecaudal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -108,6 +108,7 @@ OBJS_LIB		=	$(SRCS_LIB:.c=.o)
 
 SRCS			=	./srcs/main.c									\
 					./srcs/reset.c									\
+					./srcs/cut_cmd.c								\
 					./srcs/find_exec.c								\
 					./srcs/skip_part.c								\
 					./srcs/init_stock.c								\
@@ -116,7 +117,8 @@ SRCS			=	./srcs/main.c									\
 					./srcs/is_cmd_closed.c							\
 					./srcs/error_manager.c							\
 					./srcs/wait_instruction.c						\
-					./srcs/wait_instruction_utils.c					\
+					./srcs/check_user_input.c						\
+					./srcs/check_user_input_utils.c					\
 					./srcs/parsing/env_var.c						\
 					./srcs/parsing/ft_itoa.c						\
 					./srcs/parsing/parsing.c						\

@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 15:36:34 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/22 16:45:13 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/23 15:24:25 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,39 +20,6 @@ int			panic_wait_instruction(char **to_free, int err)
 		*to_free = NULL;
 	}
 	return (err);
-}
-
-/*
-**	Will return a duplication of cmd without the first command.
-*/
-
-static char	*cut_cmd(char *cmd)
-{
-	int		i;
-	char	*new;
-
-	i = 0;
-	if (!cmd)
-		return (NULL);
-	while (cmd[i])
-	{
-		if (cmd[i] == '\"' && is_escaped(cmd, i) == FALSE)
-			i = pass_dquote(cmd, i);
-		else if (cmd[i] == '\'' && is_escaped(cmd, i) == FALSE)
-			i = pass_quote(cmd, i);
-		else if (cmd[i] == ';' && is_escaped(cmd, i) == FALSE)
-		{
-			break ;
-		}
-		else
-			i++;
-	}
-	if (cmd[i++] == ';' && !(new = ft_strdup(cmd + i)))
-		free(cmd);
-	else if (cmd[i - 1] != ';')
-		new = NULL;
-	free(cmd);
-	return (new);
 }
 
 /*
