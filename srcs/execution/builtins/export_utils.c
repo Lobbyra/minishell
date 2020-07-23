@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 14:55:00 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/22 14:00:40 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/23 16:10:37 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ t_bool		is_var_exist(char **envp, char *arg)
 		len_name++;
 	while (*envp)
 	{
-		if (ft_strncmp(*envp, arg, len_name) == 0)
+		if (ft_strncmp(*envp, arg, len_name + 1) == 0)
 			return (TRUE);
 		envp++;
 	}
@@ -73,7 +73,7 @@ static char	**var_finder(char **envp, char *arg)
 		len_name++;
 	while (*envp)
 	{
-		if (ft_strncmp(*envp, arg, len_name) == 0)
+		if (ft_strncmp(*envp, arg, len_name + 1) == 0)
 			return (envp);
 		envp++;
 	}
