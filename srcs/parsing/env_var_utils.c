@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/23 14:48:32 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/15 14:59:41 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/23 14:03:42 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,8 @@ int		count_len_new_str(char *user_input, char **value)
 		if (user_input[i] == '$' && user_input[i - 1] != '\\')
 		{
 			i++;
-			while (user_input[i] && ft_isalnum(user_input[i]))
+			while ((user_input[i] && (ft_isalnum(user_input[i]) ||
+			user_input[i] == '_')))
 				i++;
 		}
 		else

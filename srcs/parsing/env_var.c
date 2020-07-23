@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/23 14:33:48 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/22 16:06:03 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/23 14:04:19 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ char			*get_name(char *env_var)
 	char	*tmp;
 
 	i = 0;
-	while ((ft_isalnum(env_var[i]) && (env_var[i] || env_var[i] == '$')))
+	while ((env_var[i] && (ft_isalnum(env_var[i]) || env_var[i] == '$' ||
+	env_var[i] == '_')))
 		i++;
 	if (i == 0 && (env_var[0] == '?' || env_var[0] == ' ' ||
 	env_var[0] == '\0' || env_var[0] == '$'))

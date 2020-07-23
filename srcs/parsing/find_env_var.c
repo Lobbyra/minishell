@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 17:18:12 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/20 17:19:48 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/23 13:49:53 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,13 @@ int i)
 		len_var = ft_strlen_c(envp[n], '=');
 		if (ft_strncmp(tab_env_var[i], envp[n], len_var) == 0)
 		{
-			free(value[i]);
-			value[i] = get_value(envp[n]);
-			break ;
+			len_var = ft_strlen(tab_env_var[i]);
+			if (ft_strncmp(tab_env_var[i], envp[n], len_var) == 0)
+			{
+				free(value[i]);
+				value[i] = get_value(envp[n]);
+				break ;
+			}
 		}
 		n++;
 	}
