@@ -6,9 +6,13 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 18:08:03 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/22 18:50:51 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/23 16:50:51 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/*
+**	This function adds the right path to the executable if it exists
+*/
 
 #include "minishell.h"
 
