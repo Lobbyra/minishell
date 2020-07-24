@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 17:42:41 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/24 17:55:02 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/24 18:46:04 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	child_process(t_child c)
 	if (c.is_aborted == FALSE && is_builtin(c.path) == TRUE)
 		builtin_call_child(c.args, &(c.s->exit_status), &(c.s->envp));
 	else if (c.is_aborted == FALSE && c.s->is_exec_abort == FALSE &&
-		(!ft_c_finder('/', c.path) || execve(c.path, c.job, c.s->envp) == -1))
+		(!ft_c_finder('/', c.path) || execve(c.path, c.args, c.s->envp) == -1))
 		print_exec_err(c.path);
 	exit(1);
 }

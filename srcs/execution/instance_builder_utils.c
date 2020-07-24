@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 18:05:48 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/24 17:53:11 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/24 18:45:38 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 void	debug_child(t_child child)
 {
-	l_printf("/!\\Debug [%d] child not done... /!\\\n", child.jobpos);
+	l_printf("### DEBUG CHILD ###\n\n");
+	l_printf("c.args = [");
+	ft_putarrstr(child.args, "], [");
+	write(1, "]", 1);
 }
 
 void	free_child(t_child child)
