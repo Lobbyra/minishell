@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/01 17:12:30 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/06/17 16:07:30 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/24 16:28:28 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,6 @@ void	ft_putarrstr(char **argv, char *sep)
 			write(1, *argv, ft_strlen(*argv));
 		}
 	}
+	else
+		write(1, "(null)", 6);
 }

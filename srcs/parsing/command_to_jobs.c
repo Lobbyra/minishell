@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command_to_jobs.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 18:32:53 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/23 18:10:50 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/24 16:49:07 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,8 @@ int				command_to_jobs(t_stock *s, char **command)
 	len = number_jobs(command);
 	if (!(jobs = (char ***)malloc(sizeof(char **) * (len + 1))))
 		return (-1);
-	jobs[len - 1] = NULL;
+	if (len != 0)
+		jobs[len - 1] = NULL;
 	jobs[len] = NULL;
 	jobs_alloc(jobs, command);
 	insert_data_jobs(jobs, command);
