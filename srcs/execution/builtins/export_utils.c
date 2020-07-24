@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 14:55:00 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/23 16:10:37 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/24 16:10:53 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,9 @@ void		print_envp_export(char **envp, int fd)
 
 t_bool		is_var_exist(char **envp, char *arg)
 {
-	int len_name;
-
-	len_name = 0;
-	while (arg[len_name] != '=')
-		len_name++;
 	while (*envp)
 	{
-		if (ft_strncmp(*envp, arg, len_name + 1) == 0)
+		if (ft_strncmp(*envp, arg, ft_strlen_c(*envp, '=')) == 0)
 			return (TRUE);
 		envp++;
 	}

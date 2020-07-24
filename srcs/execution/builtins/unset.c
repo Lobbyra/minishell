@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 14:42:06 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/20 18:34:33 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/24 16:08:29 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static char		**var_deletion(char **save_envp, char **envp, char *var)
 	i_new = new;
 	while (*envp)
 	{
-		if (ft_strncmp(*envp, var, ft_strlen(var)) != 0)
+		if (ft_strncmp(*envp, var, ft_strlen_c(*envp, '=')) != 0)
 		{
 			if (!(*i_new = ft_strdup(*envp)))
 				return (panic_var_deletion(new, i_new));
@@ -87,7 +87,8 @@ int				unset(char ***envp, char **job)
 	{
 		if (is_correct_name(job[i]) == FALSE || ft_strcmp("", job[i]) == 0)
 			print_unset_err(job[i]);
-		else if (!(*envp = var_deletion(*envp, *envp, job[i])))
+		else if (is_var_exist(*envp, job[i]) == TRUE &&
+				!(*envp = var_deletion(*envp, *envp, job[i])))
 			return (ERR_MALLOC);
 		i++;
 	}
