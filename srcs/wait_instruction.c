@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 15:36:34 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/23 19:46:03 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/24 14:37:36 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ char		*get_cmd(char *user_input)
 }
 
 extern t_bool g_is_ctrlc;
-
+/*
 static int	read_ui(t_stock *s)
 {
 	int		status;
@@ -69,8 +69,9 @@ static int	read_ui(t_stock *s)
 	g_is_ctrlc = FALSE;
 	return (0);
 }
+*/
 
-/*
+
 static int	read_ui(t_stock *s)
 {
 	char	*pwd;
@@ -95,7 +96,6 @@ static int	read_ui(t_stock *s)
 	g_is_ctrlc = FALSE;
 	return (0);
 }
-*/
 
 int			wait_instruction(t_stock *s)
 {
