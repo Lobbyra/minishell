@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 16:47:17 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/24 14:37:54 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/24 17:00:33 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,15 @@ int				main(int argc, char **argv, char **envp)
 }
 */
 
+static int		ctrld_quit(t_stock *stock)
+{
+	int exit_status;
+
+	exit_status = stock->exit_status;
+	write(1, "exit\n", 5);
+	free_t_stock(stock);
+	return (exit_status);
+}
 
 static t_bool	debug_arg_detection(int argc, char **argv)
 {
@@ -88,7 +97,7 @@ int				main(int argc, char **argv, char **envp)
 		if ((err = wait_instruction(stock)) != 0 && err != SIG_CTRLD)
 			error_manager(stock, err);
 		if (err == SIG_CTRLD)
-			break ;
+			return(ctrld_quit(stock));
 		if (err == 0 && (err = parsing(stock)) != 0)
 			error_manager(stock, err);
 		ft_putstr_fd(stock->error_strings, STDERR);
