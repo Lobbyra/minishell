@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lib.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 16:20:45 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/04 11:43:40 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/24 16:56:26 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ char			*ft_ctostr(char c);
 char			*ft_strdup(char *str);
 char			*ft_basename(char *path);
 char			*ft_strdupdel(char *str);
+char			*ft_strdupdel_n(char *str, int n);
 char			*ft_strcleaner(char *str);
 char			*ft_get_this_word(char *str);
 char			*ft_strdup_n(char *str, int n);

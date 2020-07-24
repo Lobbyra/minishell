@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 16:02:38 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/21 16:28:34 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/24 16:41:32 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,8 @@ static int	debug_parsing(t_stock *stock)
 {
 	char	**tmp;
 
-	l_printf("cmd user: |%s|\n\n", stock->user_input);
-	check_end_backslash(stock);
 	l_printf("\033[32mcheck end_backslash [ok]\033[37m\n");
+	l_printf("cmd user: |%s|\n\n", stock->user_input);
 	if (check_double_pipe(stock->user_input, stock) != 0)
 		return (ERR_SYNTAX);
 	verif_redirection_env_var(stock);
@@ -46,7 +45,6 @@ int			parsing(t_stock *stock)
 	stock->is_exec_abort = FALSE;
 	if (stock->is_debug == TRUE)
 		return (debug_parsing(stock));
-	check_end_backslash(stock);
 	if (check_double_pipe(stock->user_input, stock) != 0)
 		return (ERR_SYNTAX);
 	verif_redirection_env_var(stock);

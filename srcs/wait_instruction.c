@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wait_instruction.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 15:36:34 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/24 14:37:36 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/24 16:41:27 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ int			wait_instruction(t_stock *s)
 			l_printf("\033[32mcheck pipe [ok]\033[37m\n");
 		return (ERR_CRITIC);
 	}
+	check_end_backslash(s);
 	s->user_input = get_cmd(s->buf_user_input);
 	s->buf_user_input = cut_cmd(s->buf_user_input);
 	return (0);

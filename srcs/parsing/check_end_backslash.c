@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/20 15:22:41 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/23 18:10:36 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/24 17:02:26 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,21 @@ static int		additional_read_backslash(t_stock *s)
 	status = get_next_line(0, &tmp);
 	if (status == GNL_LINE_READED || status == GNL_EOF)
 	{
-		tmp = ft_strjoindel("\n", tmp, 2);
-		s->user_input = ft_strjoindel(s->user_input, tmp, 3);
+		s->buf_user_input = ft_strdupdel_n(s->buf_user_input,
+		ft_strlen(s->buf_user_input) - 1);
+		s->buf_user_input = ft_strjoindel(s->buf_user_input, tmp, 3);
 	}
 	else if (status == GNL_CTRLD)
 	{
-		tmp = ft_strdup_n(s->user_input, ft_strlen(s->user_input) - 1);
-		free(s->user_input);
-		s->user_input = tmp;
+		tmp = ft_strdup_n(s->buf_user_input, ft_strlen(s->buf_user_input) - 1);
+		free(s->buf_user_input);
+		s->buf_user_input = tmp;
 		return (ERR_EXIT);
 	}
 	if (s->is_debug == TRUE)
-		l_printf("|%s|\n", s->user_input);
-	if (check_quote(s) == ERR_SYNTAX || check_pipe(s) == ERR_SYNTAX)
-		return (ERR_SYNTAX);
+		l_printf("|%s|\n", s->buf_user_input);
+	if (check_quote(s) == ERR_CRITIC || check_pipe(s) == ERR_CRITIC)
+		return (ERR_CRITIC);
 	return (0);
 }
 
@@ -53,17 +54,17 @@ int				check_end_backslash(t_stock *s)
 
 	i = 0;
 	status = 0;
-	i = ft_strlen(s->user_input) - 1;
-	if (s->user_input[i] == '\\' && s->user_input[i - 1] != '\\')
+	i = ft_strlen(s->buf_user_input) - 1;
+	if (s->buf_user_input[i] == '\\' && s->buf_user_input[i - 1] != '\\')
 	{
-		if (additional_read_backslash(s) == ERR_SYNTAX)
-			return (ERR_SYNTAX);
+		if (additional_read_backslash(s) == ERR_CRITIC)
+			return (ERR_CRITIC);
 	}
-	else if (s->user_input[i] == '\\' && s->user_input[i - 1] == '\\')
+	else if (s->buf_user_input[i] == '\\' && s->buf_user_input[i - 1] == '\\')
 	{
-		while (s->user_input[i] == '\\' && s->user_input[i - 1] == '\\')
+		while (s->buf_user_input[i] == '\\' && s->buf_user_input[i - 1] == '\\')
 		{
-			if (s->user_input[i] == '\\')
+			if (s->buf_user_input[i] == '\\')
 				status++;
 			i--;
 		}
