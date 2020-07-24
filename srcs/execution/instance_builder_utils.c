@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 18:05:48 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/23 18:56:18 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/24 17:53:11 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int		panic_ib(t_child child)
 	return (errno);
 }
 
-void		print_exec_err(char *path)
+void	print_exec_err(char *path)
 {
 	struct stat	path_stat;
 

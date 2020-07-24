@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 17:44:07 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/23 19:18:32 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/24 17:57:35 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,19 +32,18 @@ static int	count_non_builtins_jobs(char ***jobs, int n_jobs)
 	return (count);
 }
 
-void		terminator(char ***jobs, int n_jobs, int *status)
+void		terminator(char ***j, int n_jobs, int *status)
 {
 	int		n_dead;
-	int		n_childs;
+	int		n_child;
 	t_bool	is_quit_printed;
 
 	n_dead = 0;
 	is_quit_printed = FALSE;
-	n_childs = count_non_builtins_jobs(jobs, n_jobs);
-	if (n_childs == 1 && *jobs && find_exec(jobs[0]) &&
-		is_builtin(find_exec(jobs[0])[0]) == TRUE)
+	n_child = count_non_builtins_jobs(j, n_jobs);
+	if (n_child == 1 && *j && find_exec(j[0]) && is_builtin(find_exec(j[0])[0]))
 		return ;
-	while (n_dead < n_childs)
+	while (n_dead < n_child)
 	{
 		wait((int*)status);
 		if (WIFSIGNALED(*status))

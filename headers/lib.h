@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lib.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 16:20:45 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/24 16:56:26 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/24 18:03:53 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void			ft_putnbr(int nb);
 void			ft_putstr(char *s);
 void			ft_putchar(char c);
 void			ft_freestrs(char **strs);
-int			l_printf(char *str, ...);
+int				l_printf(char *str, ...);
 void			ft_sort_strs(char **argv);
 void			ft_strarrfree(char **strs);
 void			ft_skip(char **ptr, char c);

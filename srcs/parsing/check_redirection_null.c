@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_redirection_null.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/16 18:03:53 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/21 18:46:25 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/24 18:03:05 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void		redirection_null(t_stock *s, int n, int i, int *status)
 	if (s->is_cmd_closed == TRUE)
 		s->error_strings = ft_strjoindel(s->error_strings, ERR_PIPE3, 1);
 	else
-		s->error_strings = ft_strjoindel(s->error_strings, ERR_REDICTION, 1);
+		s->error_strings = ft_strjoindel(s->error_strings, ERR_REDIREC, 1);
 	*status = 0;
 	if (n > 0)
 	{

@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 18:05:40 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/23 14:35:23 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/24 18:01:47 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 **	### CONDITION_TRIGGER ###
 **	It's the condition trigger of CHECK_SEMICOLON.
 */
+
 static t_bool	condition_trigger(char *ui, int i)
 {
 	i++;
@@ -25,7 +26,7 @@ static t_bool	condition_trigger(char *ui, int i)
 	return (FALSE);
 }
 
-int		check_semicolon_pipe(char *ui)
+int				check_semicolon_pipe(char *ui)
 {
 	int i;
 

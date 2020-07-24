@@ -6,12 +6,12 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/14 14:49:57 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/14 17:26:47 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/24 17:53:50 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-**	This function will edit buf string to remove escape char when 
+**	This function will edit buf string to remove escape char when
 **	'$' or '\' or '"' is escaped.
 */
 
@@ -31,7 +31,7 @@ int		escaper_dquote(char *buf)
 	{
 		if (copy[i_copy] == '\\' && is_escaped(copy, i_copy) == FALSE &&
 			(copy[i_copy + 1] == '\"' || copy[i_copy + 1] == '$' ||
-			 copy[i_copy + 1] == '\\'))
+			copy[i_copy + 1] == '\\'))
 			i_copy++;
 		if (copy[i_copy])
 			buf[i_buf++] = copy[i_copy++];

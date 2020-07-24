@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/15 13:22:38 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/23 15:20:57 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/24 18:04:02 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@
 # include "split_command.h"
 # include "split_cmd.h"
 # include "../srcs/lib/simplified_printf/headers/l_printf.h"
-
 
 void			print_prompt(void);
 void			reset(t_stock *stock);

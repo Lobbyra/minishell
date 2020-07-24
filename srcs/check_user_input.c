@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 14:21:24 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/23 15:59:42 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/24 18:01:52 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ static int	cui_print_error(int *exit_status)
 **	### CHECK_NOTHING_FIRST ###
 **	This function check if there is no command between the start and the first ;
 */
+
 static int	check_nothing_first(char *ui)
 {
 	int i;

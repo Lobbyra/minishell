@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 16:29:39 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/23 19:39:37 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/24 18:03:19 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 # define ERR_PIPE1 "minishell: syntax error unexpected end of file\n"
 # define ERR_PIPE2 "minishell: syntax error near unexpected token `|'\n"
 # define ERR_PIPE3 "minishell: syntax error near unexpected token `;'\n"
-# define ERR_REDICTION "minishell: syntax error near unexpected token `newline'\n"
+# define ERR_REDIREC "minishell: syntax error near unexpected token `newline'\n"
 
-void	is_env_exit_status(char *env_var, char **value, int len_var, 
+void	is_env_exit_status(char *env_var, char **value, int len_var,
 t_stock *s);
 void	word_between_simple_quote(int *i, char *user_input, int *quote);
 void	find_env_var(char **tab_env_var, char **envp, char **value, int i);

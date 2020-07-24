@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/23 18:03:21 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/20 17:19:50 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/24 17:49:45 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 
 #include "minishell.h"
 
-static int	errno_exit(void)
+static int		errno_exit(void)
 {
 	l_printf("minishell: echo: %s\n", strerror(errno));
 	return (1);
 }
 
-static int	protected_putarrstr_fd(char **argv, char *sep, int fd)
+static int		protected_putarrstr_fd(char **argv, char *sep, int fd)
 {
 	if (argv && fd > 0)
 	{
@@ -69,7 +69,7 @@ static int		n_options(char **job)
 	return (count);
 }
 
-int			echo(char **job, int fd)
+int				echo(char **job, int fd)
 {
 	errno = 0;
 	if (ft_strarrlen(job) > 1)

@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 15:10:39 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/23 18:46:31 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/24 18:04:13 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int		panic_ib(t_child c);
 void	free_child(t_child child);
 void	debug_child(t_child child);
 void	print_exec_err(char *path);
-
 
 /*
 **	BUILTINS FUNCTIONS

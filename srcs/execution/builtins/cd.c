@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 13:53:35 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/15 18:36:40 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/24 17:58:03 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static t_bool	is_home_in_envp(char **envp)
 int				cd(char *path, char **envp)
 {
 	char	*home;
-	
+
 	errno = 0;
 	if (path == NULL)
 	{
