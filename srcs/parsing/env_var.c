@@ -105,14 +105,12 @@ static char		**if_exist(char **tab_env_var, int nb_env_var, char **envp, \
 t_stock *s)
 {
 	int		i;
-	int		len_var;
 	char	**value;
 
 	i = 0;
 	value = pre_malloc_arrstring(nb_env_var);
 	while (tab_env_var[i])
 	{
-		len_var = ft_strlen(tab_env_var[i]);
 		if (tab_env_var[i][0] == '$')
 		{
 			free(value[i]);

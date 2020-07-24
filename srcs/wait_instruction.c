@@ -58,13 +58,27 @@ extern t_bool g_is_ctrlc;
 
 static int	read_ui(t_stock *s)
 {
+	int		status;
+
+	if (s->buf_user_input)
+	{
+		status = check_user_input(s->buf_user_input, &s->exit_status);
+		if (status != 0)
+			return (panic_wait_instruction(&(s->buf_user_input), status));
+	}
+	g_is_ctrlc = FALSE;
+	return (0);
+}
+
+/*
+static int	read_ui(t_stock *s)
+{
 	char	*pwd;
 	int		status;
 
 	pwd = NULL;
-	if (s->buf_user_input)
+	if (s->buf_user_input == NULL)
 	{
-		/*
 		pwd = getcwd(NULL, MAX_PATH_LEN);
 		if (g_is_ctrlc == FALSE)
 			l_printf("\033[32mminishell\033[37m[%s]$>", pwd);
@@ -73,7 +87,7 @@ static int	read_ui(t_stock *s)
 		if (status == -1)
 			return (panic_wait_instruction(&(s->buf_user_input), ERR_ERRNO));
 		if (status == 2)
-			return (1);*/
+			return (1);
 		status = check_user_input(s->buf_user_input, &s->exit_status);
 		if (status != 0)
 			return (panic_wait_instruction(&(s->buf_user_input), status));
@@ -81,6 +95,7 @@ static int	read_ui(t_stock *s)
 	g_is_ctrlc = FALSE;
 	return (0);
 }
+*/
 
 int			wait_instruction(t_stock *s)
 {
