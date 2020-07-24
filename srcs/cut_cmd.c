@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 13:44:44 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/23 14:03:36 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/24 15:07:42 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 
 static char		*return_creator(char *cmd, int i)
 {
+	char *tmp;
+	
 	if (cmd[i] != ';')
 	{
 		free(cmd);
@@ -37,8 +39,9 @@ static char		*return_creator(char *cmd, int i)
 		free(cmd);
 		return (NULL);
 	}
+	tmp = ft_strdup(cmd + i);
 	free(cmd);
-	return (ft_strdup(cmd + i));
+	return (tmp);
 }
 
 char			*cut_cmd(char *cmd)
