@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verif_redirection_env_var.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/15 18:42:30 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/23 18:11:56 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/27 13:36:08 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ int				err_redirection_env_var(t_stock *s, char *str, int *i, int jobs)
 	tmp = remove_incorrect_input(s, *i);
 	free(s->user_input);
 	s->user_input = tmp;
+	s->exit_status = 1;
 	*i = *i - 1;
 	return (0);
 }
