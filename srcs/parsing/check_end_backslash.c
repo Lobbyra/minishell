@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/20 15:22:41 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/27 14:10:01 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/27 14:17:48 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,8 @@ int				end_backslash(t_stock *s, int i)
 int				check_end_backslash(t_stock *s)
 {
 	int		i;
-	int		status;
 
 	i = ft_strlen(s->buf_user_input) - 1;
-	status = 0;
 	if (i > 1)
 		return (end_backslash(s, i));
 	else
