@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 18:05:40 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/24 18:01:47 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/27 13:07:04 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,7 @@ int				check_semicolon_pipe(char *ui)
 		if (ui[i] == ';')
 		{
 			if (condition_trigger(ui, i) == TRUE)
-			{
-				ft_putstr_fd("minishell: ", STDERR);
-				ft_putstr_fd(ERR_CRIT_MSG, STDERR);
 				return (ERR_CRITIC);
-			}
 			else
 				i++;
 		}

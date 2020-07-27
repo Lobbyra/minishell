@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 14:21:24 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/24 18:01:52 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/27 13:08:15 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,12 @@
 **	It will modify exit_status if there is an error.
 */
 
-static int	cui_print_error(int *exit_status)
+static int	cui_print_error(int *exit_status, char token)
 {
 	ft_putstr_fd("minishell: ", 2);
-	ft_putstr_fd("syntax error near unexpected token `;'\n", STDERR);
+	ft_putstr_fd("syntax error near unexpected token `", STDERR);
+	write(STDERR, &token, 1);
+	ft_putstr_fd("'\n", STDERR);
 	*exit_status = 2;
 	return (ERR_CRITIC);
 }
@@ -93,10 +95,10 @@ static int	check_nothing_between(char *ui)
 int			check_user_input(char *ui, int *exit_status)
 {
 	if (check_nothing_first(ui) == ERR_CRITIC)
-		return (cui_print_error(exit_status));
+		return (cui_print_error(exit_status, ';'));
 	if (check_nothing_between(ui) == ERR_CRITIC)
-		return (cui_print_error(exit_status));
+		return (cui_print_error(exit_status, ';'));
 	if (check_semicolon_pipe(ui) == ERR_CRITIC)
-		return (cui_print_error(exit_status));
+		return (cui_print_error(exit_status, '|'));
 	return (0);
 }
