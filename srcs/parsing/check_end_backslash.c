@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/20 15:22:41 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/24 17:02:26 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/27 14:10:01 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,11 @@ static int		additional_read_backslash(t_stock *s)
 	return (0);
 }
 
-int				check_end_backslash(t_stock *s)
+int				end_backslash(t_stock *s, int i)
 {
-	int		i;
-	int		status;
+	int status;
 
-	i = 0;
 	status = 0;
-	i = ft_strlen(s->buf_user_input) - 1;
 	if (s->buf_user_input[i] == '\\' && s->buf_user_input[i - 1] != '\\')
 	{
 		if (additional_read_backslash(s) == ERR_CRITIC)
@@ -68,9 +65,26 @@ int				check_end_backslash(t_stock *s)
 				status++;
 			i--;
 		}
-		if (status % 2 == 0)
-			if (additional_read_backslash(s) == ERR_SYNTAX)
-				return (ERR_SYNTAX);
+		if (status % 2 == 0 && additional_read_backslash(s) == ERR_SYNTAX)
+			return (ERR_SYNTAX);
+	}
+	return (0);
+}
+
+int				check_end_backslash(t_stock *s)
+{
+	int		i;
+	int		status;
+
+	i = ft_strlen(s->buf_user_input) - 1;
+	status = 0;
+	if (i > 1)
+		return (end_backslash(s, i));
+	else
+	{
+		if (s->buf_user_input[0] == '\\')
+			if (additional_read_backslash(s) == ERR_CRITIC)
+				return (ERR_CRITIC);
 	}
 	return (0);
 }
