@@ -6,10 +6,9 @@
 #    By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/15 13:51:51 by jecaudal          #+#    #+#              #
-#    Updated: 2020/07/27 11:43:19 by jecaudal         ###   ########.fr        #
+#    Updated: 2020/07/27 16:39:15 by jecaudal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
 
 NAME			=	minishell
 
@@ -28,18 +27,18 @@ SRCS_L_PRINTF	=	./srcs/lib/simplified_printf/srcs/l_printf.c						\
 					./srcs/lib/simplified_printf/srcs/pnf_get_type.c					\
 					./srcs/lib/simplified_printf/srcs/pnf_pass.c						\
 					./srcs/lib/simplified_printf/additionnal_functions/l_atoi.c			\
-					./srcs/lib/simplified_printf/additionnal_functions/l_ctostr.c		\
 					./srcs/lib/simplified_printf/additionnal_functions/l_free.c			\
-					./srcs/lib/simplified_printf/additionnal_functions/l_isnum.c		\
-					./srcs/lib/simplified_printf/additionnal_functions/l_ispos.c		\
-					./srcs/lib/simplified_printf/additionnal_functions/l_isspace.c		\
 					./srcs/lib/simplified_printf/additionnal_functions/l_itoa.c			\
 					./srcs/lib/simplified_printf/additionnal_functions/l_itox.c			\
+					./srcs/lib/simplified_printf/additionnal_functions/l_ptox.c			\
+					./srcs/lib/simplified_printf/additionnal_functions/l_isnum.c		\
+					./srcs/lib/simplified_printf/additionnal_functions/l_ispos.c		\
+					./srcs/lib/simplified_printf/additionnal_functions/l_ctostr.c		\
+					./srcs/lib/simplified_printf/additionnal_functions/l_isspace.c		\
 					./srcs/lib/simplified_printf/additionnal_functions/l_memcpy_n.c		\
 					./srcs/lib/simplified_printf/additionnal_functions/l_numlen.c		\
-					./srcs/lib/simplified_printf/additionnal_functions/l_ptox.c			\
-					./srcs/lib/simplified_printf/additionnal_functions/l_putstr.c		\
 					./srcs/lib/simplified_printf/additionnal_functions/l_strcmp.c		\
+					./srcs/lib/simplified_printf/additionnal_functions/l_putstr.c		\
 					./srcs/lib/simplified_printf/additionnal_functions/l_strdup.c		\
 					./srcs/lib/simplified_printf/additionnal_functions/l_strdup_n.c		\
 					./srcs/lib/simplified_printf/additionnal_functions/l_strgen.c		\
@@ -65,6 +64,7 @@ SRCS_LIB		=	./srcs/print_jobs.c						\
 					./srcs/lib/ft_strcmp.c					\
 					./srcs/lib/ft_strdup.c					\
 					./srcs/lib/ft_strlen.c					\
+					./srcs/lib/ft_strlcpy.c					\
 					./srcs/lib/ft_isspace.c					\
 					./srcs/lib/ft_isalnum.c					\
 					./srcs/lib/ft_strjoin.c					\
@@ -101,7 +101,6 @@ SRCS_LIB		=	./srcs/print_jobs.c						\
 					./srcs/lib/ft_get_this_word.c			\
 					./srcs/lib/ft_addstr_to_strs.c			\
 					./srcs/lib/ft_full_len_arrstr.c			\
-					./srcs/lib/ft_strlcpy.c					\
 					./srcs/lib/get_next_line_utils.c		\
 					./srcs/lib/ft_protected_putarrstr_fd.c
 
@@ -182,19 +181,12 @@ SRCS			=	./srcs/main.c									\
 
 OBJS			=	$(SRCS:.c=.o)
 
-PATH_L_PRINTF	=	./srcs/lib/simplified_printf/
-
-L_PRINTF		=	-L./srcs/lib/simplified_printf -llprintf
-
 all				:	$(NAME)
 
-make_l_printf	:
-					@make -C $(PATH_L_PRINTF)
-
-$(NAME)			:	make_l_printf $(OBJS_LIB) $(OBJS)
+$(NAME)			:	$(OBJS_LIB) $(OBJS)
 					$(CC) -o $(NAME) $(OBJS_L_PRINTF) $(OBJS_LIB) $(OBJS)
 
-f				:	make_l_printf $(OBJS_LIB) $(OBJS)
+f				:	$(OBJS_LIB) $(OBJS)
 					$(CC) -o $(NAME) $(OBJS_L_PRINTF) -fsanitize=address $(OBJS_LIB) $(OBJS)
 
 clean		:

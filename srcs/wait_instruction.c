@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wait_instruction.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 15:36:34 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/27 14:07:41 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/27 16:33:34 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,22 +55,6 @@ char		*get_cmd(char *user_input)
 }
 
 extern t_bool g_is_ctrlc;
-/*
-static int	read_ui(t_stock *s)
-{
-	int		status;
-
-	if (s->buf_user_input)
-	{
-		status = check_user_input(s->buf_user_input, &s->exit_status);
-		if (status != 0)
-			return (panic_wait_instruction(&(s->buf_user_input), status));
-	}
-	g_is_ctrlc = FALSE;
-	return (0);
-}
-*/
-
 
 static int	read_ui(t_stock *s)
 {
