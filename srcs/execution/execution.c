@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/16 14:02:43 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/23 18:45:23 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/27 11:53:58 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,6 @@ int			execution(t_stock *s)
 	}
 	else if ((err = jobs_caller(s)) != 0)
 		return (err);
-	terminator(s->jobs, s->n_jobs, &(s->exit_status));
+	terminator(s, s->jobs, s->n_jobs, &(s->exit_status));
 	return (0);
 }

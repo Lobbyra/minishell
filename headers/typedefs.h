@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 11:48:04 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/23 18:12:21 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/27 11:27:18 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct		s_stock
 	t_bool			is_exec_abort;
 	int				*list_exec_abort;
 	int				size_list;
+	pid_t			*child_pids;
 }					t_stock;
 
 typedef struct		s_child

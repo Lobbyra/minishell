@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/06 13:32:01 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/06 13:35:18 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/27 11:42:41 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,10 @@ void		reset(t_stock *stock)
 	{
 		free(stock->user_input);
 		stock->user_input = NULL;
+	}
+	if (stock->child_pids)
+	{
+		free(stock->child_pids);
+		stock->child_pids = NULL;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 17:42:41 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/24 18:46:04 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/27 11:37:40 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,9 @@ int		instance_builder(t_stock *s, int jobpos, int *pipes, t_bool is_pipe)
 		child_process(child);
 	}
 	else if (child.pid == -1)
-		return (panic_ib(child));
+		return (panic_ib(child, ERR_ERRNO));
+	if (save_child_pid(s, child.pid) == ERR_MALLOC)
+		return (panic_ib(child, ERR_MALLOC));
 	free_child(child);
 	return (0);
 }

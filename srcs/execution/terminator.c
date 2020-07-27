@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 17:44:07 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/24 17:57:35 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/27 11:53:06 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	count_non_builtins_jobs(char ***jobs, int n_jobs)
 	return (count);
 }
 
-void		terminator(char ***j, int n_jobs, int *status)
+void		terminator(t_stock *s, char ***j, int n_jobs, int *status)
 {
 	int		n_dead;
 	int		n_child;
@@ -45,7 +45,7 @@ void		terminator(char ***j, int n_jobs, int *status)
 		return ;
 	while (n_dead < n_child)
 	{
-		wait((int*)status);
+		waitpid(s->child_pids[n_dead], (int*)status, 0);
 		if (WIFSIGNALED(*status))
 		{
 			if (WTERMSIG(*status) == 3 && is_quit_printed == FALSE &&

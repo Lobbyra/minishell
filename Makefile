@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+         #
+#    By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/15 13:51:51 by jecaudal          #+#    #+#              #
-#    Updated: 2020/07/24 16:56:18 by jereligi         ###   ########.fr        #
+#    Updated: 2020/07/27 11:43:19 by jecaudal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -157,6 +157,7 @@ SRCS			=	./srcs/main.c									\
 					./srcs/execution/close_pipes.c					\
 					./srcs/execution/jobs_caller.c					\
 					./srcs/execution/builtin_caller.c				\
+					./srcs/execution/save_child_pid.c				\
 					./srcs/execution/instance_builder.c				\
 					./srcs/execution/redirectors_utils.c			\
 					./srcs/execution/redirector_file_out.c			\

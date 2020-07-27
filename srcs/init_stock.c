@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_stock.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/15 13:26:06 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/16 16:03:34 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/27 11:42:07 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,6 @@ t_stock			*init_stock(char **envp)
 	new->user_input = NULL;
 	new->buf_user_input = NULL;
 	new->list_exec_abort = NULL;
+	new->child_pids = NULL;
 	return (new);
 }

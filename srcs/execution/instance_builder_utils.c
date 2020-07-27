@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 18:05:48 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/24 18:45:38 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/27 11:40:20 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,17 @@ void	free_child(t_child child)
 		free(child.exec_name);
 }
 
-int		panic_ib(t_child child)
+int		panic_ib(t_child child, int err)
 {
 	free_child(child);
-	l_printf("minishell: %s\n", strerror(errno));
+	if (err == ERR_ERRNO)
+	{
+		ft_putstr_fd("minishell: ", STDERR);
+		ft_putstr_fd(strerror(errno), STDERR);
+		ft_putstr_fd("\n", STDERR);
+	}
+	else if (err == ERR_MALLOC)
+		ft_putstr_fd("minishell: instance_builder: memalloc error.\n", STDERR);
 	return (errno);
 }
 
