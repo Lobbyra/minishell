@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/07 14:47:13 by Jeanxavier        #+#    #+#             */
-/*   Updated: 2020/07/23 18:11:49 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/27 16:22:43 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ char	*remove_and_replace_utils(char *ui, char *new, char **value)
 	{
 		if (ui[i] == '\'' || ui[i] == '"')
 			word_between_simple_quote(&i, ui, &quot);
-		if (ui[i] == '$' && ui[i - 1] != '\\' && (quot == 0 || quot == 2))
+		if (ui[i] == '$' && !is_escaped(ui, i) && (quot == 0 || quot == 2))
 		{
 			i++;
 			while (ui[i] && (ft_isalnum(ui[i]) || ui[i] == '?' || ui[i] == '_'))
