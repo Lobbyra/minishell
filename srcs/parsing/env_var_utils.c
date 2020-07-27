@@ -6,7 +6,7 @@
 /*   By: jereligi <jereligi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/23 14:48:32 by jereligi          #+#    #+#             */
-/*   Updated: 2020/07/23 18:10:14 by jereligi         ###   ########.fr       */
+/*   Updated: 2020/07/27 16:08:49 by jereligi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,13 @@ int		number_env_var(char *user_input)
 			word_between_simple_quote(&i, user_input, &quote);
 			i++;
 		}
-		if (user_input[i] == '$' && user_input[i - 1] != '\\' && \
-		(quote == 0 || quote == 2))
+		if (i > 0)
+		{
+			if (user_input[i] == '$' && user_input[i - 1] != '\\' && \
+			(quote == 0 || quote == 2))
+				number_env_var++;
+		}
+		else if (user_input[0] == '$')
 			number_env_var++;
 		i++;
 	}
