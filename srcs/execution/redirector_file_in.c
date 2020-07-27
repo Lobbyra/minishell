@@ -6,7 +6,7 @@
 /*   By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/02 18:04:07 by jecaudal          #+#    #+#             */
-/*   Updated: 2020/07/17 15:38:30 by jecaudal         ###   ########.fr       */
+/*   Updated: 2020/07/27 15:56:38 by jecaudal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,17 +55,29 @@ static int	process_redir(int fd, char *path)
 	return (0);
 }
 
+static void	path_saving_in(char **addr_path, char *new_path)
+{
+	if (*addr_path == NULL)
+		*addr_path = new_path;
+	else
+	{
+		free(*addr_path);
+		*addr_path = new_path;
+	}
+}
+
 int			redirector_file_in(char **job)
 {
 	int		fd;
 	char	*path;
 
+	path = NULL;
 	while (*job)
 	{
 		errno = 0;
 		if (ft_strcmp(*job, "<") == 0)
 		{
-			path = arg_cleaner(ft_strdup(*(job + 1)));
+			path_saving_in(&path, arg_cleaner(ft_strdup(*(job + 1))));
 			fd = open(path, O_RDONLY);
 			if (fd == -1)
 				break ;
