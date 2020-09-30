@@ -6,7 +6,7 @@
 #    By: jecaudal <jecaudal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/15 13:51:51 by jecaudal          #+#    #+#              #
-#    Updated: 2020/07/27 16:39:15 by jecaudal         ###   ########.fr        #
+#    Updated: 2020/09/30 13:01:20 by Lobbyra          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -181,19 +181,23 @@ SRCS			=	./srcs/main.c									\
 
 OBJS			=	$(SRCS:.c=.o)
 
+PATH_L_PRINTF	=	srcs/lib/simplified_printf/
+
 all				:	$(NAME)
 
 $(NAME)			:	$(OBJS_LIB) $(OBJS)
+					make -C $(PATH_L_PRINTF)
 					$(CC) -o $(NAME) $(OBJS_L_PRINTF) $(OBJS_LIB) $(OBJS)
 
 f				:	$(OBJS_LIB) $(OBJS)
 					$(CC) -o $(NAME) $(OBJS_L_PRINTF) -fsanitize=address $(OBJS_LIB) $(OBJS)
 
 clean		:
+					make clean -C $(PATH_L_PRINTF)
 					rm -f $(OBJS_LIB) $(OBJS_L_PRINTF) $(OBJS)
 
 fclean		:		clean
 					rm -f $(NAME)
-					@make fclean -C $(PATH_L_PRINTF)
+					make fclean -C $(PATH_L_PRINTF)
 
 re			:		fclean $(NAME)
