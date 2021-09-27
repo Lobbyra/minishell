@@ -5,10 +5,9 @@
 
 ## Introduction
 
-Minishell is a group project for two at [42](https://www.42.fr/42-network/). The goal of this project is to create a simple shell
+Minishell is a group project at [42](https://www.42.fr/). The goal of this project is to create a simple shell that behave like bash.
 
-
-This project was carried out by __Jecaudal__ and __Jereligi__
+This project was carried out by [__Jecaudal__](https://github.com/lobbyra) and [__Jereligi__](https://github.com/Jean-xavierr)
 
 
 ## Subject
